@@ -1,0 +1,53 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+ 
+
+
+body {
+   margin: 0;
+   padding: 0;
+   background: #eff0f3;
+}
+
+.gradient-text {
+  font-size: 3rem;
+  font-weight: bold;
+  background-image: linear-gradient(to right, #ff7e5f, #feb47b);
+  background-clip: text;
+  -webkit-background-clip: text;
+  color: transparent;
+}
+
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+}
+
+
+.word {
+  clip-path: polygon(0 0, 100% 0, 100% 100%, 0% 100%);
+}
+
+.word {
+  transform: translateY(115px);
+  transition: transform .5s;
+}
+
+.line{
+    clip-path:  polygon(0 0, 100% 0, 100% 100%, 0% 100%);
+    transform: translateY(50px);
+    opacity: 0;
+    overflow: hidden;
+}
+
+#main-container {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  overflow: hidden; /* This ensures that the scroll behavior is controlled properly */
+}
+
+

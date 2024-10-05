@@ -1,0 +1,14 @@
+.mask {
+  mask-repeat: no-repeat;
+  mask-size: 40px; /* Ensure this is the correct size for the mask */
+  height: 100px;
+  width: 100px;
+  background: #eff0f3;
+  border-radius: 50%;
+  position: absolute;
+  z-index: 10000;
+  color: red;
+  pointer-events: none; /* Ensure the cursor doesn't capture events */
+  
+  transition: transform 0.1s  ease-out; /* Optional smooth transition */
+}

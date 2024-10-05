@@ -1,0 +1,23 @@
+.targetItem:hover {
+  cursor: none;
+}
+
+  /* Custom cursor styling */
+  .customCursor {
+    position: fixed;
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    pointer-events: none; /* Prevent interaction with the custom cursor */
+    z-index: 69;
+    transition: transform 0.1s ease; /* Smooth movement */
+  }
+  
+  .mask{
+    mask-image: url('../../../public/mask.svg');
+    mask-repeat: no-repeat;
+    mask-size: 40px;
+    background: #ec4e39;
+    position: absolute;
+    color: black;
+  }

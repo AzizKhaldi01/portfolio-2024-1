@@ -1,0 +1,25 @@
+.curveRoute{
+    .background{
+        position: fixed;
+        z-index: 200;
+        height: calc(100vh + 600px);
+        width: 100vw;
+        pointer-events: none;
+        left: 0;
+        top: 0;
+    }
+    .background{
+        background-color: "#1E1E1E";
+        transition: opacity 0s linear 0.1s;
+    }
+    .route{
+        position: absolute;
+        left: 50%;
+        top: 40%;
+        color: black;
+        font-size: 46px;
+        z-index: 10000;
+        transform: translateX(-50%);
+        text-align: center;
+    }
+}
