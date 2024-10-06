@@ -22,7 +22,12 @@ function Page() {
     );
   }, []);
 
-   
+  useEffect(() => {
+    setTimeout(() => {
+      window.scrollTo(0, 0);
+    }, 200);
+  }, []); 
+
   useEffect(() => {
     // Page load animation
     gsap.fromTo(

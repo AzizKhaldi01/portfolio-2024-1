@@ -36,6 +36,13 @@ function index() {
     },
   ];
 
+
+  useEffect(() => {
+    setTimeout(() => {
+      window.scrollTo(0, 0);
+    }, 200);
+  }, []);
+
   useEffect(() => {
     // Split the text into lines using SplitType
     const splitInstance = new SplitType(textRef.current, { types: "lines" });

@@ -38,6 +38,12 @@ const index = () => {
   const localTime = useLocalTime();
 
   useEffect(() => {
+    setTimeout(() => {
+      window.scrollTo(0, 0);
+    }, 200);
+  }, []);
+
+  useEffect(() => {
     gsap.fromTo(
       ".word",
       { y: 250, opacity: 0 },

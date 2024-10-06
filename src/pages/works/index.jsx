@@ -13,6 +13,13 @@ import Navbar from "../../componet/Navbar";
 function Page() {
   const worksRef = useRef(null);
 
+
+  useEffect(() => {
+    setTimeout(() => {
+      window.scrollTo(0, 0);
+    }, 200);
+  }, []);
+
   useEffect(() => {
     gsap.fromTo(
       ".item",
