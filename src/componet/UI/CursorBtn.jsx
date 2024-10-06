@@ -51,7 +51,7 @@ function CursorBtn({ elementRef, Bg }) {
 
   return (
     <motion.div
-      className={`fixed  hidden w-[100px] h-[100px]  rounded-[50%]  lg:flex items-center justify-center font-bold text-sm shadow-xl pointer-events-none ${
+      className={`fixed cursor-default  hidden w-[100px] h-[100px]  rounded-[50%]  lg:flex items-center justify-center font-bold text-sm shadow-xl pointer-events-none ${
         Bg ? `${Bg} text-white` : "bg-thr text-white"
       }`}
       style={{

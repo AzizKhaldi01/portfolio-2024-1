@@ -14,7 +14,7 @@ function InfinitTextSlid({trigger , style}) {
       if (!marqueeElement || !marqueeElement.children.length) return; // Ensure marqueeElement exists and has children
     
       const tween = gsap.to(marqueeElement.children, {
-        xPercent: -120, // Move the marquee elements left
+        // xPercent: -120, // Move the marquee elements left
         ease: "linear",
         repeat: -1, // Infinite scroll
         duration: 20, // Adjust the speed of scrolling
@@ -29,7 +29,7 @@ function InfinitTextSlid({trigger , style}) {
           const isScrollingDown = self.direction === 1; // 1 for down, -1 for up
     
           // Update sliding direction based on scroll
-          tween.vars.xPercent = isScrollingDown ? 120 : -100; // Move in the opposite direction
+          tween.vars.xPercent = isScrollingDown ? 100 : -100; // Move in the opposite direction
           tween.timeScale(1).play(); // Play forward
           tween.invalidate().restart(); // Restart tween with updated direction
         },
@@ -42,8 +42,8 @@ function InfinitTextSlid({trigger , style}) {
     
     
   return (
-    <div className= {`  item relative w-full overflow-hidden  ${style} lg:text-[8rem] text-[3rem]  lg:pb-[11rem] pb-[4rem] `}>
-      <div className=" absolute top-0 right-[50%] transform translate-x-[50%] overflow-hidden w-fit ">
+    <div className= {`  item relative w-full overflow-hidden   ${style} md:text-[8rem] text-[3rem] overflow-hidden  h-full w-full  lg:py-28  py-20  `}>
+      <div className=" absolute top-[50%]  right-[50%] transform translate-x-[50%] translate-y-[-50%] overflow-hidden w-fit ">
         <div
           ref={marqueeRef}
           className={`    whitespace-nowrap    font-righteous     flex   overflow-hidden  items-center  `}

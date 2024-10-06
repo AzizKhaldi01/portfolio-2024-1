@@ -76,9 +76,7 @@ function Page() {
                 </span>
               </div>
               <div className="  lg:px-10 px-0  lg:text-lg   ">
-                {company.content.map((item) => (
-                  <div key={item.id}>{item.content}</div>
-                ))}
+                {company.desc} 
               </div>
               <div className=" pt-5 px-0 lg:px-12">
                 <h1 className=" text-xl ">Role :</h1>

@@ -9,6 +9,7 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@emailjs/browser": "^4.4.1",
     "@fortawesome/fontawesome-svg-core": "^6.6.0",
     "@fortawesome/free-brands-svg-icons": "^6.6.0",
     "@fortawesome/free-solid-svg-icons": "^6.6.0",
@@ -17,6 +18,8 @@
     "@react-three/drei": "^9.107.3",
     "@react-three/fiber": "^8.16.8",
     "@studio-freight/lenis": "^1.0.42",
+    "date-fns": "^4.1.0",
+    "emailjs": "^4.0.3",
     "file-loader": "^6.2.0",
     "framer-motion": "^11.2.12",
     "framer-motion-3d": "^11.2.12",
@@ -33,6 +36,7 @@
     "react-responsive": "^10.0.0",
     "react-router-dom": "^6.26.1",
     "react-scroll": "^1.9.0",
+    "react-toastify": "^10.0.5",
     "split-type": "^0.3.4",
     "zod": "^3.23.8"
   },

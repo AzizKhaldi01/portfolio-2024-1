@@ -41,10 +41,10 @@ function Navbar({style , whiteLogo}) {
   };
 
   return (
-    <div className={` ${style} w-full justify-between items-center flex z-[60] p-4 lg:p-8 pt-[1.5rem] lg:pt-[3rem]`}>
+    <div className={` ${style} w-full justify-between items-center flex z-[60] p-4 md:p-8 pt-[1.5rem] md:pt-[3rem]`}>
       <Logo whiteLogo={whiteLogo} />
 
-      <div className="hidden lg:flex items-end w-full gap-6 justify-end">
+      <div className="hidden md:flex items-end w-full gap-6 justify-end">
         {Links.map((link) => {
           const isActive = pathname === link.Link; // Check if the current path matches the link
           return (

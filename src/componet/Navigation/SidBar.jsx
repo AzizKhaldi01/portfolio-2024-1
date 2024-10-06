@@ -17,16 +17,17 @@ function Sidebar({ Links }) {
   const [isVisible, setIsVisible] = useState(false);
 
   useEffect(() => {
-    if (isOpen) {
+    const scrollPosition = window.scrollY;
+
+    if (isOpen && scrollPosition < 200) {
       setIsVisible(true);
-    } else {
+    } else if (scrollPosition < 200) {
       setIsVisible(false);
     }
 
     const handleScroll = () => {
-      // Trigger appearance when user scrolls down 200px
       const scrollPosition = window.scrollY;
-
+      // Trigger appearance when user scrolls down 200px
       if (scrollPosition > 200) {
         setIsVisible(true);
       } else {
@@ -50,19 +51,21 @@ function Sidebar({ Links }) {
   const linkVariants = {
     hidden: { y: 115, rotate: 20 },
     visible: { y: 0, rotate: 0, opacity: 1 },
-    exit: { y: 115, rotate: 20 },
+    exit: { y: 0, rotate: 0 },
   };
 
   return (
-    <div className=" z-[10000] p-3 ">
-      <button
+    <div className=" p-3 ">
+      <div
         onClick={toggleSidebar}
-        className="  lg:hidden block  h-full w-full px-3 py-2  z-[200] "
+        className={`md:hidden block  absolute top-5 right-3   font-righteous px-3 py-2  ${
+          isOpen ? " opacity-0" : " opacity-100"
+        } z-[50]  `}
       >
         Menu
-      </button>
+      </div>
 
-      <div className="fixed  z-[50]  lg:top-10 top-5  right-5 lg:right-10 h-[3rem] rounded-[50%] w-[3rem] flex items-center justify-center">
+      <div className="fixed  z-[40]  md:top-10 top-5  right-5 md:right-10 h-[3rem] rounded-[50%] w-[3rem] flex items-center justify-center">
         <AnimatePresence>
           <Magnetic style={{ zIndex: 100 }}>
             <div>
@@ -118,7 +121,7 @@ function Sidebar({ Links }) {
               animate={{ x: 0 }}
               exit={{ x: "calc(100%  + 100px)" }}
               transition={{ duration: 0.8, ease: [0.76, 0, 0.24, 1] }}
-              className=" h-full   w-full lg:w-[31%]   z-50 fixed top-0 right-0  bg-sec"
+              className=" h-full   w-full sm:w-[75%] md:w-[60%] lg:w-[40%] xl:w-[35%]   z-50 fixed top-0 right-0  bg-sec"
             >
               <Curve />
               <div className="p-4 py-8 pb-16 px-10 flex flex-col h-full justify-between">
@@ -129,7 +132,7 @@ function Sidebar({ Links }) {
                       key={link.text}
                       href={link.Link}
                     >
-                      <motion.div className="overflow-hidden cursor-pointer hover:text-gray-400 duration-150 font-righteous font-bold text-6xl lg:text-6xl">
+                      <motion.div className="overflow-hidden cursor-pointer hover:text-gray-400 duration-150 font-righteous font-bold text-5xl md:text-6xl">
                         <motion.div
                           variants={linkVariants}
                           initial="hidden"
@@ -149,9 +152,8 @@ function Sidebar({ Links }) {
                   ))}
                 </div>
                 <div className=" w-full flex gap-5 flex-col">
-                <GrayLine/>
-                <SocialsLine />
-
+                  <GrayLine />
+                  <SocialsLine />
                 </div>
               </div>
             </motion.div>

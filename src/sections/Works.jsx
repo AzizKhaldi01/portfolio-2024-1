@@ -73,14 +73,12 @@ function Works() {
 
       const buttons = section.querySelectorAll(".works_button");
       buttons.forEach((button) => {
-        // You can now work with each button here
-        console.log(button);
         tl.to(buttons, {
           opacity: 1,
-          y: -50,
+          y: -20,
           duration: 1,
-        });
-      });
+        })
+      },0);
     });
   }, []);
 
@@ -101,7 +99,7 @@ function Works() {
         <Link href={"/works"}>
           <ButtonEffect
             Style={
-              "  lg:px-[4rem] px-[3rem]   lg:py-6 py-5    border-2 border-sec text-sec hover:border-0 text-2xl text-black   "
+              "  lg:px-[3rem]  px-[2.8rem]    py-4   lg:py-5     border-2 border-sec text-sec hover:border-0  lg:text-2xl text-lg text-black   "
             }
           >
             More

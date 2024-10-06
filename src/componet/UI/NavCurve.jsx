@@ -1,9 +1,11 @@
 "use client";
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { motion } from "framer-motion";
 import { text, curve, translate } from "./anim";
 import styles from "./curve.module.css";
 import { useRouter } from "next/router";
+import { useMediaQuery } from "react-responsive";
+import { AppContext } from "@/context/AppContext";
 
 const routes = {
   "/": "Home",
@@ -27,6 +29,8 @@ export default function Curve({ children, backgroundColor }) {
     width: null,
     height: null,
   });
+  const { firstLoad } = useContext(AppContext);
+
   const router = useRouter();
 
   // Get the current route
@@ -45,7 +49,10 @@ export default function Curve({ children, backgroundColor }) {
   }, []);
 
   return (
-    <div className="page curveRoute  relative " style={{ backgroundColor }}>
+    <div
+      className="page curveRoute overflow-hidden  relative "
+      style={{ backgroundColor }}
+    >
       <div
         style={{
           opacity: dimensions.width == null ? 1 : 0,
@@ -54,16 +61,19 @@ export default function Curve({ children, backgroundColor }) {
         className={`    ${styles.background}   h-[100vh] w-full fixed top-0  z-50 right-0 bg-[#111111]`}
       />
 
-      <div className=" overflow-hidden">
-        <motion.p
-          {...anim(text)}
-          className={
-            " fixed top-[40%]  font-righteous translate-x-[50%] translate-y-[40%] right-[50%] z-[100000] text-6xl text-white "
-          }
-        >
-          {routes[router.pathname]}
-        </motion.p>
-      </div>
+      <motion.p
+        style={{
+          clipPath: "polygon(0 0, 100% 0, 100% 100%, 0% 100%)",
+        }}
+        {...anim(text)}
+        className={
+          " fixed top-[40%]  font-righteous translate-x-[50%] translate-y-[40%] right-[50%] z-[100] text-6xl text-white "
+        }
+      >
+        {firstLoad && router.pathname === "/"
+          ? "Hello!"
+          : routes[router.pathname]}
+      </motion.p>
       {dimensions.width != null && <SVG {...dimensions} />}
       {children}
     </div>
@@ -71,17 +81,19 @@ export default function Curve({ children, backgroundColor }) {
 }
 
 const SVG = ({ height, width }) => {
+  const isMobile = useMediaQuery({ maxWidth: 767 });
+
   const initialPath = `
-        M0 300 
-        Q${width / 2} 0 ${width} 300
+        M0 ${isMobile ? "100" : "300"} 
+        Q${width / 2} 0 ${width}  ${isMobile ? "100" : "300"}
         L${width} ${height + 300}
-        Q${width / 2} ${height + 600} 0 ${height + 300}
+        Q${width / 2} ${height + (isMobile ? 450 : 600)} 0 ${height + 300}
         L0 0
     `;
 
   const targetPath = `
-        M0 300
-        Q${width / 2} 0 ${width} 300
+        M0  ${isMobile ? "100" : "300"}
+        Q${width / 2} 0 ${width} ${isMobile ? "100" : "300"} 
         L${width} ${height}
         Q${width / 2} ${height} 0 ${height}
         L0 0

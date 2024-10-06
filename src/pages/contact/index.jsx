@@ -11,6 +11,10 @@ import SocialsLine from "../../componet/UI/SocialsLine.jsx";
 import Magnetic from "../../componet/gsap/Magnetic";
 import ButtonEffect from "@/componet/UI/ButtonEffect";
 import useLocalTime from "@/Hooks/useLocalTime.js";
+import emailjs from "@emailjs/browser";
+import { toast, ToastContainer } from "react-toastify"; // Importing Toastify
+import "react-toastify/dist/ReactToastify.css"; // Import default styles
+import LoadingBtn from "@/componet/UI/LoadingBtn.jsx";
 
 // Zod schema for validation
 const schema = z.object({
@@ -27,10 +31,10 @@ const index = () => {
     register,
     handleSubmit,
     formState: { errors, isSubmitting },
+    reset,
   } = useForm({
     resolver: zodResolver(schema),
   });
-
   const localTime = useLocalTime();
 
   useEffect(() => {
@@ -60,8 +64,41 @@ const index = () => {
     );
   }, []);
 
-  const onSubmit = (data) => {
-    console.log(data);
+  // Your EmailJS service and template IDs
+  const SERVICE_ID = "service_k6e6vlx";
+  const TEMPLATE_ID = "template_ikrj1sd";
+  const USER_ID = "pW_eVEA_lhjXgiXXH";
+
+  const onSubmit = async (data) => {
+    try {
+      const templateParams = {
+        firstName: data.firstName,
+        lastName: data.lastName,
+        email: data.email,
+        description: data.description,
+      };
+
+      const response = await emailjs.send(
+        SERVICE_ID,
+        TEMPLATE_ID,
+        templateParams,
+        USER_ID
+      );
+      toast.success("Your message has been sent successfully!", {
+        position: "top-center", // Position the toast at the top center
+        autoClose: 3000, // Duration for which the toast will be visible
+        className: "custom-toast", // Custom class for styling
+      });
+      reset(); // Clear input fields
+    } catch (error) {
+      console.log("error");
+      console.log(error);
+      toast.error("There was an error sending your message.", {
+        position: "top-center",
+        autoClose: 3000,
+        className: "custom-toast",
+      });
+    }
   };
 
   return (
@@ -146,16 +183,17 @@ const index = () => {
                 )}
               </div>
 
-              <div className=" item  w-full items-center justify-center flex ">
+              <div className=" item   w-full items-center  justify-center flex ">
                 <Magnetic>
                   <div>
                     <ButtonEffect
                       disabled={isSubmitting}
                       type="submit"
                       Style={
-                        " lg:px-[4rem] px-[3rem]  lg:py-7 py-5   bg-white text-lg text-black   "
+                        " lg:px-[4rem] relative px-[3rem]  lg:py-7 py-5   bg-white text-lg text-black   "
                       }
                     >
+                      <LoadingBtn isLoading={isSubmitting} color={"black"} /> 
                       Submit
                     </ButtonEffect>
                   </div>
@@ -165,13 +203,24 @@ const index = () => {
           </div>
         </div>
         <div className="  p-3 pb-5  lg:px-10 px-[1rem] flex lg:flex-row flex-col  justify-between  lg:items-center items-start lg:gap-0 gap-5">
-          <span className=" flex-col flex gap-1">
+          <span className=" item flex-col flex gap-1">
             <h1 className=" opacity-50 text-xs ">LOCAL TIME</h1>
             {localTime}
           </span>
           <SocialsLine />
         </div>
       </div>
+      <ToastContainer
+        className="toast-container"
+        toastClassName="toast"
+        position="top-center"
+        autoClose={3000}
+        hideProgressBar
+        closeOnClick
+        pauseOnHover
+        draggable
+        progress={undefined}
+      />
     </Curve>
   );
 };

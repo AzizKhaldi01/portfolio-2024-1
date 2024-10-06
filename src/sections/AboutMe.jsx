@@ -11,12 +11,21 @@ import me from "../assest/Images/about/ana.jpeg";
 import Link from "next/link";
 import CustomCursor from "@/componet/UI/CustomCursor";
 import InfinitTextSlid from "../componet/UI/InfinitTextSlid.jsx";
+import { differenceInMonths, differenceInYears } from "date-fns";
 
 gsap.registerPlugin(ScrollTrigger);
 
 function AboutMe() {
   const textRef = useRef(null);
   const imgDivRef = useRef(null);
+
+  const birthDate = new Date(2001, 7, 26); // August 26, 2001
+  const age = differenceInYears(new Date(), birthDate);
+
+  // Experience calculation
+  const startDate = new Date(2022, 1, 1); // December 1, 2022
+  const experienceYears = differenceInYears(new Date(), startDate);
+  const experienceMonths = differenceInMonths(new Date(), startDate) % 12;
 
   useEffect(() => {
     gsap.registerPlugin(ScrollTrigger);
@@ -79,8 +88,7 @@ function AboutMe() {
     });
   }, []);
 
-  const text =
-    " I'm Aziz Khaldi, a 22-year-old Front-End Developer and Designer from Amderia with over 1.5 years of experience. I focus on Front-End Development and Website Design, always striving to deliver top-notch solutions to my clients.";
+  const text = `  Hey, I’m Aziz Khaldi, a ${age} year old Front-End Developer and UI/UX Designer with ${experienceYears} year${experienceYears !== 1 ? 's' : ''} and ${experienceMonths} month${experienceMonths !== 1 ? 's' : ''} of experience. I have a passion for creating interactive, high-performance web applications. I love working with React and Next.js, and I’m all about building clean, user-friendly interfaces. I focus on making sure everything looks great and works smoothly, solving complex front-end challenges along the way.`;
   const words = text.split(" ").map((word, index) => (
     <span key={index} className="inline-block">
       {word}&nbsp;
@@ -131,14 +139,11 @@ function AboutMe() {
       id="bgChanged"
       className=" relative  About-me flex flex-col items-center  w-full duration-200 h-full   font-righteous text-white z-50   gap-[4rem]  -mt-[2rem]    bgChanged about-me   bg-sec "
     >
-      {/* <CustomCursor  elementRef={textRef} /> */}
       <div className="   overflow-hidden  absolute left-[50%]  lg:-top-[3rem] -top-[2rem] transform  translate-x-[-50%] w-[100%] about_top_curve   lg:h-[4rem] h-[2rem]  mb-14 z-40 ">
-        <div className="   absolute right-[-10%] rounded-[50%]   h-[150%] w-[120%] bg-sec ">
-          {/* <Curve  end={"bottom 20%"} start={""} section={".footer"} mainColor={true} /> */}
-        </div>
+        <div className="   absolute right-[-10%] rounded-[50%]   h-[150%] w-[120%] bg-sec "></div>
       </div>
 
-      <div className=" mt-10 md:text-[3rem]  w-[95vw] lg:w-[80vw] text-center  z-[60]   lg:leading-[3rem] leading-[2rem] text-[1.8rem] relative">
+      <div className=" mt-10 md:text-[2.5rem] text-[1.3rem]  w-[92vw] lg:w-[80vw] text-center  z-[60]   md:leading-[3rem] leading-[2rem]  relative">
         <h1 ref={textRef} className="   z-20 font-bold ">
           {words}
         </h1>
@@ -152,13 +157,13 @@ function AboutMe() {
       <div className="z-50 pt-5  lg:pt-10 items-center flex flex-col gap-6 ">
         <h1
           ref={textRef2}
-          className=" text-center  lg:text-[3rem] text-[2rem] font-bold"
+          className=" text-center  lg:text-[3rem] text-[1.7rem] font-bold"
         >
           KHALDI AHMED <br /> ABDELAZIZ
         </h1>
         <div
           ref={imgDivRef}
-          className="  lg:h-[75vh] h-[40vh] object-cover  lg:w-[28vw] w-[70vw] relative rounded-[40%] overflow-hidden"
+          className="  md:h-[35rem]  md:w-[25rem] w-[20rem] sm:w-[20rem] h-[28rem] object-cover  relative rounded-[40%] overflow-hidden"
         >
           <img
             ref={imgRef}
@@ -170,7 +175,7 @@ function AboutMe() {
       </div>
 
       <div
-        className="    lg:h-[100vh] h-[60vh]  lg:w-[60vh] w-[70vh] blurEffect absolute rounded-full top-[30%] pointer-events-none z-10 opacity-40 blur-[5vw]"
+        className=" lg:h-[100vh] h-[60vh]  lg:w-[60vh] w-[90vw] blurEffect absolute rounded-full top-[30%] pointer-events-none z-10 opacity-40 blur-[5vw]"
         style={{
           background: `radial-gradient(circle, #A1DD70 0%, rgba(34, 34, 34, 0) 66%)`, // Replace with real color values
           filter: "blur(5vw)", // Apply the blur directly here
@@ -179,37 +184,37 @@ function AboutMe() {
 
       <div className=" flex flex-col items-center  pt-20  justify-center  gap-7 w-full ">
         <div className="  flex   lg:flex-row  flex-col items-center gap-5 ">
-          <div className="  flex gap-5  flex-row  ">
-            <CercelOfInfo title={"Experience"} num={"+3 years"} />
+          <div className="  flex gap-5  flex-row items-center  ">
+            <CercelOfInfo title={"Experience"} num={"3y"} />
             <LogoWithText
               style={
-                "  lg:w-[7.7rem] opacity-0  -mb-3 lg:h-[7.7rem]  h-[7.4rem] w-[7.4rem]"
+                "  lg:w-[7.7rem] opacity-0  -mb-3 lg:h-[7.7rem]  h-[5.6rem] w-[5.6rem]"
               }
             />
           </div>
-          <div className="flex gap-5  flex-row">
+          <div className="flex gap-5  flex-row items-center">
             <div className=" lg:hidden block">
               <LogoWithText
                 style={
-                  "lg:w-[7.7rem] opacity-0  -mb-3 lg:h-[7.7rem]  h-[7.4rem] w-[7.4rem]"
+                  "lg:w-[7.7rem] opacity-0  -mb-3 lg:h-[7.7rem]  h-[5.6rem] w-[5.6rem]"
                 }
               />
             </div>
-            <CercelOfInfo title={"Projects"} num={"+15"} />
+            <CercelOfInfo title={"Projects"} num={"+10"} />
           </div>
         </div>
         <div className=" flex items-center gap-5 ">
           <div className=" hidden lg:block">
             <LogoWithText
               style={
-                "lg:w-[7.7rem] opacity-0  -mb-3 lg:h-[7.7rem]  h-[7.4rem] w-[7.4rem] "
+                "lg:w-[7.7rem] opacity-0  -mb-3 lg:h-[7.7rem]  h-[5.6rem] w-[5.6rem] "
               }
             />
           </div>
           <CercelOfInfo title={"Companies"} num={"3"} />
           <LogoWithText
             style={
-              " lg:w-[7.7rem] opacity-0  -mb-3 lg:h-[7.7rem]  h-[7.4rem] w-[7.4rem] "
+              " lg:w-[7.7rem] opacity-0  -mb-3 lg:h-[7.7rem]  h-[5.6rem] w-[5.6rem] "
             }
           />
         </div>
@@ -220,7 +225,7 @@ function AboutMe() {
             <Link href={"/about-me"}>
               <ButtonEffect
                 Style={
-                  "  lg:px-[5rem] px-[3rem]   lg:py-8 py-5    border-2 border-white text-white hover:border-0 text-2xl text-black   "
+                  "  lg:px-[5rem] px-[2.8rem]   lg:py-8 py-4    border-2 border-white text-white hover:border-0  lg:text-2xl text-lg text-black   "
                 }
               >
                 About Me
@@ -230,7 +235,7 @@ function AboutMe() {
         </Magnetic>
       </div>
 
-      <div className=" overflow-hidden   about_bottom_curve rotate-180 absolute  left-[50%]  lg:-bottom-[8rem] -bottom-[7rem]   transform  translate-x-[-50%] w-[100%]    lg:h-[10rem] h-[7rem]  mb-14 z-40 ">
+      <div className=" overflow-hidden   about_bottom_curve rotate-180 absolute  left-[50%]  lg:-bottom-[8rem] -bottom-[6rem]   transform  translate-x-[-50%] w-[100%]    lg:h-[10rem] h-[6rem]  mb-14 z-40 ">
         <div className="   absolute right-[-10%] rounded-[50%]   h-[150%] w-[120%] bg-sec "></div>
       </div>
     </div>
@@ -244,12 +249,12 @@ function CercelOfInfo({ title, num, width }) {
     <div className=" opacity-0 exp_item flex gap-2">
       <div
         className={`flex justify-center items-center  ${
-          width || " lg:w-[30vw] w-[50vw]  "
-        }   lg:h-[8rem] h-[7rem] border-2 border-gray-500 rounded-full`}
+          width || " lg:w-[24vw] w-[55vw]  "
+        }   lg:h-[7.8rem] h-[5rem] border-2 border-gray-500 rounded-full`}
       >
-        <div className="text-white pt-2 flex flex-col gap-1 items-center justify-center text-center">
-          <h1 className="  lg:text-4xl text-2xl "> {title}</h1>
-          <p className="  lg:text-2xl text-xl ">{num} </p>
+        <div className="text-white  lg:pt-2 flex  lg:flex-col  lg:gap-1 gap-2 items-center justify-center text-center">
+          <h1 className="  lg:text-4xl text-xl "> {title}</h1>
+          <p className="  lg:text-2xl  text-lg ">{num} </p>
         </div>
       </div>
     </div>

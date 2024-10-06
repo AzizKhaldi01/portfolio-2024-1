@@ -47,7 +47,7 @@ function Footer() {
       links: [
         {
           text: "Email",
-          link: "mailto:youremail@example.com",
+          link: "mailto:azizkhaldi0210@gmail.com",
           isSocaial: true,
         },
         {
@@ -119,7 +119,7 @@ function Footer() {
         { y: 115, rotate: 20 },
         {
           y: 0,
-          stagger: 0.1,
+          stagger: 0.04,
           delay: 0.2,
           rotate: 0,
           duration: 0.5,
@@ -134,7 +134,7 @@ function Footer() {
       scrollTrigger: {
         trigger: ".footerSection",
         start: "top 75%", // Start the animation when the top of the footerSection is at 80% of the viewport
-        end: "bottom center", // End the animation when the bottom of the FooterCurve reaches the top of the viewport
+        end: "bottom 40%", // End the animation when the bottom of the FooterCurve reaches the top of the viewport
         scrub: 1.5, // Smoother scrub value for a gradual animation
       },
       scaleY: 0,
@@ -153,10 +153,10 @@ function Footer() {
   }, []);
 
   return (
-    <div className=" footerSection  relative overflow-hidden z-0">
+    <div className=" footerSection  relative overflow-hidden z-[30] ">
       {/* curve */}
 
-      <div className=" w-[120%]  FooterCurve  absolute left-[50%] -top-[7rem]   transform  translate-x-[-50%]  lg:h-[30px] h-[10px]  z-50 ">
+      <div className=" w-[120%]  FooterCurve  absolute left-[50%] -top-[7rem]   transform  translate-x-[-50%]  lg:h-[30px] h-[15px]  z-50 ">
         <div
           style={{
             boxShadow: "  0px 60px 50px rgba(0,0,0,0.748) ",
@@ -207,11 +207,11 @@ function Footer() {
             </div>
           </div>
 
-          <div className="lg:flex-row flex-col flex gap-5 pt-10">
+          <div className="lg:flex-row lg:w-fit w-full  md:items-start items-center flex-col flex gap-5 pt-10">
             <div>
               <ButtonEffect
                 Style={
-                  "bg-sec border-white hover:border-0 border-[1px] text-white"
+                  "bg-sec lg:w-fit w-[87vw] border-white hover:border-0 border-[1px] text-white"
                 }
               >
                 <a
@@ -226,10 +226,12 @@ function Footer() {
             <div>
               <ButtonEffect
                 Style={
-                  "bg-sec border-white hover:border-0 border-[1px] text-white"
+                  "bg-sec border-white lg:w-fit w-[87vw] hover:border-0 border-[1px] text-white"
                 }
               >
-                <a href="mailto:Azizkhaldi@gmail.com">Azizkhaldi@gmail.com</a>
+                <a href="mailto:azizkhaldi0210@gmail.com">
+                  azizkhaldi0210@gmail.com
+                </a>
               </ButtonEffect>
             </div>
           </div>

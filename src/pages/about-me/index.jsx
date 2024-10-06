@@ -19,6 +19,8 @@ import InfinitTextSlid from "../../componet/UI/InfinitTextSlid.jsx";
 
 function index() {
   const imageRef = useRef(null);
+  const textRef = useRef(null);
+  const textRef2 = useRef(null);
   const Data = [
     {
       skill: "Design",
@@ -34,6 +36,34 @@ function index() {
     },
   ];
 
+  useEffect(() => {
+    // Split the text into lines using SplitType
+    const splitInstance = new SplitType(textRef.current, { types: "lines" });
+    const splitInstance2 = new SplitType(textRef2.current, { types: "lines" });
+    const lines = splitInstance.lines; // Get the lines for animation
+    const lines2 = splitInstance2.lines; // Get the lines for animation
+
+    // Animate each line using GSAP
+    gsap.from(lines, {
+      opacity: 0,
+      y: 20,
+      duration: 0.5,
+      stagger: 0.07, // Stagger the animation for each line
+      ease: "power1.out",
+    });
+
+    gsap.from(lines2, {
+      opacity: 0,
+      y: 20,
+      duration: 0.5,
+      stagger: 0.07, // Stagger the animation for each line
+      ease: "power1.out",
+    });
+    // Cleanup the split instance on unmount
+    return () => {
+      splitInstance.revert();
+    };
+  }, []);
 
   gsap.registerPlugin(CustomEase);
   useEffect(() => {
@@ -43,7 +73,6 @@ function index() {
         start: "top bottom",
         end: "bottom center",
         scrub: 1,
-        markers: true,
       },
       scale: 1,
       ease: "power2.inOut",
@@ -90,6 +119,7 @@ function index() {
   ];
 
   useEffect(() => {
+    gsap.registerPlugin(ScrollTrigger);
     gsap.fromTo(
       ".item",
       { y: 150 },
@@ -101,23 +131,42 @@ function index() {
         ease: "power1.out",
       }
     );
+
+    gsap.to(".About_item", {
+      scrollTrigger: {
+        trigger: ".About_item",
+        start: "top bottom",
+        scrub: true,
+      },
+      y: -50,
+      opacity: 1,
+      stagger: 0.02,
+      ease: "power3.inOut",
+      duration: 0.5,
+    });
   }, []);
 
   return (
     <Curve>
-      <div className=" aboutMe">
+      <div className=" aboutMe pb-44 overflow-hidden">
         <Navbar />
-        <div className="  item pt-20  px-[0.8rem] lg:px-[10%] flex  lg:flex-row  gap-7 flex-col justify-between relative ">
-          <div className="  lg:w-[50%] w-full  lg:text-xl text-base ">
-            {lines.map((line) => (
+        <div className="  item pt-20  px-[0.8rem] md:px-[10%] flex  md:flex-row  gap-7 flex-col justify-between relative ">
+          <div
+            ref={textRef2}
+            className="  md:w-[50%] w-full  md:text-lg text-base "
+          >
+            I transform your ideas into stunning, high-performance websites that
+            captivate your audience. Let's create a digital experience that
+            inspires and leaves a lasting impression.
+            {/* {lines.map((line) => (
               <div className="  overflow-hidden">
                 <p className="line">{line}</p>
               </div>
-            ))}
+            ))} */}
           </div>
-          <div className=" flex lg:w-fit w-full items-end justify-end">
+          <div className=" flex md:w-fit w-full items-end justify-end">
             <LogoWithText
-              style={" lg:scale-[1.4] scale-100   "}
+              style={" md:scale-[1.4] scale-100   "}
               isBlack={true}
             />
           </div>
@@ -125,19 +174,25 @@ function index() {
 
         {/* text slider */}
         <InfinitTextSlid
-          style={" lg:text-[7rem] text-[3rem] my-8 "}
+          style={" md:text-[7rem] text-[3rem]  "}
           trigger={".aboutMe"}
         />
 
-        <div className=" h-[100vh] item flex  lg:flex-row flex-col w-full   gap-10 pt-10 lg:text-lg text-base  lg:px-[10%] px-[1rem]  ">
-          <div className=" w-full  lg:w-[50%] ">
-            {lines2.map((line) => (
+        <div className=" h-[100vh] item flex  md:flex-row flex-col w-full   gap-10 pt-10 md:text-lg text-base  md:px-[10%] px-[1rem]  ">
+          <div ref={textRef} className=" w-full  md:w-[50%] ">
+            As a front-end developer and designer, I specialize in turning your
+            ideas into fully functional, visually stunning websites. From sleek,
+            responsive designs to interactive features, I bring your vision to
+            life. I work closely with you to ensure the final product not only
+            looks great but performs seamlessly. Let’s create a website that
+            truly represents your brand and goals!
+            {/* {lines2.map((line) => (
               <div className="  overflow-hidden">
                 <p className="line">{line}</p>
               </div>
-            ))}
+            ))} */}
           </div>
-          <div className=" relative  overflow-hidden h-[60vh] lg:h-[100vh] object-cover  w-full lg:w-[50%] rounded-md ">
+          <div className=" relative  overflow-hidden h-[60vh] md:h-[100vh] object-cover  w-full md:w-[50%] rounded-md ">
             <Image
               src={ana.src}
               alt=""
@@ -151,23 +206,24 @@ function index() {
           </div>
         </div>
 
-        <div className=" pt-[3rem] lg:pt-[10rem] text-gray-800 lg:px-[7%] px-[1rem] grid lg:grid-cols-3 grid-cols-1 flex-col gap-[8rem]  ">
+        <div className=" pt-[3rem] md:pt-[10rem] text-gray-800 md:px-[7%] px-[1rem] grid md:grid-cols-3 grid-cols-1 flex-col gap-[8rem]  ">
           {Data.map((item, index) => (
-            <div className=" flex flex-col gap-5">
+            <div className=" opacity-0 About_item flex flex-col gap-5">
               <div className="flex gap-1 flex-col">
                 0{index + 1}
                 <GrayLine />
               </div>
-              <h1 className="lg:text-[2rem] text-[1.7rem] font-semibold ">
+              <h1 className="md:text-[2rem] text-[1.7rem] font-semibold ">
                 {item.skill}
               </h1>
               <p className="text-[1rem] leading-7 ">{item.p}</p>
             </div>
           ))}
         </div>
+
         <SlidingBars />
-        <Footer />
       </div>
+      <Footer />
     </Curve>
   );
 }

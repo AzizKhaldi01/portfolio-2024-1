@@ -8,20 +8,20 @@ function WorkDsiplay({ item }) {
 
   return (
     <div className="   animate-section flex mt-8  font-bold items-center justify-center h-screen relative">
-      <a
+      <Link
         href={item?.Link}
         ref={cardRef}
         target="_blank"
-        className="relative targetItem z-50"
+        className="relative cursor-pointer target  Item z-50"
       >
         <img
-          className="opacity-90 md:scale-110 scale-150 md:h-[80vh] z-30"
+          className="opacity-90 cursor-pointer md:scale-110 scale-150 w-full md:h-[80vh]  sm:h-[45vh]  z-30"
           src={item.img?.src}
-          alt="FinTech"
+          alt={item?.title}
         />
         <CursorBtn elementRef={cardRef} Bg={item.bg} />
-      </a>
-      <div className="    top-[12%] md:top-[0%]  right-[50%] translate-x-[50%] transform absolute ">
+      </Link>
+      <div className="  cursor-default   top-[12%] md:top-[0%]  right-[50%] translate-x-[50%] transform absolute ">
         <h1
           className={`  work_title lg:text-[10rem] md:text-[6rem] text-[4rem] ${item.color} font-righteous whitespace-nowrap  `}
         >
@@ -31,7 +31,10 @@ function WorkDsiplay({ item }) {
 
       <Magnetic>
         <Link
-          className={` works_button  opacity-25 lg:hidden btn absolute z-40 bottom-10 right-10 flex items-center justify-center h-[8rem]   w-[8rem] ${item.bg} text-white rounded-[50%] `}
+          style={{
+            y: 50,
+          }}
+          className={` works_button   opacity-50 lg:hidden btn absolute z-50 bottom-10 right-10 flex items-center justify-center h-[8rem]   w-[8rem] ${item.bg} text-white rounded-[50%] `}
           key={item.Link}
           target="_blank"
           href={item.Link}

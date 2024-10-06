@@ -12,7 +12,7 @@ function Bar({ derection, initial, deg }) {
       const marqueeElement = marqueeRef.current;
 
       const tween = gsap.to(marqueeElement.children, {
-        xPercent: -50, // Move the marquee elements left
+        xPercent: -100, // Move the marquee elements left
         ease: "linear",
         repeat: -1, // Infinite scroll
         duration: 20, // Adjust the speed of scrolling
@@ -31,7 +31,7 @@ function Bar({ derection, initial, deg }) {
             tween.vars.xPercent = derection; // Use direction passed from props
             tween.timeScale(1).play(); // Play forward
           } else {
-            tween.vars.xPercent = -derection; // Move in the opposite direction
+            tween.vars.xPercent = -derection ; // Move in the opposite direction
             tween.timeScale(1).play(); // Play forward
           }
 
@@ -53,7 +53,7 @@ function Bar({ derection, initial, deg }) {
 
   return (
     <div
-      className={`${deg}    whitespace-nowrap  text-main  uppercase  font-bold text-sm lg:text-3xl    absolute top-[50%] transform translate-x-[50%]  marquee right-[50%] font-righteous  lg:py-5 py-3 bg-sec`}
+      className={`${deg}   overflow-hidden  whitespace-nowrap  text-main  uppercase  font-bold text-sm lg:text-3xl    absolute top-[50%] transform translate-x-[50%]  marquee right-[50%] font-righteous  lg:py-5 py-3 bg-sec`}
     >
       <div ref={marqueeRef} className="  relative  flex gap-6  items-start ">
         <div className="flex  gap-6 flex-row      mr-14 absolute w-full  whitespace-nowrap right-[100%] top-0">

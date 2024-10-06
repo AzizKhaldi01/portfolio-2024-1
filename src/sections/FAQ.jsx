@@ -11,26 +11,42 @@ const FAQ = () => {
   const toggleAnswer = (index) => {
     setOpenIndex(index === openIndex ? null : index);
   };
+
   const faqItems = [
     {
-      question: "What technologies do you specialize in as a front-end developer?",
-      answer: "I specialize in HTML, CSS, and JavaScript, with a strong focus on frameworks like React and Next.js. I also have experience with Tailwind CSS for styling and GSAP for animations.",
+      question: "What technologies do you specialize in?",
+      answer:
+        "I specialize in front-end technologies such as HTML, CSS, JavaScript, React.js, and Next.js. Additionally, I have experience working with tools like GSAP, Framer Motion, and Tailwind CSS.",
     },
     {
-      question: "What is your approach to responsive design?",
-      answer: "I believe in creating mobile-first designs that adapt seamlessly to various screen sizes. I use flexible grid layouts, media queries, and responsive units to ensure a consistent user experience across devices.",
+      question: "Can you work with back-end technologies?",
+      answer:
+        "Yes, while my focus is on front-end development, I have a basic understanding of back-end technologies such as Node.js and can collaborate with back-end teams efficiently.",
     },
     {
-      question: "How do you ensure your web applications are accessible?",
-      answer: "I prioritize accessibility by following WCAG guidelines, using semantic HTML, providing alt text for images, and ensuring keyboard navigation. I also conduct usability testing with diverse user groups to gather feedback.",
+      question: "Do you have experience with responsive design?",
+      answer:
+        "Yes, I create fully responsive web applications that work seamlessly across all devices, including desktops, tablets, and mobile phones.",
     },
     {
-      question: "Can you describe a challenging project you've worked on?",
-      answer: "One challenging project involved creating a complex dashboard with real-time data visualization. I utilized React for the UI and integrated APIs to fetch data dynamically. It was rewarding to see users interact with the application smoothly.",
+      question: "Can you implement animations and interactivity?",
+      answer:
+        "Absolutely! I use GSAP and Framer Motion to implement smooth animations and interactivity for better user experience.",
     },
     {
-      question: "Do you include sexual content or images of naked or half-naked individuals in your projects?",
-      answer: "No, I maintain a professional and respectful approach in all my work, in line with my personal values. I avoid including any sexual content or inappropriate images, ensuring that my projects remain suitable for all audiences.",
+      question: "Do you follow best practices for performance optimization?",
+      answer:
+        "Yes, I prioritize performance optimization using techniques like lazy loading, code splitting, and minimizing render blocking resources to ensure fast and smooth experiences.",
+    },
+    {
+      question: "Are you open to freelance or contract work?",
+      answer:
+        "Yes, I'm open to both freelance and contract work, and I'm always excited to take on new projects and challenges.",
+    },
+    {
+      question: "Do your projects contain inappropriate or explicit content?",
+      answer:
+        "No, I uphold a professional standard in all my work, aligned with my personal and ethical values. My projects do not include any sexual or inappropriate content, ensuring they remain respectful and suitable for all audiences.",
     },
   ];
 
@@ -40,9 +56,9 @@ const FAQ = () => {
         trigger: ".FAQ", // Element to trigger the scroll animation
         start: "top 60%", // When to start the animation (adjust as needed)
         scrub: true, // If true, the animation follows the scroll progress
-      }
+      },
     });
-  
+
     faqRefs.current.forEach((item, index) => {
       timeline.fromTo(
         ".faqitem",
@@ -57,7 +73,20 @@ const FAQ = () => {
         0 // Start all animations at the same time
       );
     });
-  
+
+    gsap.to(".faq_item", {
+      scrollTrigger: {
+        trigger: ".faq_item",
+        start: "top 90%",
+      },
+      y: -20,
+      opacity: 1,
+
+      stagger: 0.05,
+      ease: "power3.inOut",
+      duration: 1,
+    });
+
     return () => {
       timeline.kill(); // Clean up the timeline on component unmount
     };
@@ -73,15 +102,17 @@ const FAQ = () => {
 
   return (
     <div className="  w-full items-center justify-center flex flex-col  mb-10  mx-auto p-6">
-    <div className=" w-[70vw] ">
-      <PageTitle title={"FAQ"} />
-     
-    </div>
-      <div className=" w-[97vw]  lg:w-[60vw] rounded-lg  p-4">
+      <div className=" w-[70vw] ">
+        <PageTitle title={"FAQ"} />
+      </div>
+      <div className=" w-[97vw] pt-10  lg:w-[60vw] rounded-lg  p-4">
         {faqItems.map((itemData, index) => (
           <div
+            style={{
+              y: 50,
+            }}
             key={index}
-            className=" faqitem border-b border-gray-200"
+            className=" faq_item opacity-0 border-b border-gray-200"
             ref={(el) => (faqRefs.current[index] = el)} // Save refs for animation
           >
             <button
@@ -89,7 +120,7 @@ const FAQ = () => {
               className="w-full text-left flex justify-between items-center py-4  lg:text-lg font-semibold text-gray-700 hover:text-thr transition-colors"
             >
               {itemData.question}
-              <span className= { `text-2xl`}>
+              <span className={`text-2xl`}>
                 {openIndex === index ? "−" : "+"}
               </span>
             </button>
