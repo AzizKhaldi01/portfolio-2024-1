@@ -162,9 +162,7 @@ function Footer() {
             boxShadow: "  0px 60px 50px rgba(0,0,0,0.748) ",
           }}
           className=" cercel  absolute right-[-10%] rounded-[50%]   h-[1555%] w-[120%] bg-main "
-        >
-          {/* <Curve  end={"bottom 20%"} start={""} section={".footer"} mainColor={true} /> */}
-        </div>
+        > </div>
       </div>
 
       <div className="  h-[80vh] lg:h-[100vh] flex flex-col justify-between text-white  lg:pt-24   pt-[2rem]   px-[1rem] lg:px-[2rem]  relative bg-sec ">
@@ -207,11 +205,11 @@ function Footer() {
             </div>
           </div>
 
-          <div className="lg:flex-row lg:w-fit w-full  md:items-start items-center flex-col flex gap-5 pt-10">
-            <div>
+          <div className="lg:flex-row lg:w-fit w-full  lg:px-0 px-[1rem] md:items-start items-center flex-col flex gap-5 pt-10">
+            <div className=" w-full">
               <ButtonEffect
                 Style={
-                  "bg-sec lg:w-fit w-[87vw] border-white hover:border-0 border-[1px] text-white"
+                  "bg-sec lg:w-fit  w-full border-white hover:border-0 border-[1px] text-white"
                 }
               >
                 <a
@@ -223,10 +221,10 @@ function Footer() {
                 </a>
               </ButtonEffect>
             </div>
-            <div>
+            <div className=" w-full">
               <ButtonEffect
                 Style={
-                  "bg-sec border-white lg:w-fit w-[87vw] hover:border-0 border-[1px] text-white"
+                  "bg-sec border-white lg:w-fit w-full hover:border-0 border-[1px] text-white"
                 }
               >
                 <a href="mailto:azizkhaldi0210@gmail.com">

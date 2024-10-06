@@ -12,7 +12,7 @@ function ButtonEffect({ children, Style, type, disabled }) {
       transition={{
         staggerChildren: 0.012,
       }}
-      className={` ${Style} cursor-pointer px-6 py-3 rounded-full  w-fit  relative overflow-hidden`}
+      className={` ${Style} cursor-pointer px-6 py-3 rounded-full    relative overflow-hidden`}
     >
       <motion.div
         variants={{
