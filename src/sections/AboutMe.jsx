@@ -19,11 +19,11 @@ function AboutMe() {
   const textRef = useRef(null);
   const imgDivRef = useRef(null);
 
-  const birthDate = new Date(2001, 7, 26); // August 26, 2001
+  const birthDate = new Date(2001, 7, 26); 
   const age = differenceInYears(new Date(), birthDate);
 
   // Experience calculation
-  const startDate = new Date(2022, 1, 1); // December 1, 2022
+  const startDate = new Date(2021, 9, 1); 
   const experienceYears = differenceInYears(new Date(), startDate);
   const experienceMonths = differenceInMonths(new Date(), startDate) % 12;
 
@@ -88,7 +88,7 @@ function AboutMe() {
     });
   }, []);
 
-  const text = `  Hey, I’m Aziz Khaldi, a ${age} year old Front-End Developer and UI/UX Designer with ${experienceYears} year${experienceYears !== 1 ? 's' : ''} and ${experienceMonths} month${experienceMonths !== 1 ? 's' : ''} of experience. I have a passion for creating interactive, high-performance web applications. I love working with React and Next.js, and I’m all about building clean, user-friendly interfaces. I focus on making sure everything looks great and works smoothly, solving complex front-end challenges along the way.`;
+  const text = `  Hey, I’m Aziz Khaldi, a ${age} year old Front-End Developer and UI/UX Designer with ${experienceYears} year${experienceYears !== 1 ? 's' : ''}  of experience. I have a passion for creating interactive, high-performance web applications. I love working with React and Next.js, and I’m all about building clean, user-friendly interfaces. I focus on making sure everything looks great and works smoothly, solving complex front-end challenges along the way.`;
   const words = text.split(" ").map((word, index) => (
     <span key={index} className="inline-block">
       {word}&nbsp;
@@ -163,7 +163,7 @@ function AboutMe() {
         </h1>
         <div
           ref={imgDivRef}
-          className="  md:h-[35rem]  md:w-[25rem] w-[20rem] sm:w-[20rem] h-[28rem] object-cover  relative rounded-[40%] overflow-hidden"
+          className="  md:h-[35rem]  md:w-[25rem] w-[18rem] sm:w-[20rem] h-[26rem] object-cover  relative rounded-[40%] overflow-hidden"
         >
           <img
             ref={imgRef}
