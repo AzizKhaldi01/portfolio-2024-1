@@ -60,6 +60,11 @@ function Footer() {
           link: "https://wa.me/213779577865",
           isSocaial: true,
         },
+        {
+          text: "Github",
+          link: "https://github.com/AzizKhaldi01",
+          isSocaial: true,
+        },
       ],
     },
     {

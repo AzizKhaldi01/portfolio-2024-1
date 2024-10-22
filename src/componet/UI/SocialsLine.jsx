@@ -10,6 +10,7 @@ function SocialsLine() {
     },
     { name: "WhatsApp", href: "https://wa.me/213779577865" },
     { name: "Email", href: "mailto:azizkhaldi0210@gmail.com" },
+    { name: "Github", href: "https://github.com/AzizKhaldi01" },
   ];
 
   return (
