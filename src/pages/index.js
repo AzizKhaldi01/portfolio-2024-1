@@ -3,14 +3,14 @@
 import Navbar from "../componet/Navbar";
 import Hero1 from "../sections/Hero1";
 import AboutMe from "../sections/AboutMe";
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import Works from "../sections/Works";
-import Teches from "../sections/Teches";
-import Footer from "../componet/Footer/Footer";
 import FAQ from "../sections/FAQ.jsx";
 import SlidingBars from "../componet/Home/SlidingBars";
 import Curve from "@/componet/UI/NavCurve";
-import CursorMask from "@/componet/UI/CursorMask";
+import Footer from "../componet/Footer/Footer";
+import SEO from "@/componet/SEO/Seo";
+import me from "../assest/Images/about/ana.jpeg";
 
 const Home = () => {
   useEffect(() => {
@@ -21,7 +21,13 @@ const Home = () => {
 
   return (
     <Curve>
-      <div className=" home   bg-main  relative  flex flex-col overflow-y-hidden h-full ">
+      <SEO
+        title="Aziz Khaldi | Frontend Developer Portfolio"
+        description="Explore Aziz Khaldi's portfolio showcasing innovative frontend development projects, UI/UX designs, and creative web solutions."
+        image={me.src}
+        url="https://azizkhaldiportfolio.vercel.app/"
+      />
+      <div className="home bg-main relative flex flex-col overflow-y-hidden h-full">
         {/* <CursorMask /> */}
         <Navbar />
         <Hero1 />
