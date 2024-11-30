@@ -8,9 +8,7 @@ function SlidingBars() {
         <Bar deg={'  lg:rotate-6 rotate-12 '}  derection={50}  />
         <Bar deg={' lg:-rotate-6 -rotate-12 '} derection={-50}  />
        
-      <span className=" absolute -top-[7rem] -z-10">
-        <BackgroundVideo />
-      </span>
+      
     </div>
   )
 }
