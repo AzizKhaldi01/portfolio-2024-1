@@ -12,6 +12,7 @@ import Link from "next/link";
 import CustomCursor from "@/componet/UI/CustomCursor";
 import InfinitTextSlid from "../componet/UI/InfinitTextSlid.jsx";
 import { differenceInMonths, differenceInYears } from "date-fns";
+import ArrowIcon from "@/assest/Icons/ArrowIcon";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -225,10 +226,12 @@ function AboutMe() {
             <Link href={"/about-me"}>
               <ButtonEffect
                 Style={
-                  "  lg:px-[5rem] px-[2.8rem]   lg:py-8 py-4    border-2 border-white text-white hover:border-0  lg:text-2xl text-lg text-black   "
+                  "  lg:px-[3rem] px-[2.8rem]   lg:py-8 py-4   flex gap-2  border-2 border-white text-white hover:border-0  lg:text-2xl text-lg text-black   "
                 }
               >
-                About Me
+                <span className=" flex items-center  gap-4">
+                About Me <ArrowIcon/>
+                </span>
               </ButtonEffect>
             </Link>
           </div>

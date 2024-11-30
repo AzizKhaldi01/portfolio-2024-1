@@ -3,7 +3,7 @@
   mask-size: 40px; /* Ensure this is the correct size for the mask */
   height: 100px;
   width: 100px;
-  background: #eff0f3;
+  background: #e7e7e7;
   border-radius: 50%;
   position: absolute;
   z-index: 10000;

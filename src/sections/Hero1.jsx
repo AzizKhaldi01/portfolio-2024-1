@@ -9,8 +9,11 @@ import Socials from "./Socials.jsx";
 import { Model } from "../componet/Scene";
 import { Canvas } from "@react-three/fiber";
 import { Environment } from "@react-three/drei";
+import assest3d from "../assest/glassyObj.mp4";
+import { ScrollTrigger } from "gsap/dist/ScrollTrigger";
+import BackgroundVideo from "@/componet/BackgroundVideo";
 
-// import Model from "../../public/assets/Scene";
+// Register ScrollTrigger plugin
 
 const animations = [
   { text: "Hi!  i’m Aziz", duration: 0.5, fontR: true },
@@ -23,43 +26,49 @@ function Hero1() {
   const [bgAnimationComplete, setBgAnimationComplete] = useState(false);
   const textRefs = useRef([]);
   useEffect(() => {
+    gsap.registerPlugin(ScrollTrigger);
+
     gsap.fromTo(
       ".word",
-      { y: 115, opacity: 0 },
+      { y: 115, rotate:3 },
       {
         y: 0,
         opacity: 1,
-        stagger: 0.1,
-        delay: 0.2,
+        rotate:0,
+        stagger: 0.01,
+        delay: 0.1,
         duration: 1,
+      }
+    );
+
+    gsap.fromTo(
+      ".item",
+      { y: 150 },
+      {
+        y: 0,
+        delay: 0.7,
+        duration: 0.6,
+        stagger: 0.02,
         ease: "power1.out",
       }
     );
 
-
-      gsap.fromTo(
-        ".item",
-        { y: 150 },
-        {
-          y: 0,
-          delay: 0.7,
-          duration: 0.6,
-          stagger: 0.05,
-          ease: "power1.out",
-        }
-      );
-
-    // gsap.fromTo(
-    //   ".item",
-    //   { y: 100 },
-    //   {
-    //     y: 0,
-    //     delay: 0.9,
-    //     duration: 0.5,
-    //     stagger: 0.03,
-    //     ease: "power1.out",
-    //   }
-    // );
+    gsap.fromTo(
+      ".obj3d",
+      {
+        y: 0, 
+      },
+      {
+        scrollTrigger: {
+          trigger: ".hero",
+          start: "top top",
+          end: "bottom top",
+          scrub: 3,
+        },
+        y: -120,
+        ease: "none",
+      }
+    );
   }, []);
 
   return (
@@ -75,62 +84,19 @@ function Hero1() {
         <Socials />
       </div>
       {/* ------------------- */}
-      
-      
-      <div className=" flex item lg:pl-0 pl-0  lg:-mt-[13rem] -mt-[16rem] flex-col lg:flex-row justify-center items-center ">
-        <div className="  lg:mt-10  -mb-5     w-full lg:w-[18vw]   lg:h-[40vh] h-[25vh] ">
-          <>
-            <Canvas
-              camera={{ position: [10, 20, 140] }}
-              style={{ backgroundColor: "transparent" }}
-            >
-              <ambientLight intensity={1} color="#FF69B4" />
-              {/* Soft pink ambient light */}
-              <directionalLight
-                color="#ffff" // Red color
-                intensity={1}
-                position={[10, -10, 10]}
-              />
-              {/* Top left light */}
-              <directionalLight
-                color="#c3cbfc" // Green color
-                intensity={1}
-                position={[-10, 10, 10]}
-              />
-              {/* Left bottom light */}
-              <directionalLight
-                color="#c3cbfc" // Blue color
-                intensity={1}
-                position={[-10, -10, 10]}
-              />
-              <pointLight
-                color="#ffffff" // White color
-                intensity={100}
-                position={[-10, 10, 10]}
-              />
-              {/* Strong Point Light in the right */}
-              <pointLight
-                color="#ff00ff" // Magenta color
-                intensity={2}
-                position={[10, 0, 10]}
-              />
-              {/* <Environment preset="sunset" /> */}
-              <Model />
-            </Canvas>
-          </>
-        </div>
 
+      <div className=" flex item lg:pl-0 pl-0  lg:-mt-[13rem] -mt-[16rem]  flex-col lg:flex-row justify-center items-center ">
         {/* text */}
         <div className=" flex flex-col  item lg:px-0  px-[1rem] text-black z-50 justify-center ">
           {animations.slice(" ").map((animation, index) => (
-            <div className=" overflow-hidden  lg:leading-[3rem] leading-[2.1rem] ">
+            <div className=" overflow-hidden  lg:leading-[6rem] leading-[2.1rem] ">
               <h1
                 key={index}
                 ref={(el) => (textRefs.current[index] = el)}
                 className={`${
                   !animation.fontR
-                    ? "font-righteous text-[2.1rem] pb-1   font-black  text-center  lg:text-left  lg:text-[3rem]  "
-                    : "  lg:text-[1.7rem] text-[1.5rem] text-center  lg:-mb-1  mb-1  lg:text-left"
+                    ? "font-righteous text-[2.2rem] pb-1     text-center    lg:text-[6rem]  "
+                    : "  lg:text-[1.7rem] text-[1.5rem] text-center  lg:-mb-1  mb-1  "
                 }  word`}
               >
                 {animation.text}
@@ -140,46 +106,6 @@ function Hero1() {
         </div>
       </div>
 
-      {/* background */}
-      <motion.div
-        id="bgChanged"
-        className="  bgChanged absolute flex translate-x-[50%] right-[50%] w-[150%]  lg:w-[120%] h-[100vh] items-center justify-center  bg-main  -z-10 "
-        initial={{
-          opacity: 0,
-          borderStartEndRadius: "50%",
-          borderStartStartRadius: "50%",
-          bottom: "-80%",
-        }}
-        animate={{
-          opacity: 1,
-          borderStartEndRadius: "0",
-          borderStartStartRadius: "0",
-          top: "0%",
-        }}
-        transition={{
-          borderStartEndRadius: {
-            duration: 0.6,
-            delay: 0.5,
-            ease: "easeInOut",
-          },
-          borderStartStartRadius: {
-            duration: 0.6,
-            delay: 0.5,
-            ease: "easeInOut",
-          },
-          top: { duration: 0.3, delay: 0.5, ease: "easeInOut" },
-          opacity: { duration: 0.3, delay: 0.5, ease: "easeInOut" },
-        }}
-        onAnimationComplete={() => setBgAnimationComplete(true)}
-      >
-        {/* { bgAnimationComplete  && <Model/>} */}
-      </motion.div>
-      {/* {bgAnimationComplete &&  <div className=" flex w-full  h-full absolute top-0 right-0">
-        <ModalShapes />
-      </div>} */}
-
-      {/*  */}
-
       <div className=" item absolute hidden  -mt-10  lg:block -rotate-90 top-[40%] -right-[7%] transform -translate-y-1/2 writing-mode-vertical-rl text-orientation-mixed   tracking-wider pr-5">
         KHALID AHMED ABDELAZIZ
       </div>
@@ -187,6 +113,10 @@ function Hero1() {
       <h1 className=" item letter-spacing-[1em] font-Megrim  lg:text-2xl text-xl  cursor-default right-[50%] transform translate-x-[50%]  absolute z-[100] bottom-[16%]   ">
         SCROLL DOWN
       </h1>
+
+      <span className=" absolute   lg:-top-[7rem] top-[15rem]  lg:-right-3 -z-10">
+        <BackgroundVideo trigger={".hero"} />
+      </span>
     </div>
   );
 }

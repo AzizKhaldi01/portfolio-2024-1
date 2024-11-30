@@ -32,7 +32,7 @@ function Socials() {
         </a>
       </Magnetic>
       {/* <Magnetic>
-        <a href="mailto:azizkhaldi0210@gmail.com">
+        <a href="mailto:aziz.khaldi100@gmail.com">
           <FontAwesomeIcon
             icon={faEnvelope}
             className="duration-100 hover:text-thr lg:scale-[1.7] scale-[1.5]"

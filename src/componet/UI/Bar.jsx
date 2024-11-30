@@ -53,7 +53,7 @@ function Bar({ derection, initial, deg }) {
 
   return (
     <div
-      className={`${deg}   overflow-hidden  whitespace-nowrap  text-main  uppercase  font-bold text-sm lg:text-3xl    absolute top-[50%] transform translate-x-[50%]  marquee right-[50%] font-righteous  lg:py-5 py-3 bg-sec`}
+      className={`${deg}   overflow-hidden  whitespace-nowrap  text-main  uppercase  font-bold text-sm lg:text-3xl    z-20 absolute top-[50%] transform translate-x-[50%]  marquee right-[50%] font-righteous  lg:py-5 py-3 bg-sec`}
     >
       <div ref={marqueeRef} className="  relative  flex gap-6  items-start ">
         <div className="flex  gap-6 flex-row      mr-14 absolute w-full  whitespace-nowrap right-[100%] top-0">
@@ -93,7 +93,7 @@ function Item({ item, index }) {
           viewBox="0 0 24 24"
           width="24"
           height="24"
-          color="#eff0f3"
+          color="#e7e7e7"
           fill="none"
         >
           <path

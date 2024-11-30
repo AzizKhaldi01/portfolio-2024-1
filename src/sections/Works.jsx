@@ -14,6 +14,7 @@ import Link from "next/link";
 import WorkDsiplay from "../componet/Home/Works/WorkDsiplay";
 import { motion } from "framer-motion";
 import ButtonEffect from "../componet/UI/ButtonEffect";
+import ArrowIcon from "@/assest/Icons/ArrowIcon";
 
 const worksObj = [
   {
@@ -54,32 +55,30 @@ function Works() {
           trigger: section,
           start: "top 90%",
           end: "bottom 20%",
-          scrub: true, // Smoothing out the animation
+          scrub: 1,
+          toggleActions: "play none none reverse",
         },
       });
 
       tl.fromTo(
-        section.querySelector("h1"),
-
-        { opacity: 0, y: 150 },
+        [section.querySelector("h1"), ...section.querySelectorAll(".works_button")],
+        {
+          opacity: 0,
+          y: 100,
+        },
         {
           opacity: 1,
           y: 0,
-          duration: 1,
+          duration: 0.8,
+          stagger: 0.1,
           ease: "power2.out",
-        },
-        0
+        }
       );
-
-      const buttons = section.querySelectorAll(".works_button");
-      buttons.forEach((button) => {
-        tl.to(buttons, {
-          opacity: 1,
-          y: -20,
-          duration: 1,
-        })
-      },0);
     });
+
+    return () => {
+      ScrollTrigger.getAll().forEach(trigger => trigger.kill());
+    };
   }, []);
 
   return (
@@ -99,10 +98,13 @@ function Works() {
         <Link href={"/works"}>
           <ButtonEffect
             Style={
-              "  lg:px-[3rem]  px-[2.8rem]    py-4   lg:py-5     border-2 border-sec text-sec hover:border-0  lg:text-2xl text-lg text-black   "
+              "  lg:px-[2rem]  px-[2.8rem]    py-4   lg:py-5     border-2 border-sec text-sec hover:border-0  lg:text-2xl text-lg text-black   "
             }
           >
-            More
+            
+            <span className=" flex items-center  gap-1">
+            More <ArrowIcon/>
+                </span>
           </ButtonEffect>
         </Link>
       </Magnetic>

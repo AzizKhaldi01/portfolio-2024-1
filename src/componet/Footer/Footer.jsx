@@ -11,6 +11,7 @@ import Magnetic from "../../componet/gsap/Magnetic";
 import FlipLink from "../UI/FlipLink";
 import ButtonEffect from "../UI/ButtonEffect";
 import useLocalTime from "@/Hooks/useLocalTime";
+import BallsModal, { ShuffleModals } from "../BallsModal";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -47,7 +48,7 @@ function Footer() {
       links: [
         {
           text: "Email",
-          link: "mailto:azizkhaldi0210@gmail.com",
+          link: "mailto:aziz.khaldi100@gmail.com",
           isSocaial: true,
         },
         {
@@ -167,14 +168,16 @@ function Footer() {
             boxShadow: "  0px 60px 50px rgba(0,0,0,0.748) ",
           }}
           className=" cercel  absolute right-[-10%] rounded-[50%]   h-[1555%] w-[120%] bg-main "
-        > </div>
+        >
+          {" "}
+        </div>
       </div>
 
-      <div className="  h-[80vh] lg:h-[100vh] flex flex-col justify-between text-white  lg:pt-24   pt-[2rem]   px-[1rem] lg:px-[2rem]  relative bg-sec ">
+      <div className="  h-[80vh] z-30 lg:h-[100vh] flex flex-col justify-between text-white  lg:pt-24   pt-[2rem]   px-[1rem] lg:px-[2rem]  relative bg-sec ">
         <div className=" flex flex-col  lg:flex-row  justify-between w-full">
           <div className=" flex    justify-between">
             {/* links */}
-            <div className="lg:text-lg flex flex-wrap  lg:gap-10 gap-6">
+            <div className="lg:text-lg z-50 flex flex-wrap  lg:gap-10 gap-6">
               {Links.map((item, index) => (
                 <div key={index} className="flex flex-col gap-2">
                   <div className="overflow-hidden">
@@ -209,6 +212,10 @@ function Footer() {
               ))}
             </div>
           </div>
+          {/* <div className=" h-full w-full absolute top-0 right-0">
+            <ShuffleModals />
+          </div> */}
+          
 
           <div className="lg:flex-row lg:w-fit w-full  lg:px-0 px-[1rem] md:items-start items-center flex-col flex gap-5 pt-10">
             <div className=" w-full">
@@ -232,8 +239,8 @@ function Footer() {
                   "bg-sec border-white lg:w-fit w-full hover:border-0 border-[1px] text-white"
                 }
               >
-                <a href="mailto:azizkhaldi0210@gmail.com">
-                  azizkhaldi0210@gmail.com
+                <a href="mailto:aziz.khaldi100@gmail.com">
+                  aziz.khaldi100@gmail.com
                 </a>
               </ButtonEffect>
             </div>
