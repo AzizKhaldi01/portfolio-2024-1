@@ -12,19 +12,19 @@ export const ArrowIcon = ({ className = "h-6 w-6 ml-2 text-current" }) => {
           <path
             d="M31.7261 15.9148C25.2964 15.9148 20.0781 10.5769 20.0781 3.99988"
             stroke="currentColor"
-            strokeWidth="1.2"
+            strokeWidth="1.8"
             strokeMiterlimit="10"
           />
           <path
             d="M31.7261 15.9149C25.2964 15.9149 20.0781 21.2528 20.0781 27.8298"
             stroke="currentColor"
-            strokeWidth="1.2"
+            strokeWidth="1.8"
             strokeMiterlimit="10"
           />
           <path
             d="M32 15.9147L0 15.9147"
             stroke="currentColor"
-            strokeWidth="1.2"
+            strokeWidth="1.8"
             strokeMiterlimit="10"
           />
         </g>

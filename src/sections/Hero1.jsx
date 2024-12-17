@@ -30,14 +30,20 @@ function Hero1() {
 
     gsap.fromTo(
       ".word",
-      { y: 115, rotate:3 },
+      { 
+        y: 200, 
+        rotate: 3,
+
+      },
       {
         y: 0,
         opacity: 1,
-        rotate:0,
-        stagger: 0.01,
-        delay: 0.1,
+        rotate: 0,
+
+        stagger: 0.05,
+        delay: 0.15,
         duration: 1,
+        ease: "power3.out"
       }
     );
 
@@ -85,11 +91,11 @@ function Hero1() {
       </div>
       {/* ------------------- */}
 
-      <div className=" flex item lg:pl-0 pl-0  lg:-mt-[13rem] -mt-[16rem]  flex-col lg:flex-row justify-center items-center ">
+      <div className=" flex  lg:pl-0 pl-0  lg:-mt-[13rem] -mt-[16rem]  flex-col lg:flex-row justify-center items-center ">
         {/* text */}
         <div className=" flex flex-col  item lg:px-0  px-[1rem] text-black z-50 justify-center ">
           {animations.slice(" ").map((animation, index) => (
-            <div className=" overflow-hidden  lg:leading-[6rem] leading-[2.1rem] ">
+            <div style={{clipPath: "polygon(0 0%, 100% 0%, 100% 100%, 0 100%)"}} className=" words overflow-hidden  lg:leading-[6rem] leading-[2.1rem] ">
               <h1
                 key={index}
                 ref={(el) => (textRefs.current[index] = el)}

@@ -220,6 +220,7 @@ function Footer() {
           <div className="lg:flex-row lg:w-fit w-full  lg:px-0 px-[1rem] md:items-start items-center flex-col flex gap-5 pt-10">
             <div className=" w-full">
               <ButtonEffect
+                strength={3.5}
                 Style={
                   "bg-sec lg:w-fit  w-full border-white hover:border-0 border-[1px] text-white"
                 }
@@ -235,6 +236,7 @@ function Footer() {
             </div>
             <div className=" w-full">
               <ButtonEffect
+                strength={3.5}
                 Style={
                   "bg-sec border-white lg:w-fit w-full hover:border-0 border-[1px] text-white"
                 }

@@ -3,45 +3,63 @@ import React, { useEffect, useRef } from "react";
 import gsap from "gsap";
 // import { ScrollTrigger } from "gsap/all";
 import { ScrollTrigger } from "gsap/dist/ScrollTrigger";
+import { BigStar } from "@/assest/Icons/bigStar";
 
 function Bar({ derection, initial, deg }) {
   const marqueeRef = useRef(null);
 
   useEffect(() => {
-    if (typeof window !== "undefined") {
-      const marqueeElement = marqueeRef.current;
+    gsap.registerPlugin(ScrollTrigger);
+  
+    const marqueeElement = marqueeRef.current;
+    if (!marqueeElement || !marqueeElement.children.length) return;
+  
+    const baseSpeed = 20;
+    let currentDirection = -1;
 
-      const tween = gsap.to(marqueeElement.children, {
-        xPercent: -100, // Move the marquee elements left
-        ease: "linear",
-        repeat: -1, // Infinite scroll
-        duration: 20, // Adjust the speed of scrolling
-        paused: true,
-      });
+    // Determine initial sliding direction based on the derection prop
+    const initialXPercent = derection === 'right' ? -20 : 20;
+    const targetXPercent = derection === 'right' ? 20 : -20;
 
-      ScrollTrigger.create({
-        trigger: ".home",
-        start: "top center",
-        end: "bottom center",
-        onUpdate: (self) => {
-          const isScrollingDown = self.direction === 1; // 1 for down, -1 for up
-
-          // Update sliding direction based on scroll
-          if (isScrollingDown) {
-            tween.vars.xPercent = derection; // Use direction passed from props
-            tween.timeScale(1).play(); // Play forward
-          } else {
-            tween.vars.xPercent = -derection ; // Move in the opposite direction
-            tween.timeScale(1).play(); // Play forward
-          }
-
-          tween.invalidate().restart();
-
-          // Toggle arrow class based on scroll direction
-        },
-      });
-    }
-  }, []);
+    const tween = gsap.to(marqueeElement.children, {
+      xPercent: targetXPercent,
+      ease: "none",
+      repeat: -1,
+      duration: baseSpeed,
+      paused: true,
+    });
+  
+    const scrollTrigger = ScrollTrigger.create({
+      trigger: ".home",
+      start: "top center",
+      end: "bottom center",
+      onUpdate: (self) => {
+        const newDirection = self.direction;
+        
+        if (newDirection !== currentDirection) {
+          currentDirection = newDirection;
+          
+          // Adjust animation direction based on scroll direction and initial direction
+          const scrollBasedXPercent = currentDirection === 1 
+            ? (derection === 'right' ? -20 : 20)
+            : (derection === 'right' ? 20 : -20);
+          
+          tween.kill();
+          gsap.to(marqueeElement.children, {
+            xPercent: scrollBasedXPercent,
+            ease: "none",
+            repeat: -1,
+            duration: baseSpeed,
+          });
+        }
+      },
+    });
+  
+    return () => {
+      scrollTrigger.kill();
+    };
+  }, [derection]); // Add derection as a dependency
+  
 
   const marqueeItems = [
     "Handcrafted Digital Solutions",
@@ -88,21 +106,7 @@ function Item({ item, index }) {
     >
       {item}
       <div className="arrow  lg:scale-100  scale-[0.6] ">
-        <svg
-          xmlns="http://www.w3.org/2000/svg"
-          viewBox="0 0 24 24"
-          width="24"
-          height="24"
-          color="#e7e7e7"
-          fill="none"
-        >
-          <path
-            d="M5.92089 5.92089C8.15836 3.68342 9.2771 2.56468 10.5857 2.19562C11.5105 1.93479 12.4895 1.93479 13.4143 2.19562C14.7229 2.56468 15.8416 3.68342 18.0791 5.92089C20.3166 8.15836 21.4353 9.2771 21.8044 10.5857C22.0652 11.5105 22.0652 12.4895 21.8044 13.4143C21.4353 14.7229 20.3166 15.8416 18.0791 18.0791C15.8416 20.3166 14.7229 21.4353 13.4143 21.8044C12.4895 22.0652 11.5105 22.0652 10.5857 21.8044C9.2771 21.4353 8.15836 20.3166 5.92089 18.0791C3.68342 15.8416 2.56468 14.7229 2.19562 13.4143C1.93479 12.4895 1.93479 11.5105 2.19562 10.5857C2.56468 9.2771 3.68342 8.15836 5.92089 5.92089Z"
-            stroke="currentColor"
-            stroke-width="1.5"
-            stroke-linejoin="round"
-          />
-        </svg>
+      <BigStar trigger={".SlidingBars"} />
       </div>
     </div>
   );

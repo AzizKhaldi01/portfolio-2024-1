@@ -1,0 +1,9 @@
+/* Add this to your existing CSS */
+body {
+  cursor: none;
+}
+
+/* Optional: Show default cursor on clickable elements */
+a, button, [role="button"] {
+  cursor: none;
+} 

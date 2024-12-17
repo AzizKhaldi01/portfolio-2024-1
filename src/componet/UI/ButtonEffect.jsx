@@ -2,7 +2,7 @@ import React from "react";
 import { motion } from "framer-motion";
 import MagneticWrapper from "../gsap/Magnetic";
 
-function ButtonEffect({ children, Style, type, disabled }) {
+function ButtonEffect({ children, Style, type, disabled, strength }) {
   return (
     <motion.button
       type={type}
@@ -17,13 +17,13 @@ function ButtonEffect({ children, Style, type, disabled }) {
       <motion.div
         variants={{
           initial: { y: 0 },
-          hovered: { y: "-120%" },
+          hovered: { y: "-130%" },
         }}
         transition={{
-          duration: 0.2,
-          ease: [0.76, 0, 0.24, 1],
+          duration: 0.4,
+          ease: [0.22, 1, 0.36, 1],
         }}
-        className=" inline-block  "
+        className=" inline-block "
       >
         {children}
       </motion.div>
@@ -34,12 +34,12 @@ function ButtonEffect({ children, Style, type, disabled }) {
           hovered: { y: 0, scale: 1 },
         }}
         transition={{
-          duration: 0.3,
-          ease: [0.76, 0, 0.24, 1],
+          duration: 0.5,
+          ease: [0.22, 1, 0.36, 1],
         }}
         className="  text-white  flex items-center rounded-full justify-center absolute  bg-thr inset-0"
       >
-        <MagneticWrapper>
+        <MagneticWrapper strength={strength}>
           <div>{children}</div>
         </MagneticWrapper>
       </motion.div>

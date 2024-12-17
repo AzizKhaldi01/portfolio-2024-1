@@ -8,7 +8,7 @@ function WorkCard({ BgColor, title, img, time, UrlLink }) {
   const ElementRef = useRef();
 
   return (
-    <Link target="_blank" href={UrlLink} ref={ElementRef} className="relative">
+    <Link target="_blank" href={UrlLink} ref={ElementRef} className="relative target">
       <div className=" targetItema  item cursor-pointer flex    flex-col w-full h-full">
         <span className="rounded-md  lg:h-[60vh] h-[20rem] bg-opacity-50 bg-black">
           <img
@@ -26,7 +26,6 @@ function WorkCard({ BgColor, title, img, time, UrlLink }) {
         </div>
       </div>
 
-      <CursorBtn elementRef={ElementRef} />
       {/* Custom Cursor */}
     </Link>
   );

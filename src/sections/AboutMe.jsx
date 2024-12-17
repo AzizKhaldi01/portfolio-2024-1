@@ -20,11 +20,11 @@ function AboutMe() {
   const textRef = useRef(null);
   const imgDivRef = useRef(null);
 
-  const birthDate = new Date(2001, 7, 26); 
+  const birthDate = new Date(2001, 7, 26);
   const age = differenceInYears(new Date(), birthDate);
 
   // Experience calculation
-  const startDate = new Date(2021, 9, 1); 
+  const startDate = new Date(2021, 9, 1);
   const experienceYears = differenceInYears(new Date(), startDate);
   const experienceMonths = differenceInMonths(new Date(), startDate) % 12;
 
@@ -54,12 +54,12 @@ function AboutMe() {
       scrollTrigger: {
         trigger: ".hero",
         start: "top 90%",
-        end: "bottom+=500 top",
-        scrub: 1.5,
+        end: "bottom+=600 top",
+        scrub: 3,
       },
       scaleY: 5,
       ease: "power3.inOut",
-      duration: 2,
+      duration: 3,
     });
 
     gsap.to(".about_bottom_curve", {
@@ -89,7 +89,9 @@ function AboutMe() {
     });
   }, []);
 
-  const text = `  Hey, I’m Aziz Khaldi, a ${age} year old Front-End Developer and UI/UX Designer with ${experienceYears} year${experienceYears !== 1 ? 's' : ''}  of experience. I have a passion for creating interactive, high-performance web applications. I love working with React and Next.js, and I’m all about building clean, user-friendly interfaces. I focus on making sure everything looks great and works smoothly, solving complex front-end challenges along the way.`;
+  const text = `  Hey, I’m Aziz Khaldi, a ${age} year old Front-End Developer and UI/UX Designer with ${experienceYears} year${
+    experienceYears !== 1 ? "s" : ""
+  }  of experience. I have a passion for creating interactive, high-performance web applications. I love working with React and Next.js, and I’m all about building clean, user-friendly interfaces. I focus on making sure everything looks great and works smoothly, solving complex front-end challenges along the way.`;
   const words = text.split(" ").map((word, index) => (
     <span key={index} className="inline-block">
       {word}&nbsp;
@@ -105,21 +107,21 @@ function AboutMe() {
         trigger: imgRef.current,
         start: "top center", // When the image starts entering the viewport
         end: "70% top", // When the image is out of view
-        scrub: true, // Smoothly transitions with the scroll
+        scrub: 3, // Smoothly transitions with the scroll
       },
     });
 
     // Animation for image to move up and zoom
     tl.to(imgRef.current, {
       scale: 1, // Zoom effect
-      ease: "power1.out",
+      ease: "power2.out",
     });
     tl.to(
       textRef2.current,
       {
         y: 400,
         opacity: 0,
-        ease: "power1.out",
+        ease: "power2.out",
       },
       0
     );
@@ -138,13 +140,13 @@ function AboutMe() {
   return (
     <div
       id="bgChanged"
-      className=" relative  About-me flex flex-col items-center  w-full duration-200 h-full   font-righteous text-white z-50   gap-[4rem]  -mt-[2rem]    bgChanged about-me   bg-sec "
+      className=" relative  About-me flex flex-col items-center  w-full duration-200 h-full    text-white z-50   gap-[4rem]  -mt-[2rem]    bgChanged about-me   bg-sec "
     >
       <div className="   overflow-hidden  absolute left-[50%]  lg:-top-[3rem] -top-[2rem] transform  translate-x-[-50%] w-[100%] about_top_curve   lg:h-[4rem] h-[2rem]  mb-14 z-40 ">
         <div className="   absolute right-[-10%] rounded-[50%]   h-[150%] w-[120%] bg-sec "></div>
       </div>
 
-      <div className=" mt-10 md:text-[2.5rem] text-[1.3rem]  w-[92vw] lg:w-[80vw] text-center  z-[60]   md:leading-[3rem] leading-[2rem]  relative">
+      <div className=" cursor-default mt-10 md:text-[2.5rem] text-[1.3rem]  font-righteous w-[92vw] lg:w-[80vw] text-center  z-[60]   md:leading-[3rem] leading-[2rem]  relative">
         <h1 ref={textRef} className="   z-20 font-bold ">
           {words}
         </h1>
@@ -153,9 +155,12 @@ function AboutMe() {
         </h1>
       </div>
 
-      <InfinitTextSlid trigger={".home"} />
+      <InfinitTextSlid
+        style={"md:text-[7rem] text-[3rem] font-light !font-light"}
+        trigger={".home"}
+      />
 
-      <div className="z-50 pt-5  lg:pt-10 items-center flex flex-col gap-6 ">
+      <div className="z-50 pt-5 font-righteous  lg:pt-10 items-center flex flex-col gap-6 ">
         <h1
           ref={textRef2}
           className=" text-center  lg:text-[3rem] text-[1.7rem] font-bold"
@@ -176,14 +181,14 @@ function AboutMe() {
       </div>
 
       <div
-        className=" lg:h-[100vh] h-[60vh]  lg:w-[60vh] w-[90vw] blurEffect absolute rounded-full top-[30%] pointer-events-none z-10 opacity-40 blur-[5vw]"
+        className="  lg:h-[100vh] h-[60vh]  lg:w-[60vh] w-[90vw] blurEffect absolute rounded-full top-[30%] pointer-events-none z-10 opacity-40 blur-[5vw]"
         style={{
           background: `radial-gradient(circle, #A1DD70 0%, rgba(34, 34, 34, 0) 66%)`, // Replace with real color values
           filter: "blur(5vw)", // Apply the blur directly here
         }}
       ></div>
 
-      <div className=" flex flex-col items-center  pt-20  justify-center  gap-7 w-full ">
+      <div className=" font-righteous flex flex-col items-center  pt-20  justify-center  gap-7 w-full ">
         <div className="  flex   lg:flex-row  flex-col items-center gap-5 ">
           <div className="  flex gap-5  flex-row items-center  ">
             <CercelOfInfo title={"Experience"} num={"3y"} />
@@ -220,17 +225,18 @@ function AboutMe() {
           />
         </div>
       </div>
-      <div className="  exp_item opacity-0 z-50 w-full flex justify-center items-center my-16 ">
+      <div className=" font-righteous exp_item opacity-0 z-50 w-full flex justify-center items-center my-16 ">
         <Magnetic>
           <div>
-            <Link href={"/about-me"}>
+            <Link href="/about-me" scroll={false}>
               <ButtonEffect
+                strength={3.7}
                 Style={
-                  "  lg:px-[3rem] px-[2.8rem]   lg:py-8 py-4   flex gap-2  border-2 border-white text-white hover:border-0  lg:text-2xl text-lg text-black   "
+                  "lg:px-[2rem] px-[2.8rem] lg:py-5 py-4 flex gap-2 border-2 border-white text-white hover:border-0 lg:text-2xl text-lg text-black"
                 }
               >
-                <span className=" flex items-center  gap-4">
-                About Me <ArrowIcon/>
+                <span className="flex items-center gap-4">
+                  About Me <ArrowIcon />
                 </span>
               </ButtonEffect>
             </Link>

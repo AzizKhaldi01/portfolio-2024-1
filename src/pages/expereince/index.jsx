@@ -49,7 +49,7 @@ function Page() {
 
   return (
     <Curve>
-      <div className=" page relative">
+      <div className=" cursor-default page relative">
         <Navbar />
         <div className=" flex items-center w-full">
           <PageTitle title={"Experience"} />

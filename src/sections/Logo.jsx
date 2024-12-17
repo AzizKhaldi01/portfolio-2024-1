@@ -7,7 +7,7 @@ function Logo({whiteLogo}) {
   return (
     <Link href="/">
       <img
-        className="item h-[2rem]  z-50 w-[1.7rem] lg:w-[2rem] lg:h-[2.6rem] cursor-pointer"
+        className=" target item h-[2rem]  z-50 w-[1.7rem] lg:w-[2rem] lg:h-[2.6rem] cursor-pointer"
         src={ !whiteLogo ?  LogoImg.src :LogoWhiteImg.src }
         alt="Logo"
       />

@@ -38,9 +38,7 @@ function index() {
 
 
   useEffect(() => {
-    setTimeout(() => {
-      window.scrollTo(0, 0);
-    }, 200);
+    window.scrollTo(0, 0);
   }, []);
 
   useEffect(() => {
@@ -78,18 +76,19 @@ function index() {
       scrollTrigger: {
         trigger: imageRef.current,
         start: "top bottom",
-        end: "bottom center",
+        end: "bottom top",
         scrub: 1,
       },
-      scale: 1,
-      ease: "power2.inOut",
+      y: "25%",
+      scale: 1.1,
+      ease: "none",
     });
   }, []);
 
   useEffect(() => {
     gsap.to(".line", {
       transform: "translateY(0px)",
-      y: 50,
+      y: 20,
       opacity: 1,
       delay: 1,
       stagger: 0.08,
@@ -165,11 +164,7 @@ function index() {
             I transform your ideas into stunning, high-performance websites that
             captivate your audience. Let's create a digital experience that
             inspires and leaves a lasting impression.
-            {/* {lines.map((line) => (
-              <div className="  overflow-hidden">
-                <p className="line">{line}</p>
-              </div>
-            ))} */}
+       
           </div>
           <div className=" flex md:w-fit w-full items-end justify-end">
             <LogoWithText
@@ -181,7 +176,8 @@ function index() {
 
         {/* text slider */}
         <InfinitTextSlid
-          style={" md:text-[7rem] text-[3rem]  "}
+          color={"#000"}
+          style={" md:text-[7rem] text-[3rem] font-light !font-light"}
           trigger={".aboutMe"}
         />
 
@@ -206,7 +202,7 @@ function index() {
               ref={imageRef}
               layout="fill"
               objectFit="cover"
-              className="scale-125 absolute top-0 right-0 w-full h-full"
+              className=" scale-125 absolute top-0 right-0 w-full h-full"
               placeholder="blur"
               blurDataURL="/path-to-small-blurry-image.jpg"
             />

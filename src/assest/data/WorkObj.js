@@ -12,7 +12,7 @@ export const worksObj = [
   {
     title: "Superhost",
     time: 2024,
-    bg: " bg-[#51c18f]",
+    bg: "#51c18f",
     Link: "https://superhost.com.tn/",
     color: "text-[#51c18f]",
     img: superhostLap,
@@ -20,7 +20,7 @@ export const worksObj = [
   {
     title: "Fintechracy",
     time: 2023,
-    bg: " bg-[#51c18f]",
+    bg: "#51c18f",
     Link: "https://fintechracy.org/",
     color: "text-[#51c18f]",
     img: fintechracy,
@@ -28,7 +28,7 @@ export const worksObj = [
   {
     title: "FTR-Client",
     time: 2023,
-    bg: "bg-[#ff5a5f]",
+    bg: "#ff5a5f",
     Link: "https://ftrclient.fintechracy.org/",
     color: "text-[#ff5a5f]",
     img: fintech,
@@ -36,7 +36,7 @@ export const worksObj = [
   {
     title: "Fashion",
     time: 2022,
-    bg: "bg-black",
+    bg: "#000000",
     Link: "https://647a9a5d1de3802bb76b0dcc--adorable-panda-b90c31.netlify.app/?fbclid=IwAR3hcXG0VOoafcBepb2iXr09flok0NzKsXzfSXkCld7xpcdvNKpygvNhY8k",
     color: "",
     img: fashion,
@@ -44,7 +44,7 @@ export const worksObj = [
   {
     title: "3D-Poarch",
     time: 2022,
-    bg: "bg-black",
+    bg: "#000000",
     Link: "https://648e4af1cc1ae5565616a18a--remarkable-bubblegum-6f8567.netlify.app/?fbclid=IwAR3yVpqX0NodrElLKrbjgh17PV89hulTfzY3M2uxxswQ8ELyqUWwAAJd6co",
     color: "",
     img: porsh3d,
@@ -52,7 +52,7 @@ export const worksObj = [
   {
     title: "SONOS",
     time: 2022,
-    bg: "bg-black",
+    bg: "#000000",
     Link: "https://6484a61cf88be17db1cb2007--chimerical-yeot-2e0459.netlify.app/?fbclid=IwAR2Zre3wdh3yPcNPW7sC_OEvRggkHHYtbRqMXSdAr3Vy8vFjUyaxAkOEkUU",
     color: "",
     img: SONOS,
@@ -60,7 +60,7 @@ export const worksObj = [
   {
     title: "Ftr-business",
     time: 2023,
-    bg: "bg-black",
+    bg: "#000000",
     Link: "https://ftrbusiness.fintechracy.org/",
     color: "",
     img: Ftrbusiness,
@@ -68,7 +68,7 @@ export const worksObj = [
    {
     title: "portfolio",
     time: 2022,
-    bg: "bg-black",
+    bg: "#000000",
     Link: "https://azizportfolio-azizkhaldi01.vercel.app/",
     color: "",
     img: Portfolio,

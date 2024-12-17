@@ -61,7 +61,10 @@ function Works() {
       });
 
       tl.fromTo(
-        [section.querySelector("h1"), ...section.querySelectorAll(".works_button")],
+        [
+          section.querySelector("h1"),
+          ...section.querySelectorAll(".works_button"),
+        ],
         {
           opacity: 0,
           y: 100,
@@ -77,7 +80,7 @@ function Works() {
     });
 
     return () => {
-      ScrollTrigger.getAll().forEach(trigger => trigger.kill());
+      ScrollTrigger.getAll().forEach((trigger) => trigger.kill());
     };
   }, []);
 
@@ -97,14 +100,14 @@ function Works() {
       <Magnetic>
         <Link href={"/works"}>
           <ButtonEffect
+            strength={3.7}
             Style={
               "  lg:px-[2rem]  px-[2.8rem]    py-4   lg:py-5     border-2 border-sec text-sec hover:border-0  lg:text-2xl text-lg text-black   "
             }
           >
-            
             <span className=" flex items-center  gap-1">
-            More <ArrowIcon/>
-                </span>
+              More <ArrowIcon />
+            </span>
           </ButtonEffect>
         </Link>
       </Magnetic>

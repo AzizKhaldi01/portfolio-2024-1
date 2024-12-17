@@ -27,7 +27,7 @@ const Home = () => {
         image={me.src}
         url="https://azizkhaldiportfolio.vercel.app/"
       />
-      <div className="home bg-main relative flex flex-col overflow-y-hidden h-full">
+      <div className="home cursor-default bg-main relative flex flex-col overflow-y-hidden h-full">
         {/* <CursorMask /> */}
         <Navbar />
         <Hero1 />

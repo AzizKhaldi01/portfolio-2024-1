@@ -9,10 +9,10 @@ import Curve from "../../componet/UI/NavCurve";
 import { worksObj } from "../../assest/data/WorkObj";
 import Footer from "../../componet/Footer/Footer";
 import Navbar from "../../componet/Navbar";
+import CustomCursor from "@/components/UI/CustomCursor";
 
 function Page() {
   const worksRef = useRef(null);
-
 
   useEffect(() => {
     setTimeout(() => {
@@ -33,12 +33,11 @@ function Page() {
       }
     );
   }, []);
-  
 
   return (
     <Curve>
       <div
-        className="works overflow-hidden relative pb-20 bg-main flex items-center flex-col"
+        className="works cursor-default overflow-hidden relative pb-20 bg-main flex items-center flex-col"
         ref={worksRef}
       >
         <Navbar />

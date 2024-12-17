@@ -9,6 +9,7 @@ body {
    margin: 0;
    padding: 0;
    background: #e7e7e7;
+   overflow-y: scroll;
 }
 
 .gradient-text {
@@ -48,6 +49,27 @@ body {
   padding: 0;
   height: 100%;
   overflow: hidden; /* This ensures that the scroll behavior is controlled properly */
+}
+
+.target {
+  cursor: none !important;
+}
+
+.target * {
+  cursor: none !important;
+}
+
+/* Add these styles to hide scrollbar but maintain scroll functionality */
+
+/* Hide scrollbar for Chrome, Safari and Opera */
+::-webkit-scrollbar {
+  display: none;
+}
+
+/* Hide scrollbar for IE, Edge and Firefox */
+* {
+  -ms-overflow-style: none;  /* IE and Edge */
+  scrollbar-width: none;  /* Firefox */
 }
 
 
