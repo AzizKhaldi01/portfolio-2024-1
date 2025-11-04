@@ -1,6 +1,5 @@
 import React from 'react'
 import Bar from '../UI/Bar'
-import BackgroundVideo from '../BackgroundVideo'
 
 function SlidingBars() {
   return (

@@ -4,12 +4,14 @@
 
  
 
-
+  
 body {
    margin: 0;
    padding: 0;
    background: #e7e7e7;
    overflow-y: scroll;
+   font-family: var(--font-cabinetGrotesk), sans-serif;
+
 }
 
 .gradient-text {
@@ -72,4 +74,8 @@ body {
   scrollbar-width: none;  /* Firefox */
 }
 
+/* Curved text styling for dynamic color changes */
+.curved-text-white {
+  fill: #ffffff;
+}
 

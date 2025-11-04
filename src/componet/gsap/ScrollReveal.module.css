@@ -1,0 +1,26 @@
+.scrollReveal {
+  margin: 20px 0;
+}
+
+.scrollRevealText {
+  /* Default styles - can be overridden by textClassName */
+  font-size: clamp(1.6rem, 4vw, 3rem);
+  line-height: 1.5;
+  font-weight: 600;
+}
+
+/* Allow textClassName to override these styles */
+.scrollRevealText[className*="text-"] {
+  font-size: inherit !important;
+  line-height: inherit !important;
+  font-weight: inherit !important;
+}
+
+.word {
+  display: inline-block;
+}
+
+.line {
+  display: block;
+  margin-bottom: 0.5rem;
+} 

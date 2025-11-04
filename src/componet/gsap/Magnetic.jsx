@@ -35,6 +35,11 @@ export default function MagneticWrapper({ children, style, strength = 2 }) {
 
   return React.cloneElement(children, {
     ref: magnetic,
-    style: { ...children.props.style, ...style }, // Merge existing styles with the new ones
+    style: { 
+      ...children.props.style, 
+      ...style,
+      willChange: 'transform',
+      backfaceVisibility: 'hidden' // Prevent layout shifts
+    },
   });
 }

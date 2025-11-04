@@ -12,12 +12,12 @@ import FlipLink from "../UI/FlipLink";
 import ButtonEffect from "../UI/ButtonEffect";
 import useLocalTime from "@/Hooks/useLocalTime";
 import BallsModal, { ShuffleModals } from "../BallsModal";
+import Spline from "@splinetool/react-spline";
 
 gsap.registerPlugin(ScrollTrigger);
 
 function Footer() {
   const nameRef = useRef(null);
-  const name2Ref = useRef(null);
   const textRefs = useRef([]);
   const localTime = useLocalTime();
 
@@ -87,52 +87,89 @@ function Footer() {
   ];
 
   useEffect(() => {
-    // Split text into characters
-    const nameSplit = new SplitType(nameRef.current, { types: "chars" });
-    const name2Split = new SplitType(name2Ref.current, { types: "chars" });
+    // // Split text into characters
+    // const nameSplit = new SplitType(nameRef.current, { types: "chars" });
 
-    // Create a timeline
-    const tl = gsap.timeline({
-      scrollTrigger: {
-        trigger: ".footerSection",
-        start: "center bottom", // Adjust based on when you want the animation to start
-        onEnter: () => tl.restart(), // Restart animation when entering the footer section
-      },
-    });
+    // // Set initial state - characters hidden
+    // gsap.set(nameSplit.chars, {
+    //   y: 200,
+    //   opacity: 0,
+    //   scale: 0.5,
+    // });
 
-    // Add animations to the timeline
-    tl.from(nameSplit.chars, {
-      y: 150,
-      stagger: 0.01,
-      duration: 1,
-      ease: "power2.out",
-      delay: 0.5,
-    })
-      .from(
-        name2Split.chars,
-        {
-          y: 150,
-          stagger: 0.01,
-          duration: 1,
-          ease: "power2.out",
-          delay: 0.5,
+    // // Create scrub animation for each character with stagger
+    // const totalChars = nameSplit.chars.length;
+    // nameSplit.chars.forEach((char, index) => {
+    //   gsap.to(char, {
+    //     y: 0,
+    //     opacity: 1,
+    //     scale: 1,
+    //     scrollTrigger: {
+    //       trigger: ".footerSection",
+    //       start: "top 80%",
+    //       end: "bottom 20%",
+    //       scrub: 1,
+    //       stagger: 0.02,
+    //       onUpdate: (self) => {
+    //         // Split the scroll progress into equal segments for each character
+    //         const segmentSize = 1 / totalChars; // Each character gets equal time
+    //         const charStart = index * segmentSize;
+    //         const charEnd = charStart + segmentSize;
+
+    //         // Calculate progress for this specific character
+    //         let charProgress = 0;
+    //         if (self.progress >= charStart && self.progress <= charEnd) {
+    //           charProgress = (self.progress - charStart) / segmentSize;
+    //         } else if (self.progress > charEnd) {
+    //           charProgress = 1;
+    //         }
+
+    //         gsap.set(char, {
+    //           y: 200 * (1 - charProgress),
+    //           opacity: charProgress,
+    //           scale: 0.5 + (0.5 * charProgress),
+    //         });
+    //       },
+    //     },
+    //   });
+    // });
+
+
+    const letters = nameRef.current.querySelectorAll(".char");
+    gsap.fromTo(
+      letters,
+      { y: 150 },
+      {
+        y:90,
+        duration: 1.2,
+        stagger: 0.1,
+        scrollTrigger: {
+          trigger: nameRef.current,
+          start: "top 80%",  // start animating when element enters viewport
+          end: "bottom 60%", // finish before leaving
         },
-        0
-      )
-      .fromTo(
-        ".Footertext",
+      }
+    );
 
-        { y: 115, rotate: 20 },
-        {
-          y: 0,
-          stagger: 0.04,
-          delay: 0.2,
-          rotate: 0,
-          duration: 0.5,
-          ease: "power1.out",
+
+    // Footer text animation
+    gsap.fromTo(
+      ".Footertext",
+      { y: 115, rotate: 20 },
+      {
+        y: 0,
+        stagger: 0.04,
+        delay: 0.2,
+        rotate: 0,
+        duration: 0.5,
+        ease: "power1.out",
+        scrollTrigger: {
+          trigger: ".footerSection",
+          start: "top 80%",
+          toggleActions: "play none none reverse",
         },
-        0
-      );
+      }
+    );
   }, []);
 
   useEffect(() => {
@@ -158,8 +195,11 @@ function Footer() {
     });
   }, []);
 
+  const text = "AZIZ";
+
+
   return (
-    <div className=" footerSection  relative overflow-hidden z-[30] ">
+    <div className=" footerSection font-cabinetGrotesk    relative overflow-hidden z-[30] ">
       {/* curve */}
 
       <div className=" w-[120%]  FooterCurve  absolute left-[50%] -top-[7rem]   transform  translate-x-[-50%]  lg:h-[30px] h-[15px]  z-50 ">
@@ -173,7 +213,7 @@ function Footer() {
         </div>
       </div>
 
-      <div className="  h-[80vh] z-30 lg:h-[100vh] flex flex-col justify-between text-white  lg:pt-24   pt-[2rem]   px-[1rem] lg:px-[2rem]  relative bg-sec ">
+      <div className=" font-cabinetGrotesk  h-[80vh] z-30 lg:h-[100vh] flex flex-col justify-between text-white  lg:pt-24   pt-[2rem]   px-[1rem] lg:px-[2rem]  relative bg-sec ">
         <div className=" flex flex-col  lg:flex-row  justify-between w-full">
           <div className=" flex    justify-between">
             {/* links */}
@@ -215,7 +255,7 @@ function Footer() {
           {/* <div className=" h-full w-full absolute top-0 right-0">
             <ShuffleModals />
           </div> */}
-          
+
 
           <div className="lg:flex-row lg:w-fit w-full  lg:px-0 px-[1rem] md:items-start items-center flex-col flex gap-5 pt-10">
             <div className=" w-full">
@@ -249,18 +289,35 @@ function Footer() {
           </div>
         </div>
 
-        {/* big text */}
-        <div className="   font-righteous  lg:leading-[7rem] leading-[5rem]    lg:text-[6rem] text-[3rem] flex flex-col  ">
-          <div className="  overflow-hidden ">
-            <h1 ref={nameRef}>KHALDI AHMED</h1>
+        {/* big text and robot */}
+        <div className="flex  flex-col items-center justify-center w-full relative">
+
+          {/* Spline Robot */}
+          <div className=" hidden lg:block  absolute -top-[18rem] scale-90 translate-x-1/2 right-1/2 lg:w-[450px] lg:h-[450px] w-[300px] h-[300px] rounded-lg">
+            <Spline
+              scene="/robot.splinecode"
+              style={{ width: '100%', height: '100%' }}
+            />
           </div>
-          <div className="  overflow-hidden -mt-7">
-            <h1 ref={name2Ref}>ABDELAZIZ</h1>
+          <div className="font-righteous  lg:leading-[28rem]  leading-[10rem] lg:text-[30rem] text-[8rem] flex flex-col text-center">
+            {/* <div className="overflow-hidden mb-[1rem]">
+              <h1 ref={nameRef} className="aziz-text font-righteous ">AZIZ</h1>
+            </div> */}
+
+            <h1 ref={nameRef} className="aziz-text font-righteous flex">
+              {text.split("").map((char, i) => (
+                <span key={i} className="char inline-block">
+                  {char}
+                </span>
+              ))}
+            </h1>
           </div>
+
+
         </div>
       </div>
       <div className=" lg:block hidden">
-        <LogoWithText style={"absolute bottom-6 right-6"} />
+        <LogoWithText style={"absolute bottom-1 left-6"} />
       </div>
     </div>
   );

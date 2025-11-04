@@ -5,6 +5,61 @@ import { AppProvider } from "@/context/AppContext";
 import { useRouter } from 'next/router';
 import { useEffect } from 'react';
 import CustomCursor from "@/components/UI/CustomCursor";
+import { Gilda_Display , Lora} from 'next/font/google'
+import localFont from "next/font/local";
+
+const cabinetGrotesk = localFont({
+  src: [
+    {
+      path: "../../public/fonts/CabinetGrotesk-Extralight.woff2",
+      weight: "200",
+      style: "normal",
+    },
+    {
+      path: "../../public/fonts/CabinetGrotesk-Regular.woff2",
+      weight: "400",
+      style: "normal",
+    },
+    {
+      path: "../../public/fonts/CabinetGrotesk-Medium.woff",
+      weight: "500",
+      style: "normal",
+    },
+    {
+      path: "../../public/fonts/CabinetGrotesk-Bold.woff2",
+      weight: "700",
+      style: "normal",
+    },
+    {
+      path: "../../public/fonts/CabinetGrotesk-Extrabold.woff2",
+      weight: "800",
+      style: "normal",
+    },
+    {
+      path: "../../public/fonts/CabinetGrotesk-Black.woff2",
+      weight: "900",
+      style: "normal",
+    },
+  ],
+  variable: "--font-cabinetGrotesk",
+});
+
+const gilda = Gilda_Display({
+  weight: '400',
+  subsets: ['latin'],
+  variable: '--font-gilda',
+})
+
+const lora = Lora({
+  weight: ["400", "500", "600", "700"],
+  subsets: ["latin"],
+  variable: "--font-lora",
+});
+
+ 
+
+
+
 
 export default function App({ Component, pageProps }) {
   const router = useRouter();
@@ -29,7 +84,7 @@ export default function App({ Component, pageProps }) {
 
   return (
     <AppProvider>
-      <div className="main">
+      <div className={`${gilda.variable} ${lora.variable} ${cabinetGrotesk.variable}`}>
         <LenisScroll />
         <AnimatePresence mode="wait">
           <CustomCursor />

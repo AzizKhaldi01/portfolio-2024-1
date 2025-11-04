@@ -14,24 +14,32 @@ import photoshopLogo from '../Images/Techs/photoshop.png';
 import pwaLogo from '../Images/Techs/pwa.png';
 import reactLogo from '../Images/Techs/react.png';
 import tailwindcssLogo from '../Images/Techs/tailwindcss.png';
+import threejsLogo from '../Images/Techs/threejs.png';
 
 export const techs = [
-    { name: "CSS", icon: cssLogo, color: "#264de4" },
-    { name: "Docker", icon: dockerLogo, color: "#2496ed" },
-    { name: "Express", icon: expressLogo, color: "#000000" },
-    { name: "Figma", icon: figmaLogo, color: "#a259ff" },
-    { name: "Framer", icon: framerLogo, color: "#0055FF" },
-    { name: "GitHub", icon: githubLogo, color: "#181717" },
-    { name: "GSAP", icon: gsapLogo, color: "#88CE02" },
-    { name: "HTML", icon: htmlLogo, color: "#e34f26" },
-    { name: "JavaScript", icon: javascriptLogo, color: "#f7df1e" },
-    { name: "MongoDB", icon: mongoLogo, color: "#47A248" },
+    { name: "TypeScript", icon: javascriptLogo, color: "#3178c6" },
+    { name: "React", icon: reactLogo, color: "#61dafb" },
     { name: "Next.js", icon: nextjsLogo, color: "#000000" },
     { name: "Node.js", icon: nodejsLogo, color: "#339933" },
-    { name: "Photoshop", icon: photoshopLogo, color: "#001E36" },
-    { name: "PWA", icon: pwaLogo, color: "#5A0FC8" },
-    { name: "React", icon: reactLogo, color: "#61dafb" },
+    { name: "Express", icon: expressLogo, color: "#000000" },
+    { name: "PostgreSQL", icon: mongoLogo, color: "#336791" },
+    { name: "MongoDB", icon: mongoLogo, color: "#47A248" },
+    { name: "Prisma", icon: expressLogo, color: "#2D3748" },
+    { name: "Supabase", icon: mongoLogo, color: "#3ECF8E" },
+    { name: "Firebase", icon: mongoLogo, color: "#FFCA28" },
+    { name: "Three.js", icon: threejsLogo, color: "#000000" },
+    { name: "React Three Fiber", icon: threejsLogo, color: "#000000" },
+    { name: "JavaScript", icon: javascriptLogo, color: "#f7df1e" },
+    { name: "HTML", icon: htmlLogo, color: "#e34f26" },
+    { name: "CSS", icon: cssLogo, color: "#264de4" },
     { name: "Tailwind CSS", icon: tailwindcssLogo, color: "#06b6d4" },
+    { name: "Framer Motion", icon: framerLogo, color: "#0055FF" },
+    { name: "GSAP", icon: gsapLogo, color: "#88CE02" },
+    { name: "Docker", icon: dockerLogo, color: "#2496ed" },
+    { name: "GitHub", icon: githubLogo, color: "#181717" },
+    { name: "Figma", icon: figmaLogo, color: "#a259ff" },
+    { name: "PWA", icon: pwaLogo, color: "#5A0FC8" },
+    { name: "Photoshop", icon: photoshopLogo, color: "#001E36" },
 ];
 
 

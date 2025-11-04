@@ -16,12 +16,12 @@ const FAQ = () => {
     {
       question: "What technologies do you specialize in?",
       answer:
-        "I specialize in front-end technologies such as HTML, CSS, JavaScript, React.js, and Next.js. Additionally, I have experience working with tools like GSAP, Framer Motion, and Tailwind CSS.",
+        "I specialize in Full-stack technologies such as HTML, CSS, JavaScript, React.js, and Next.js. Additionally, I have experience working with tools like GSAP, Framer Motion, and Tailwind CSS.",
     },
     {
       question: "Can you work with back-end technologies?",
       answer:
-        "Yes, while my focus is on front-end development, I have a basic understanding of back-end technologies such as Node.js and can collaborate with back-end teams efficiently.",
+        "Yes, while my focus is on Full-stack development, I have a basic understanding of back-end technologies such as Node.js and can collaborate with back-end teams efficiently.",
     },
     {
       question: "Do you have experience with responsive design?",
@@ -103,7 +103,10 @@ const FAQ = () => {
   return (
     <div className="  w-full items-center justify-center flex flex-col  mb-10  mx-auto p-6">
       <div className=" w-[70vw] ">
-        <PageTitle title={"FAQ"} />
+        <PageTitle 
+          title={"FAQ"} 
+          subtitle="Find answers to common questions about my services and process"
+        />
       </div>
       <div className=" w-[97vw] pt-10  lg:w-[60vw] rounded-lg  p-4">
         {faqItems.map((itemData, index) => (

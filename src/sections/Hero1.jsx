@@ -1,15 +1,7 @@
 "use client";
 import { useEffect, useRef, useState } from "react";
-import { motion } from "framer-motion";
 import gsap from "gsap";
-import SplitType from "split-type";
-import Logo from "./Logo";
 import Socials from "./Socials.jsx";
-// import Modal from "../componet/Scene";
-import { Model } from "../componet/Scene";
-import { Canvas } from "@react-three/fiber";
-import { Environment } from "@react-three/drei";
-import assest3d from "../assest/glassyObj.mp4";
 import { ScrollTrigger } from "gsap/dist/ScrollTrigger";
 import BackgroundVideo from "@/componet/BackgroundVideo";
 
@@ -17,13 +9,12 @@ import BackgroundVideo from "@/componet/BackgroundVideo";
 
 const animations = [
   { text: "Hi!  i’m Aziz", duration: 0.5, fontR: true },
-  { text: "Front-end Developer", duration: 0.5 },
+  { text: "Full-stack Developer", duration: 0.5 },
   { text: "UI & UX Designer. ", duration: 0.5 },
   // Add more animations as needed
 ];
 
 function Hero1() {
-  const [bgAnimationComplete, setBgAnimationComplete] = useState(false);
   const textRefs = useRef([]);
   useEffect(() => {
     gsap.registerPlugin(ScrollTrigger);
@@ -31,7 +22,7 @@ function Hero1() {
     gsap.fromTo(
       ".word",
       { 
-        y: 200, 
+        y: 250, 
         rotate: 3,
 
       },
@@ -39,11 +30,10 @@ function Hero1() {
         y: 0,
         opacity: 1,
         rotate: 0,
-
-        stagger: 0.05,
-        delay: 0.15,
+        stagger: 0.15,
+        delay: 0.5,
         duration: 1,
-        ease: "power3.out"
+        // ease: "power3.out"
       }
     );
 
@@ -101,26 +91,29 @@ function Hero1() {
                 ref={(el) => (textRefs.current[index] = el)}
                 className={`${
                   !animation.fontR
-                    ? "font-righteous text-[2.2rem] pb-1     text-center    lg:text-[6rem]  "
-                    : "  lg:text-[1.7rem] text-[1.5rem] text-center  lg:-mb-1  mb-1  "
+                    ? "font-cabinetGrotesk text-[2.2rem] pb-1 text-center    lg:text-[6rem]  "
+                    : "  lg:text-[1.7rem] font-Megrim text-[1.5rem] text-center  lg:-mb-1  mb-1  "
                 }  word`}
               >
                 {animation.text}
               </h1>
             </div>
           ))}
+          {/* <p className="text-center text-black/70 text-lg mt-6 max-w-2xl mx-auto">
+            Crafting digital experiences that blend creativity with cutting-edge technology
+          </p> */}
         </div>
       </div>
 
-      <div className=" item absolute hidden  -mt-10  lg:block -rotate-90 top-[40%] -right-[7%] transform -translate-y-1/2 writing-mode-vertical-rl text-orientation-mixed   tracking-wider pr-5">
+      <div className=" item absolute hidden font-cabinetGrotesk   -mt-10  lg:block -rotate-90 top-[40%] -right-[6.5%] transform -translate-y-1/2 writing-mode-vertical-rl text-orientation-mixed   tracking-wider pr-5">
         KHALID AHMED ABDELAZIZ
       </div>
 
-      <h1 className=" item letter-spacing-[1em] font-Megrim  lg:text-2xl text-xl  cursor-default right-[50%] transform translate-x-[50%]  absolute z-[100] bottom-[16%]   ">
-        SCROLL DOWN
+      <h1 className=" item letter-spacing-[1em] font-cabinetGrotesk  lg:text-2xl text-xl  cursor-default right-[50%] transform translate-x-[50%]  absolute z-[100] bottom-[16%]   ">
+        scroll down
       </h1>
 
-      <span className=" absolute   lg:-top-[7rem] top-[15rem]  lg:-right-3 -z-10">
+      <span className=" absolute   lg:-top-[8rem] top-[12rem]  lg:-right-3 -z-10">
         <BackgroundVideo trigger={".hero"} />
       </span>
     </div>

@@ -11,6 +11,8 @@ import Curve from "@/componet/UI/NavCurve";
 import Footer from "../componet/Footer/Footer";
 import SEO from "@/componet/SEO/Seo";
 import me from "../assest/Images/about/ana.jpeg";
+import ExperienceSection from "../sections/ExperienceSection";
+import Testimonials from "@/sections/Testimonials";
 
 const Home = () => {
   useEffect(() => {
@@ -33,9 +35,10 @@ const Home = () => {
         <Hero1 />
         <AboutMe />
         <Works />
+        <ExperienceSection />
+        <Testimonials />
         <SlidingBars />
-        {/* <Teches /> */}
-        <FAQ />
+        {/* <FAQ /> */}
         <Footer />
       </div>
     </Curve>

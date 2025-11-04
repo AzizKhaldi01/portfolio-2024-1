@@ -4,216 +4,111 @@ import fintechracyLogo from "../Images/Expereince/fintechracyLogo.png";
 
 export const paragraphData = [
   {
-    companyName: "Codintex",
-    role: "Internship",
-    color: "#0075FF",
-    logo: cdointexlogo?.src,
-    date: "Jul 2022 - Sep 2023",
-    desc: "My first internship was at Codintex, an Algerian development company focused on building desktop applications using .NET and C#. During my time there, I gained experience in software development and learned the basics of implementing security features in applications. This opportunity helped me develop essential skills in C# and desktop application design. Additionally, I began learning web development, focusing on Front-End technologies like React and Back-End with Node.js, which further expanded my technical knowledge.",
-
-    // content: [
-    //   {
-    //     id: 1,
-    //     content: (
-    //       <div style={{ display: "inline" }}>
-    //         <h1 style={{ display: "inline", fontSize: "inherit" }}>
-    //           My first internship was at
-    //         </h1>{" "}
-    //         <span className="text-[#0075FF]">Codintext</span>, an Algerian
-    //         development company focused on building desktop applications using
-    //         .NET and C#.
-    //       </div>
-    //     ),
-    //   },
-    //   {
-    //     id: 2,
-    //     content: (
-    //       <div>
-    //         During my time there, I gained experience in software development
-    //         and learned the basics of implementing{" "}
-    //         <span className="text-[#0075FF]">security features</span> in
-    //         applications.
-    //       </div>
-    //     ),
-    //   },
-    //   {
-    //     id: 3,
-    //     content: (
-    //       <div>
-    //         This opportunity helped me develop essential skills in{" "}
-    //         <span className="text-[#0075FF]">C#</span> and desktop application
-    //         design.
-    //       </div>
-    //     ),
-    //   },
-    //   {
-    //     id: 4,
-    //     content: (
-    //       <div>
-    //         Additionally, I began learning web development, focusing on
-    //         Front-End technologies like{" "}
-    //         <span className="text-[#0075FF]">React</span> and Back-End with{" "}
-    //         <span className="text-[#0075FF]">Node.js</span>, which further
-    //         expanded my technical knowledge.
-    //       </div>
-    //     ),
-    //   },
-    // ],
+    companyName: "Techivation",
+    role: "Full Stack Developer",
+    color: "#8B5CF6",
+    logo: fintechracyLogo?.src, // Using existing logo as placeholder
+    date: "Q2 2025 – Present",
+    desc: "Techivation is an innovative company creating professional audio plug-ins used by thousands of music producers worldwide. While the audio team developed C++ plug-ins, I was responsible for designing, developing, and maintaining the full web and SaaS ecosystem. This included building scalable applications using React, Next.js, Express.js, PostgreSQL, and Tailwind CSS, ensuring smooth performance and responsive UI/UX across devices. As a Full Stack Developer, I implemented subscription and purchasing flows, built secure license key generation APIs, and developed dashboards for customer and license management. On the backend, I integrated Stripe payments, automated workflows, and ensured secure data flow between clients and servers. By collaborating with designers and backend engineers, I delivered performant, maintainable, and visually engaging solutions that supported Techivation's global user base. Additionally, I bridged the gap between the audio technology and web infrastructure by developing robust APIs, enhancing backend reliability, and maintaining platform security. My work ensured seamless user experiences—from plugin purchases to activation—contributing directly to Techivation's commercial growth.",
     roles: [
-      "Assisted in developing desktop applications using .NET and C#.",
-      "Wrote and debugged code for various software functionalities.",
-      "Participated in testing and troubleshooting application features.",
-      "Learned and helped implement security measures in applications.",
-      "Collaborated with senior developers on project design and requirements.",
-      "Gained hands-on experience in desktop application development and software security basics.",
-      "Began learning web development during the internship, focusing on Front-End technologies like React and Back-End with Node.js.",
+      "Designed and developed scalable web and SaaS ecosystem using React, Next.js, Express.js, and PostgreSQL",
+      "Implemented subscription and purchasing flows with secure license key generation APIs",
+      "Built comprehensive dashboards for customer and license management",
+      "Integrated Stripe payments and automated workflows for seamless transactions",
+      "Developed robust APIs to bridge audio technology and web infrastructure",
+      "Ensured secure data flow between clients and servers",
+      "Collaborated with designers and backend engineers to deliver performant solutions",
+      "Maintained platform security and enhanced backend reliability",
     ],
   },
   {
-    companyName: "Fintechracy",
-    role: "Front-End Developer",
-    color: "#08C66C",
-    logo: fintechracyLogo?.src,
-  
-    date: "Nov 2023 - Mar 2024 ",
-    desc: "My first front-end job was with Fintechracy , where I worked on developing and improving team collaboration between theback-end developers and theUI/UX designer. We used ClickUp for task management to streamline our workflow.I tackled challenging tasks, such as working with a front-end database (Dexie), implementing barcode scanning, and developing a Progressive Web App (PWA). I’ve gained experience in optimizing web performance and building responsive UIs, with a focus on delivering high-quality code My work involved collaborating closely withback-end developers to ensure a seamless user experience.",
-  
-  
-    // content: [
-    //   {
-    //     id: 1,
-    //     content: (
-    //       <div style={{ display: "inline" }}>
-    //         <h1 style={{ display: "inline", fontSize: "inherit" }}>
-    //           My first front-end job was with
-    //           <span className="text-[#08C66C] font-"> Fintechracy </span>, where
-    //           I worked on developing and improving team collaboration between
-    //           the
-    //           <span style={{ fontWeight: "" }}>back-end developers</span> and
-    //           the
-    //           <span style={{ fontWeight: "" }}>UI/UX designer</span>. We used{" "}
-    //           <span style={{ fontWeight: "" }}>ClickUp</span> for task
-    //           management to streamline our workflow.
-    //         </h1>
-    //         I tackled challenging tasks, such as working with a front-end
-    //         database (
-    //         <span style={{ fontWeight: "", color: "#08C66C" }}>Dexie</span>
-    //         ), implementing{" "}
-    //         <span style={{ fontWeight: "" }}>barcode scanning</span>, and
-    //         developing a{" "}
-    //         <span style={{ fontWeight: "", color: "#08C66C" }}>
-    //           Progressive Web App (PWA)
-    //         </span>
-    //         .
-    //       </div>
-    //     ),
-    //   },
-    //   {
-    //     id: 2,
-    //     content: (
-    //       <div>
-    //         I’ve gained experience in optimizing web performance and building
-    //         responsive UIs, with a focus on delivering high-quality code
-    //       </div>
-    //     ),
-    //   },
-    //   {
-    //     id: 3,
-    //     content: (
-    //       <div>
-    //         My work involved collaborating closely with
-    //         <span style={{ fontWeight: "" }}>back-end developers</span> to
-    //         ensure a{" "}
-    //         <span style={{ fontWeight: "", color: "#08C66C" }}>
-    //           seamless user experience
-    //         </span>
-    //         .
-    //       </div>
-    //     ),
-    //   },
-    // ],
+    companyName: "VexLogic",
+    role: "Full Stack Developer",
+    color: "#10B981",
+    logo: digitalNativsLogo?.src, // Using existing logo as placeholder
+    date: "Q2 2025",
+    desc: "VexLogic is an AI-powered SaaS platform offering document management and conversational AI tools for enterprises. As a Full Stack Developer, I worked on both frontend and backend to build a multi-tenant system supporting subscription billing and real-time communication. I developed the SuperAdmin dashboard using React, TypeScript, and Tailwind CSS, with reusable UI components powered by Shadcn/ui. On the backend, I integrated Stripe billing, WebSockets for real-time chat, and API endpoints for tenant and analytics management. I also collaborated on AI integrations like semantic search and intelligent virtual assistants. By designing pixel-perfect UIs and optimizing API performance, I contributed to building a scalable, high-performance SaaS platform. I also helped launch features that connected creators and businesses through AI-powered search and automation, reinforcing VexLogic's position as a leading enterprise solution.",
     roles: [
-      "Collaborated with back-end developers and UI/UX designers to create seamless user experiences.",
-      "Developed interactive web applications using React and Tailwind CSS.",
-      "Worked with front-end database technology, specifically Dexie, to manage local data storage.",
-      "Implemented barcode scanning functionality within the web app.",
-      "Developed a Progressive Web App (PWA) for enhanced offline capabilities and better user engagement.",
-      "Utilized ClickUp for task management and maintaining an organized workflow.",
-      "Optimized web performance, ensuring responsive and accessible UI design.",
+      "Built multi-tenant system supporting subscription billing and real-time communication",
+      "Developed SuperAdmin dashboard using React, TypeScript, and Tailwind CSS",
+      "Created reusable UI components powered by Shadcn/ui",
+      "Integrated Stripe billing and WebSockets for real-time chat functionality",
+      "Built API endpoints for tenant and analytics management",
+      "Collaborated on AI integrations including semantic search and virtual assistants",
+      "Designed pixel-perfect UIs and optimized API performance",
+      "Launched AI-powered search and automation features for creators and businesses",
     ],
   },
-
+  {
+    companyName: "Comra AI",
+    role: "Full Stack Developer",
+    color: "#F59E0B",
+    logo: cdointexlogo?.src, // Using existing logo as placeholder
+    date: "Q4 2024 – Present",
+    desc: "Comra AI is a virtual tour application that uses Gaussian Splatting to deliver immersive 3D environments for real estate and architecture. As a Full Stack Developer, I built interactive experiences with React Three Fiber, Three.js, and Drei on the frontend, while managing APIs and data flow with Prisma and PostgreSQL on the backend. I implemented smooth navigation, optimized rendering pipelines, and integrated user authentication and 3D scene management. My work balanced WebGL performance optimization with UI scalability, ensuring a responsive experience across devices. Collaborating across design and backend teams, I also optimized mobile rendering, improving performance and accessibility. This project highlighted my ability to merge frontend 3D experiences with backend systems, creating a scalable, real-time platform that revolutionized how users interact with virtual spaces.",
+    roles: [
+      "Built immersive 3D virtual tour experiences using React Three Fiber, Three.js, and Drei",
+      "Developed backend APIs and data flow management with Prisma and PostgreSQL",
+      "Implemented smooth navigation and optimized rendering pipelines for 3D environments",
+      "Integrated user authentication and 3D scene management systems",
+      "Balanced WebGL performance optimization with UI scalability",
+      "Optimized mobile rendering for improved performance and accessibility",
+      "Created scalable, real-time platform for virtual space interactions",
+      "Collaborated across design and backend teams for seamless integration",
+    ],
+  },
   {
     companyName: "Digital Natives",
     role: "Frontend Developer",
     color: "#EC3951",
     logo: digitalNativsLogo?.src,
-    date: "Feb 2024 - Present",
-    desc: "In Digital Natives, I worked closely with back-end developers and UI/UX designers to build medium to large-scale applications. I implemented advanced features like drag and drop, map selection, and an interactive big calendar similar to Airbnb’s. I also developed advanced navigation systems, implemented lazy loading for performance improvements, and added an infinite scroll feature to enhance user experience. This role gave me the opportunity to tackle real-world front-end challenges, further refining my technical skills and problem-solving abilities.",
-
-
-
-    // content: [
-    //   {
-    //     id: 1,
-    //     content: (
-    //       <div style={{ display: "inline" }}>
-    //         <h1 style={{ display: "inline", fontSize: "inherit" }}>
-    //           In my second front-end role, I worked closely with{" "}
-    //           <span> back-end developers </span> and{" "}
-    //           <span>UI/UX designers</span> to build medium to large-scale
-    //           applications.
-    //         </h1>{" "}
-    //         I implemented advanced features like{" "}
-    //         <span style={{ fontWeight: "", color: "#FF5733" }}>
-    //           drag and drop
-    //         </span>
-    //         ,
-    //         <span style={{ fontWeight: "", color: "#FF5733" }}>
-    //           {" "}
-    //           map selection
-    //         </span>
-    //         , and an interactive{" "}
-    //         <span style={{ fontWeight: "", color: "#FF5733" }}>
-    //           big calendar
-    //         </span>{" "}
-    //         similar to Airbnb’s.
-    //       </div>
-    //     ),
-    //   },
-    //   {
-    //     id: 2,
-    //     content: (
-    //       <div>
-    //         I also developed{" "}
-    //         <span style={{ fontWeight: "" }}>advanced navigation</span> systems,
-    //         implemented <span style={{ fontWeight: "" }}>lazy loading</span> for
-    //         performance improvements, and added an{" "}
-    //         <span style={{ color: "#FF5733" }}>infinite scroll</span> feature to
-    //         enhance user experience.
-    //       </div>
-    //     ),
-    //   },
-    //   {
-    //     id: 3,
-    //     content: (
-    //       <div>
-    //         This role gave me the opportunity to tackle real-world{" "}
-    //         <span>front-end challenges</span>, further refining my technical
-    //         skills and problem-solving abilities.
-    //       </div>
-    //     ),
-    //   },
-    // ],
+    date: "Q1 2024 – Q4 2024",
+    desc: "Digital Natives is a software development company focused on delivering scalable web solutions for large-scale projects. The frontend team was responsible for building reusable UI systems, implementing modern frameworks, and optimizing performance across diverse client platforms. As a Frontend Developer, I built modern web applications using React.js, Next.js, and Tailwind CSS. I created reusable components, optimized performance, and ensured responsive design across multiple devices. I also implemented GSAP and Framer Motion animations to enhance user engagement and collaborated closely with UI/UX designers to deliver pixel-perfect, production-ready interfaces.",
     roles: [
-      "Collaborated closely with back-end developers and UI/UX designers to build medium to large-scale applications using React & Next.js.",
-      "Implemented advanced front-end features, including drag and drop functionality and map selection.",
-      "Developed an interactive big calendar, similar to Airbnb’s, allowing users to interact with scheduling features.",
-      "Created advanced navigation systems to improve user experience and ease of use.",
-      "Optimized web performance using lazy loading techniques in React, resulting in faster load times.",
-      "Improved SEO in React applications through server-side rendering techniques and dynamic content optimization.",
-      "Implemented infinite scroll to enhance user experience in content-heavy applications.",
-      "Worked on delivering high-quality, responsive web applications using React, Next.js, and Tailwind CSS.",
+      "Built modern web applications using React.js, Next.js, and Tailwind CSS",
+      "Created reusable UI components and design systems for scalable solutions",
+      "Optimized performance across diverse client platforms",
+      "Implemented GSAP and Framer Motion animations for enhanced user engagement",
+      "Ensured responsive design across multiple devices and screen sizes",
+      "Collaborated closely with UI/UX designers for pixel-perfect interfaces",
+      "Delivered production-ready interfaces for large-scale projects",
+      "Built reusable UI systems for consistent design across platforms",
+    ],
+  },
+  {
+    companyName: "Fintechracy",
+    role: "Frontend Developer",
+    color: "#08C66C",
+    logo: fintechracyLogo?.src,
+    date: "Q4 2023 – Q1 2024",
+    desc: "Fintechracy is a financial technology startup focused on building secure, mobile-first applications for managing payments and investments. The engineering team was responsible for creating a PWA with offline capabilities, scalable client-side storage, and advanced user interaction features. As a Frontend Developer, I developed the platform's PWA with React.js and implemented Dexie.js (IndexedDB) for offline client-side storage. I optimized performance with lazy loading and infinite scroll, and built advanced features like barcode scanning, drag-and-drop interfaces, and interactive calendar components. By prioritizing mobile-first design, I helped deliver a fast, reliable, and user-friendly experience. I also introduced front-end performance improvements that significantly reduced load times, ensuring the PWA remained efficient on low-resource devices. My ability to integrate advanced features like barcode scanning and offline workflows positioned Fintechracy's platform as a strong competitor in the financial technology space.",
+    roles: [
+      "Developed PWA with React.js and implemented Dexie.js for offline client-side storage",
+      "Built advanced features including barcode scanning and drag-and-drop interfaces",
+      "Created interactive calendar components for financial management",
+      "Optimized performance with lazy loading and infinite scroll techniques",
+      "Implemented mobile-first design for fast, reliable user experience",
+      "Introduced performance improvements that significantly reduced load times",
+      "Ensured PWA efficiency on low-resource devices",
+      "Integrated offline workflows for seamless financial operations",
+    ],
+  },
+  {
+    companyName: "Codintex",
+    role: "Frontend Developer (Internship)",
+    color: "#0075FF",
+    logo: cdointexlogo?.src,
+    date: "Q3 2022 – Q3 2023",
+    desc: "Codintex is a development company specializing in desktop applications and enterprise solutions. The team worked on building secure and efficient software tools for business operations. As a Frontend Developer Intern, I contributed to building desktop applications using .NET and C#, gaining foundational experience in backend systems, databases, and security practices. I also collaborated with cross-functional teams, learning agile workflows and best practices for scalable application development. This internship provided me with the technical foundation and teamwork experience that shaped my career in frontend engineering.",
+    roles: [
+      "Contributed to building desktop applications using .NET and C#",
+      "Gained foundational experience in backend systems and databases",
+      "Learned security practices for enterprise software development",
+      "Collaborated with cross-functional teams on agile workflows",
+      "Applied best practices for scalable application development",
+      "Developed technical foundation for frontend engineering career",
+      "Worked on secure and efficient software tools for business operations",
+      "Gained hands-on experience in enterprise solution development",
     ],
   },
 ];

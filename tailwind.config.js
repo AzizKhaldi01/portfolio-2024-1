@@ -11,9 +11,11 @@ module.exports = {
           'spin-slow': 'spin 10s linear infinite', // Change the duration as needed
         },
         fontFamily: {
-          righteous: ['Righteous', 'sans-serif'],
+          righteous: ['var(--font-cabinetGrotesk)', 'sans-serif'],
           magra: ['Magra', 'sans-serif'],
           Megrim: ['Megrim', 'sans-serif'],
+          lora: ['var(--font-lora)', 'serif'],
+          cabinetGrotesk: ['var(--font-cabinetGrotesk)', 'sans-serif'],
         },
       backgroundImage: {
         "gradient-radial": "radial-gradient(var(--tw-gradient-stops))",
@@ -23,7 +25,7 @@ module.exports = {
       colors: {
         main: '#e7e7e7',
         sec: '#1E1E1E',
-        thr: '#A1DD70',
+        thr: '#f67216',
       },
     },
   },

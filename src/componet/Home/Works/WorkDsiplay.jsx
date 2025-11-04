@@ -6,6 +6,7 @@ import Link from "next/link";
 import ArrowIcon from "@/assest/Icons/ArrowIcon";
 import gsap from "gsap";
 import ScrollTrigger from "gsap/dist/ScrollTrigger";
+import ScrollReveal from "../../gsap/ScrollReveal";
 
 
 
@@ -18,34 +19,8 @@ function WorkDsiplay({ item }) {
   const targetY = useRef(0);
 
   useEffect(() => {
-    // Dynamically import Splitting only on the client side
-    const initializeSplitting = async () => {
-      const Splitting = (await import('splitting')).default;
-      const results = Splitting({ target: titleRef.current, by: 'chars' });
-      
-      // Animate the chars
-      gsap.fromTo(results[0].chars,
-        {
-          opacity: 0,
-          y: 100,
-        },
-        {
-          opacity: 1,
-          y: 0,
-          stagger: 0.05,
-          duration: 0.8,
-          ease: "power4.out",
-          scrollTrigger: {
-            trigger: cardRef.current,
-            start: 'top center',
-            toggleActions: 'play none none reverse'
-          }
-        }
-      );
-    };
-
     gsap.registerPlugin(ScrollTrigger);
-    initializeSplitting();
+    // Title animation is now handled by ScrollReveal component
 
     // Your existing animations
     gsap.fromTo(buttonRef.current,
@@ -107,13 +82,18 @@ function WorkDsiplay({ item }) {
         />
       </Link>
       <div className="cursor-default top-[12%] md:top-[0%] right-[50%] translate-x-[50%] transform absolute">
-        <h1
-          ref={titleRef}
-          className={`work_title lg:text-[10rem] md:text-[6rem] text-[4rem] ${item.color} font-righteous whitespace-nowrap`}
-          data-splitting=""
+        <ScrollReveal
+          baseOpacity={0.1}
+          enableBlur={true}
+          baseRotation={4}
+          delay={0.5}
+          duration={1}
+          blurStrength={8}
+          containerClassName=""
+          textClassName={`work_title lg:text-[10rem] md:text-[6rem] text-[4rem] ${item.color} font-righteous whitespace-nowrap`}
         >
           {item.title}
-        </h1>
+        </ScrollReveal>
       </div>
 
       <Magnetic>

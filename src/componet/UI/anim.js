@@ -1,22 +1,28 @@
 export const text = {
   initial: {
     opacity: 1,
-  // yPercent: 100,  // Start below the viewport
+    y: 0,
+    scale: 1,
   },
   enter: {
     opacity: 0,
-    top: -200,
-    // yPercent:0,
-    transition: { duration: 0.75, delay: 0.35, ease: [0.76, 0, 0.24, 1] },
-    zIndex: 100,
-    transitionEnd: { top: "47.5%", zIndex: 0 },
+    y: -50,
+    scale: 0.9,
+    transition: { 
+      duration: 0.5, 
+      delay: 0.3, 
+      ease: [0.25, 0.46, 0.45, 0.94] 
+    },
   },
   exit: {
     opacity: 1,
-    // yPercent:-50,
-    zIndex: 100,
-    top: "40%",
-    transition: { duration: 0.5, delay: 0.4, ease: [0.33, 1, 0.68, 1] },
+    y: 0,
+    scale: 1,
+    transition: { 
+      duration: 0.3, 
+      delay: 0.1, 
+      ease: [0.25, 0.46, 0.45, 0.94] 
+    },
   },
 };
 

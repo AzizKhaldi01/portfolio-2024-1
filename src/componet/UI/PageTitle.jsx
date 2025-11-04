@@ -5,7 +5,7 @@ import { ScrollTrigger } from "gsap/dist/ScrollTrigger";
 
 gsap.registerPlugin(ScrollTrigger);
 
-function PageTitle({ title, section }) {
+function PageTitle({ title, section, subtitle }) {
   const textRefs = useRef([]);
 
   useEffect(() => {
@@ -27,17 +27,22 @@ function PageTitle({ title, section }) {
 
   return (
     <div
-      className={`title item ${section} w-full flex items-center font-light justify-center pt-5`}>
-      <span className="flex leading-0 flex-nowrap gap-5 overflow-hidden">
+      className={`title item ${section} w-full flex flex-col items-start font-light justify-center pt-5`}>
+      <span className="flex leading-0 flex-nowrap gap-2 md:gap-4 overflow-hidden">
         {title.split("").map((word, index) => (
           <h1
             key={index}
             ref={(el) => (textRefs.current[index] = el)}
-            className=" text-[1.8rem] lg:text-[4rem] font-Megrim">
+            className="text-6xl md:text-7xl lg:text-8xl xl:text-8xl font-righteous font-bold">
             {word}
           </h1>
         ))}
       </span>
+      {subtitle && (
+        <p className="text-left text-black/70 text-lg mt-4 max-w-3xl">
+          {subtitle}
+        </p>
+      )}
     </div>
   );
 }
