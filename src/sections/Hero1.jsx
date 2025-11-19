@@ -21,8 +21,8 @@ function Hero1() {
 
     gsap.fromTo(
       ".word",
-      { 
-        y: 250, 
+      {
+        y: 250,
         rotate: 3,
 
       },
@@ -31,7 +31,7 @@ function Hero1() {
         opacity: 1,
         rotate: 0,
         stagger: 0.15,
-        delay: 0.5,
+        delay: 0.3,
         duration: 1,
         // ease: "power3.out"
       }
@@ -42,7 +42,7 @@ function Hero1() {
       { y: 150 },
       {
         y: 0,
-        delay: 0.7,
+        delay: 0.9,
         duration: 0.6,
         stagger: 0.02,
         ease: "power1.out",
@@ -52,7 +52,7 @@ function Hero1() {
     gsap.fromTo(
       ".obj3d",
       {
-        y: 0, 
+        y: 0,
       },
       {
         scrollTrigger: {
@@ -72,7 +72,7 @@ function Hero1() {
       {/* Animated background */}
 
       {/* left side */}
-      <div className="    flex-col flex  lg:h-[80vh] h-[85vh] px-4  lg:px-10  pt-[5rem]   lg:mt-12 py-5 lg:py-10 items-center left-0 top-0  absolute   justify-end  lg:justify-between ">
+      <div className="  z-50 flex-col flex  lg:h-[80vh] h-[85vh] px-4  lg:px-10  pt-[5rem]   lg:mt-12 py-5 lg:py-10 items-center left-0 top-0  absolute   justify-end  lg:justify-between ">
         <div className="  item  lg:block hidden  h-[40vh] w-[1px] bg-gray-700  relative">
           <div className=" absolute  bottom-0 right-[50%] transform translate-x-[50%] h-[.3rem] bg-black rounded-[50%] w-[.3rem] "></div>
           <div className=" absolute top-0 right-[50%] transform translate-x-[50%] h-[.3rem] bg-black rounded-[50%] w-[.3rem] "></div>
@@ -81,19 +81,19 @@ function Hero1() {
       </div>
       {/* ------------------- */}
 
-      <div className=" flex  lg:pl-0 pl-0  lg:-mt-[13rem] -mt-[16rem]  flex-col lg:flex-row justify-center items-center ">
+      <div className=" flex  lg:pl-0 pl-0  lg:-mt-[13rem] -mt-[40rem]  flex-col lg:flex-row justify-center items-center ">
         {/* text */}
         <div className=" flex flex-col  item lg:px-0  px-[1rem] text-black z-50 justify-center ">
           {animations.slice(" ").map((animation, index) => (
-            <div style={{clipPath: "polygon(0 0%, 100% 0%, 100% 100%, 0 100%)"}} className=" words overflow-hidden  lg:leading-[6rem] leading-[2.1rem] ">
+            <div style={{ clipPath: "polygon(0 0%, 100% 0%, 100% 100%, 0 100%)" }} className=" words overflow-hidden  lg:leading-[5.5rem] md:leading-[3.2rem] leading-[2.1rem] ">
+
               <h1
                 key={index}
                 ref={(el) => (textRefs.current[index] = el)}
-                className={`${
-                  !animation.fontR
-                    ? "font-cabinetGrotesk text-[2.2rem] pb-1 text-center    lg:text-[6rem]  "
-                    : "  lg:text-[1.7rem] font-Megrim text-[1.5rem] text-center  lg:-mb-1  mb-1  "
-                }  word`}
+                className={`${!animation.fontR
+                    ? "font-cabinetGrotesk text-[1.8rem] xs:text-[2.2rem] sm:text-[2.8rem] md:text-[3.5rem] lg:text-[4rem] xl:text-[6rem] pb-1 text-center"
+                    : " font-cabinetGrotesk text-[1.2rem] xs:text-[1.5rem] sm:text-[1.6rem] md:text-[1.65rem] lg:text-[1.7rem] text-center mb-1 lg:-mb-1"
+                  } word`}
               >
                 {animation.text}
               </h1>
@@ -113,7 +113,7 @@ function Hero1() {
         scroll down
       </h1>
 
-      <span className=" absolute   lg:-top-[8rem] top-[12rem]  lg:-right-3 -z-10">
+      <span className=" absolute 2xl:-top-[5.5rem] xl:-top-[3rem] lg:-top-[0rem] top-[16rem]  lg:-right-3 -z-10">
         <BackgroundVideo trigger={".hero"} />
       </span>
     </div>

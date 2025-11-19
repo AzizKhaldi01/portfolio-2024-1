@@ -1,15 +1,21 @@
 import cdointexlogo from "../Images/Expereince/codinTexLogo.png";
 import digitalNativsLogo from "../Images/Expereince/digitalNativsLogo.png";
 import fintechracyLogo from "../Images/Expereince/fintechracyLogo.png";
+import techivationLogo from "../Images/Expereince/techivation_logo.jpg";
+import vexlogicLogo from "../Images/Expereince/vexlogic_logo.jpg";
+import comraLogo from "../Images/Expereince/comra_logo.jpg";
+
 
 export const paragraphData = [
   {
     companyName: "Techivation",
-    role: "Full Stack Developer",
+    role: "Full Stack Developer (Part-time)",
     color: "#8B5CF6",
-    logo: fintechracyLogo?.src, // Using existing logo as placeholder
-    date: "Q2 2025 – Present",
-    desc: "Techivation is an innovative company creating professional audio plug-ins used by thousands of music producers worldwide. While the audio team developed C++ plug-ins, I was responsible for designing, developing, and maintaining the full web and SaaS ecosystem. This included building scalable applications using React, Next.js, Express.js, PostgreSQL, and Tailwind CSS, ensuring smooth performance and responsive UI/UX across devices. As a Full Stack Developer, I implemented subscription and purchasing flows, built secure license key generation APIs, and developed dashboards for customer and license management. On the backend, I integrated Stripe payments, automated workflows, and ensured secure data flow between clients and servers. By collaborating with designers and backend engineers, I delivered performant, maintainable, and visually engaging solutions that supported Techivation's global user base. Additionally, I bridged the gap between the audio technology and web infrastructure by developing robust APIs, enhancing backend reliability, and maintaining platform security. My work ensured seamless user experiences—from plugin purchases to activation—contributing directly to Techivation's commercial growth.",
+    logo: techivationLogo?.src, // Placeholder for Techivation logo
+    date: "May 2025 – Present",
+    shortDesc:
+      "Building and maintaining Techivation’s full web and SaaS ecosystem powering audio plugin licensing and management.",
+    desc: "Techivation is an innovative company creating professional audio plug-ins used by thousands of music producers worldwide. While the audio team developed C++ plug-ins, I was responsible for designing, developing, and maintaining the full web and SaaS ecosystem. This included building scalable applications using React, Next.js, Express.js, PostgreSQL, and Tailwind CSS, ensuring smooth performance and responsive UI/UX across devices. As a Full Stack Developer, I implemented subscription and purchasing flows, built secure license key generation APIs, and developed dashboards for customer and license management. On the backend, I integrated Stripe payments, automated workflows, and ensured secure data flow between clients and servers. My work ensured seamless user experiences—from plugin purchases to activation—contributing directly to Techivation's commercial growth.",
     roles: [
       "Designed and developed scalable web and SaaS ecosystem using React, Next.js, Express.js, and PostgreSQL",
       "Implemented subscription and purchasing flows with secure license key generation APIs",
@@ -23,11 +29,13 @@ export const paragraphData = [
   },
   {
     companyName: "VexLogic",
-    role: "Full Stack Developer",
+    role: "Full Stack Engineer (Part-time)",
     color: "#10B981",
-    logo: digitalNativsLogo?.src, // Using existing logo as placeholder
-    date: "Q2 2025",
-    desc: "VexLogic is an AI-powered SaaS platform offering document management and conversational AI tools for enterprises. As a Full Stack Developer, I worked on both frontend and backend to build a multi-tenant system supporting subscription billing and real-time communication. I developed the SuperAdmin dashboard using React, TypeScript, and Tailwind CSS, with reusable UI components powered by Shadcn/ui. On the backend, I integrated Stripe billing, WebSockets for real-time chat, and API endpoints for tenant and analytics management. I also collaborated on AI integrations like semantic search and intelligent virtual assistants. By designing pixel-perfect UIs and optimizing API performance, I contributed to building a scalable, high-performance SaaS platform. I also helped launch features that connected creators and businesses through AI-powered search and automation, reinforcing VexLogic's position as a leading enterprise solution.",
+    logo: vexlogicLogo?.src, // Placeholder for VexLogic logo
+    date: "Jun 2025 – Present",
+    shortDesc:
+      "Developing an AI-powered SaaS platform with real-time collaboration, billing systems, and intelligent document management.",
+    desc: "VexLogic is an AI-powered SaaS platform offering document management and conversational AI tools for enterprises. As a Full Stack Engineer, I worked on both frontend and backend to build a multi-tenant system supporting subscription billing and real-time communication. I developed the SuperAdmin dashboard using React, TypeScript, and Tailwind CSS, with reusable UI components powered by Shadcn/ui. On the backend, I integrated Stripe billing, WebSockets for real-time chat, and API endpoints for tenant and analytics management. I also collaborated on AI integrations like semantic search and intelligent virtual assistants. By designing pixel-perfect UIs and optimizing API performance, I contributed to building a scalable, high-performance SaaS platform.",
     roles: [
       "Built multi-tenant system supporting subscription billing and real-time communication",
       "Developed SuperAdmin dashboard using React, TypeScript, and Tailwind CSS",
@@ -36,34 +44,38 @@ export const paragraphData = [
       "Built API endpoints for tenant and analytics management",
       "Collaborated on AI integrations including semantic search and virtual assistants",
       "Designed pixel-perfect UIs and optimized API performance",
-      "Launched AI-powered search and automation features for creators and businesses",
+      "Launched AI-powered automation features for enterprise clients",
     ],
   },
   {
     companyName: "Comra AI",
-    role: "Full Stack Developer",
+    role: "Full Stack Developer (Full-time)",
     color: "#F59E0B",
-    logo: cdointexlogo?.src, // Using existing logo as placeholder
-    date: "Q4 2024 – Present",
-    desc: "Comra AI is a virtual tour application that uses Gaussian Splatting to deliver immersive 3D environments for real estate and architecture. As a Full Stack Developer, I built interactive experiences with React Three Fiber, Three.js, and Drei on the frontend, while managing APIs and data flow with Prisma and PostgreSQL on the backend. I implemented smooth navigation, optimized rendering pipelines, and integrated user authentication and 3D scene management. My work balanced WebGL performance optimization with UI scalability, ensuring a responsive experience across devices. Collaborating across design and backend teams, I also optimized mobile rendering, improving performance and accessibility. This project highlighted my ability to merge frontend 3D experiences with backend systems, creating a scalable, real-time platform that revolutionized how users interact with virtual spaces.",
+    logo: comraLogo?.src, // Placeholder for Comra AI logo
+    date: "Nov 2024 – Present",
+    shortDesc:
+      "Building immersive 3D virtual tour systems using React Three Fiber, Prisma, and PostgreSQL for real estate and architecture.",
+    desc: "Comra AI is a virtual tour application that uses Gaussian Splatting to deliver immersive 3D environments for real estate and architecture. As a Full Stack Developer, I built interactive experiences with React Three Fiber, Three.js, and Drei on the frontend, while managing APIs and data flow with Prisma and PostgreSQL on the backend. I implemented smooth navigation, optimized rendering pipelines, and integrated user authentication and 3D scene management. My work balanced WebGL performance optimization with UI scalability, ensuring a responsive experience across devices.",
     roles: [
       "Built immersive 3D virtual tour experiences using React Three Fiber, Three.js, and Drei",
       "Developed backend APIs and data flow management with Prisma and PostgreSQL",
       "Implemented smooth navigation and optimized rendering pipelines for 3D environments",
       "Integrated user authentication and 3D scene management systems",
-      "Balanced WebGL performance optimization with UI scalability",
       "Optimized mobile rendering for improved performance and accessibility",
       "Created scalable, real-time platform for virtual space interactions",
       "Collaborated across design and backend teams for seamless integration",
+      "Maintained WebGL optimization and UI scalability across devices",
     ],
   },
   {
     companyName: "Digital Natives",
-    role: "Frontend Developer",
+    role: "Frontend Developer (Full-time)",
     color: "#EC3951",
     logo: digitalNativsLogo?.src,
-    date: "Q1 2024 – Q4 2024",
-    desc: "Digital Natives is a software development company focused on delivering scalable web solutions for large-scale projects. The frontend team was responsible for building reusable UI systems, implementing modern frameworks, and optimizing performance across diverse client platforms. As a Frontend Developer, I built modern web applications using React.js, Next.js, and Tailwind CSS. I created reusable components, optimized performance, and ensured responsive design across multiple devices. I also implemented GSAP and Framer Motion animations to enhance user engagement and collaborated closely with UI/UX designers to deliver pixel-perfect, production-ready interfaces.",
+    date: "Feb 2024 – Oct 2024",
+    shortDesc:
+      "Built scalable web apps and reusable UI systems using React, Next.js, and Tailwind CSS for enterprise clients.",
+    desc: "Digital Natives is a software development company focused on delivering scalable web solutions for large-scale projects. As a Frontend Developer, I built modern web applications using React.js, Next.js, and Tailwind CSS. I created reusable components, optimized performance, and ensured responsive design across devices. I also implemented GSAP and Framer Motion animations to enhance user engagement and collaborated closely with UI/UX designers to deliver pixel-perfect interfaces.",
     roles: [
       "Built modern web applications using React.js, Next.js, and Tailwind CSS",
       "Created reusable UI components and design systems for scalable solutions",
@@ -77,11 +89,13 @@ export const paragraphData = [
   },
   {
     companyName: "Fintechracy",
-    role: "Frontend Developer",
+    role: "Frontend Developer (Full-time)",
     color: "#08C66C",
     logo: fintechracyLogo?.src,
-    date: "Q4 2023 – Q1 2024",
-    desc: "Fintechracy is a financial technology startup focused on building secure, mobile-first applications for managing payments and investments. The engineering team was responsible for creating a PWA with offline capabilities, scalable client-side storage, and advanced user interaction features. As a Frontend Developer, I developed the platform's PWA with React.js and implemented Dexie.js (IndexedDB) for offline client-side storage. I optimized performance with lazy loading and infinite scroll, and built advanced features like barcode scanning, drag-and-drop interfaces, and interactive calendar components. By prioritizing mobile-first design, I helped deliver a fast, reliable, and user-friendly experience. I also introduced front-end performance improvements that significantly reduced load times, ensuring the PWA remained efficient on low-resource devices. My ability to integrate advanced features like barcode scanning and offline workflows positioned Fintechracy's platform as a strong competitor in the financial technology space.",
+    date: "Nov 2023 – Mar 2024",
+    shortDesc:
+      "Developed a mobile-first PWA for financial management with offline storage, barcode scanning, and performance optimization.",
+    desc: "Fintechracy is a financial technology startup focused on building secure, mobile-first applications for managing payments and investments. As a Frontend Developer, I developed the platform's PWA with React.js and implemented Dexie.js (IndexedDB) for offline client-side storage. I optimized performance with lazy loading and infinite scroll, and built advanced features like barcode scanning, drag-and-drop interfaces, and interactive calendar components. By prioritizing mobile-first design, I helped deliver a fast, reliable, and user-friendly experience.",
     roles: [
       "Developed PWA with React.js and implemented Dexie.js for offline client-side storage",
       "Built advanced features including barcode scanning and drag-and-drop interfaces",
@@ -95,18 +109,20 @@ export const paragraphData = [
   },
   {
     companyName: "Codintex",
-    role: "Frontend Developer (Internship)",
+    role: "Software Engineer (Internship)",
     color: "#0075FF",
     logo: cdointexlogo?.src,
-    date: "Q3 2022 – Q3 2023",
-    desc: "Codintex is a development company specializing in desktop applications and enterprise solutions. The team worked on building secure and efficient software tools for business operations. As a Frontend Developer Intern, I contributed to building desktop applications using .NET and C#, gaining foundational experience in backend systems, databases, and security practices. I also collaborated with cross-functional teams, learning agile workflows and best practices for scalable application development. This internship provided me with the technical foundation and teamwork experience that shaped my career in frontend engineering.",
+    date: "Jul 2022 – Sep 2023",
+    shortDesc:
+      "Worked on enterprise desktop apps using .NET and C#, gaining foundational experience in backend systems and security.",
+    desc: "Codintex is a development company specializing in desktop applications and enterprise solutions. As a Software Engineer Intern, I contributed to building desktop applications using .NET and C#, gaining foundational experience in backend systems, databases, and security practices. I also collaborated with cross-functional teams, learning agile workflows and best practices for scalable application development.",
     roles: [
       "Contributed to building desktop applications using .NET and C#",
       "Gained foundational experience in backend systems and databases",
       "Learned security practices for enterprise software development",
       "Collaborated with cross-functional teams on agile workflows",
       "Applied best practices for scalable application development",
-      "Developed technical foundation for frontend engineering career",
+      "Developed technical foundation for full-stack development career",
       "Worked on secure and efficient software tools for business operations",
       "Gained hands-on experience in enterprise solution development",
     ],

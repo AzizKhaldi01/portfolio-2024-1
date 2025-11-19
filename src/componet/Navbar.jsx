@@ -23,10 +23,10 @@ function Navbar({style , whiteLogo}) {
       text: "Works",
       Link: "/works",
     },
-    {
-      text: "Expereince",
-      Link: "/expereince",
-    },
+    // {
+    //   text: "Expereince",
+    //   Link: "/expereince",
+    // },
     {
       text: "Contact",
       Link: "/contact",

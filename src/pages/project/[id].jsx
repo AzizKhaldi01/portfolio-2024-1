@@ -14,6 +14,9 @@ import CurvedLoop from '../../componet/UI/CurvedLoop';
 import FlowingMenu from '../../componet/UI/FlowingMenu';
 import MagneticWrapper from '../../componet/gsap/Magnetic';
 import ButtonEffect from '../../componet/UI/ButtonEffect';
+import ButtonNew from '../../componet/UI/ButtonNew';
+import WordAnimation from '../../components/UI/WordAnimation';
+import ProjectCard from '../../componet/UI/ProjectCard';
 
 // Generate a URL-friendly slug from a project title
 const slugify = (text) =>
@@ -25,12 +28,24 @@ const slugify = (text) =>
         .replace(/\s+/g, "-")
         .replace(/-+/g, "-");
 
-const ProjectDetails = () => {
+const ProjectDetails = ({ initialProjectIndex = null }) => {
     const router = useRouter();
     const { id } = router.query; // now accepts slug or legacy numeric id
-    const [project, setProject] = useState(null);
-    const [nextProject, setNextProject] = useState(null);
-    const [prevProject, setPrevProject] = useState(null);
+    const [project, setProject] = useState(
+        initialProjectIndex !== null && initialProjectIndex >= 0
+            ? { ...worksObj[initialProjectIndex], index: initialProjectIndex }
+            : null
+    );
+    const [nextProject, setNextProject] = useState(
+        initialProjectIndex !== null && initialProjectIndex >= 0
+            ? { ...worksObj[(initialProjectIndex + 1) % worksObj.length], index: (initialProjectIndex + 1) % worksObj.length }
+            : null
+    );
+    const [prevProject, setPrevProject] = useState(
+        initialProjectIndex !== null && initialProjectIndex >= 0
+            ? { ...worksObj[initialProjectIndex === 0 ? worksObj.length - 1 : initialProjectIndex - 1], index: initialProjectIndex === 0 ? worksObj.length - 1 : initialProjectIndex - 1 }
+            : null
+    );
     const imageContainerRef = useRef(null);
     const imageRef = useRef(null);
     const containerRef = useRef(null);
@@ -244,7 +259,7 @@ const ProjectDetails = () => {
 
         const paddingAnim = gsap.fromTo(
             imageContainerRef.current,
-            { padding: "2rem", borderRadius: "0rem" },
+            { padding: "1rem md:1rem", borderRadius: "0rem" },
             {
                 padding: "0rem",
                 ease: "none",
@@ -340,7 +355,7 @@ const ProjectDetails = () => {
         if (myRoleSection) {
             ScrollTrigger.create({
                 trigger: myRoleSection,
-                start: "top center",
+                start: "top top",
                 onEnter: () => {
                     gsap.to('body', {
                         backgroundColor: '#e7e7e7',
@@ -367,6 +382,11 @@ const ProjectDetails = () => {
                     // Change curved loop text to black
                     gsap.to('.curved-text-white', {
                         fill: '#000000',
+                        duration: 0.3
+                    });
+                    // Change role subtitle to dark color
+                    gsap.to('.role-subtitle', {
+                        color: '#374151',
                         duration: 0.3
                     });
                 },
@@ -396,6 +416,11 @@ const ProjectDetails = () => {
                     // Revert curved loop text to white
                     gsap.to('.curved-text-white', {
                         fill: '#e7e7e7',
+                        duration: 0.3
+                    });
+                    // Keep role subtitle white
+                    gsap.to('.role-subtitle', {
+                        color: '#d1d5db',
                         duration: 0.3
                     });
                 }
@@ -435,34 +460,7 @@ const ProjectDetails = () => {
             </div>
         );
     }
-
-    const projectFeatures = [
-        "Responsive Design",
-        "Modern UI/UX",
-        "Performance Optimized",
-        "Cross-browser Compatible",
-        "Mobile First Approach",
-        "SEO Optimized"
-    ];
-
-    const techStack = [
-        "React.js",
-        "Next.js",
-        "Tailwind CSS",
-        "Framer Motion",
-        "GSAP",
-        "Node.js"
-    ];
-
-    // Gallery images - using placeholder images for demo
-    const galleryImages = [
-        project.img?.src || project.img, // Main project image
-        `https://picsum.photos/800/600?random=${project.index + 1}`,
-        `https://picsum.photos/800/600?random=${project.index + 2}`,
-        `https://picsum.photos/800/600?random=${project.index + 3}`,
-        `https://picsum.photos/800/600?random=${project.index + 4}`,
-        `https://picsum.photos/800/600?random=${project.index + 5}`,
-    ];
+ 
 
     return (
         <Curve>
@@ -479,7 +477,7 @@ const ProjectDetails = () => {
                 {/* Hero Header Section */}
                 <div className=" relative">
                     {/* Header Content */}
-                    <div className="pt-20 pb-8">
+                    <div className=" md:pt-20 pt-10 pb-8">
                         <div className="max-w-8xl mx-auto px-[1rem] lg:px-[2rem]">
                             <div className="flex flex-col lg:flex-row gap-6 lg:gap-12 items-start justify-between mb-8 lg:mb-12">
                                 {/* Left Column - Project Title */}
@@ -489,8 +487,13 @@ const ProjectDetails = () => {
                                     transition={{ duration: 0.8, delay: 0.3 }}
                                     className="w-full lg:w-auto"
                                 >
-                                    <h1 className="font-cabinetGrotesk text-[2.5rem] md:text-[3.5rem] lg:text-[5rem] font-bold leading-tight lg:leading-none">
-                                        {project.title}
+                                    <h1 className="font-cabinetGrotesk  text-[2.5rem] md:text-[3.5rem] lg:text-[5rem] font-bold leading-tight lg:leading-none">
+                                        <WordAnimation 
+                                            text={project.title}
+                                            stagger={0.05}
+                                            delay={0.3}
+                                            once={true}
+                                        />
                                     </h1>
                                 </motion.div>
 
@@ -502,10 +505,21 @@ const ProjectDetails = () => {
                                     className="lg:pt-8 space-y-2 text-start lg:text-end w-full lg:w-auto"
                                 >
                                     <h2 className="font-cabinetGrotesk text-lg md:text-xl lg:text-2xl font-normal">
-                                        Showcasing creativity
+                                        <WordAnimation 
+                                            text="Showcasing creativity"
+                                            stagger={0.03}
+                                            delay={0.5}
+                                            once={true}
+                                        />
                                     </h2>
                                     <p className="font-cabinetGrotesk text-lg md:text-xl lg:text-2xl italic">
-                                        Through outstanding project design
+                                        <WordAnimation 
+                                            text="Through outstanding project"
+                                            stagger={0.03}
+                                            delay={0.7}
+                                            once={true}
+                                            tag="span"
+                                        />
                                     </p>
                                 </motion.div>
                             </div>
@@ -527,42 +541,13 @@ const ProjectDetails = () => {
                                     <span className="font-cabinetGrotesk text-sm md:text-base lg:text-lg">Scroll to Explore</span>
                                 </div>
 
-                                {/* Share Links */}
-                                <div className="flex items-center gap-4 md:gap-8">
-                                    <span className="font-cabinetGrotesk text-sm md:text-base lg:text-lg">Share:</span>
-                                    <div className="flex items-center gap-4 md:gap-6">
-                                        <a
-                                            href={`https://www.facebook.com/sharer/sharer.php?u=${typeof window !== 'undefined' ? encodeURIComponent(window.location.href) : ''}`}
-                                            target="_blank"
-                                            rel="noopener noreferrer"
-                                            className="text-sm md:text-base lg:text-lg hover:opacity-60 transition-opacity"
-                                        >
-                                            Fb
-                                        </a>
-                                        <a
-                                            href={`https://twitter.com/intent/tweet?url=${typeof window !== 'undefined' ? encodeURIComponent(window.location.href) : ''}&text=${encodeURIComponent(project.title)}`}
-                                            target="_blank"
-                                            rel="noopener noreferrer"
-                                            className="text-sm md:text-base lg:text-lg hover:opacity-60 transition-opacity"
-                                        >
-                                            Tx
-                                        </a>
-                                        <a
-                                            href={`https://www.pinterest.com/pin/create/button/?url=${typeof window !== 'undefined' ? encodeURIComponent(window.location.href) : ''}&description=${encodeURIComponent(project.title)}`}
-                                            target="_blank"
-                                            rel="noopener noreferrer"
-                                            className="text-sm md:text-base lg:text-lg hover:opacity-60 transition-opacity"
-                                        >
-                                            Pn
-                                        </a>
-                                    </div>
-                                </div>
+     
                             </motion.div>
                         </div>
                     </div>
 
                     {/* Hero Image Section */}
-                    <div ref={imageContainerRef} style={{ padding: '2rem' }} className="relative overflow-hidden w-full min-h-[60vh] md:min-h-[80vh] lg:min-h-screen px-4 md:px-8 lg:px-20 pb-10 md:pb-20">
+                    <div ref={imageContainerRef} className=" p-[1rem] md:p-[2rem] relative overflow-hidden w-full min-h-[60vh] md:min-h-[80vh] lg:min-h-screen  pb-10 md:pb-20">
                         <motion.div
                             ref={imageRef}
                             initial={{ opacity: 0, scale: 1.05 }}
@@ -582,7 +567,7 @@ const ProjectDetails = () => {
 
 
                 {/* Case Description Section */}
-                <div className="project-overview-section mt-24 mb-32">
+                <div className="project-overview-section  lg:mt-24  mt-1 lg:mb-32 mb-12">
                     <div className='project-line w-screen h-[1px] bg-black mt-24 mb-12'></div>
                     <div className="max-w-8xl mx-auto px-[1rem] lg:px-[2rem]">
                         {/* Left Column - Project Title */}
@@ -599,24 +584,20 @@ const ProjectDetails = () => {
                             {/* Project Description */}
                             <div className="space-y-4 w-full lg:w-1/2 flex flex-col gap-4">
                                 <p className="text-base md:text-lg leading-relaxed font-cabinetGrotesk">
-                                    {project.description || `Being part of the ${project.title} creative team, I contributed to numerous digital projects.
-                                    My responsibilities involved designing engaging content for websites, mobile applications,
-                                    and marketing campaigns. With a focus on user experience and modern design principles,
-                                    I worked on both primary platforms and microsites, utilizing cutting-edge technologies
-                                    for each implementation, while also creating content for various channels and social media.`}
+                                    <WordAnimation 
+                                        text={project.description || `Being part of the ${project.title} creative team, I contributed to numerous digital projects. My responsibilities involved designing engaging content for websites, mobile applications, and marketing campaigns. With a focus on user experience and modern design principles, I worked on both primary platforms and microsites, utilizing cutting-edge technologies for each implementation, while also creating content for various channels and social media.`}
+                                        stagger={0.01}
+                                        start="top 85%"
+                                        tag="span"
+                                    />
                                 </p>
                                 {project.Link && project.Link !== "#" && (
-                                    <div className="isolate" style={{ contain: 'layout style paint' }}>
-                                        <a href={project.Link} target="_blank" rel="noopener noreferrer">
-                                            <ButtonEffect
-                                                strength={3.7}
-                                                Style="lg:px-[1.5rem] px-[2.8rem] lg:py-3 py-4 flex gap-2 border-[1px] border-black text-black hover:border-0 lg:text-base text-sm project-button"
-                                            >
-                                                <span className="flex items-center gap-4">
-                                                    Go to Website <ArrowIcon className="h-5 w-5" />
-                                                </span>
-                                            </ButtonEffect>
-                                        </a>
+                                    <div className="isolate flex justify-start" style={{ contain: 'layout style paint' }}>
+                                        <ButtonNew 
+                                            text="Live Website" 
+                                            link={project.Link}
+                                            className="project-button"
+                                        />
                                     </div>
                                 )}
                             </div>
@@ -671,7 +652,7 @@ const ProjectDetails = () => {
                                 className="overflow-hidden rounded-lg"
                             >
                                 <img
-                                    src={project?.galleryImages[1].src}
+                                src={project?.galleryImages?.[1]?.src}
                                     alt="Project detail 2"
                                     className="w-full h-[300px] md:h-[500px] lg:h-[700px] object-cover"
                                 />
@@ -692,10 +673,19 @@ const ProjectDetails = () => {
                                     className="lg:sticky lg:top-32"
                                 >
                                     <h2 className="font-cabinetGrotesk text-3xl md:text-4xl lg:text-5xl font-bold leading-tight">
-                                        Tech Stack
+                                        <WordAnimation 
+                                            text="Tech Stack"
+                                            stagger={0.08}
+                                            start="top 85%"
+                                        />
                                     </h2>
                                     <p className="text-base md:text-lg text-gray-300 mt-3 leading-relaxed">
-                                        Technologies and tools used to bring this project to life
+                                        <WordAnimation 
+                                            text="Technologies and tools used to bring this project to life"
+                                            stagger={0.02}
+                                            start="top 80%"
+                                            tag="span"
+                                        />
                                     </p>
                                 </motion.div>
 
@@ -715,7 +705,7 @@ const ProjectDetails = () => {
                                                 whileInView={{ opacity: 1, y: 0 }}
                                                 transition={{ duration: 0.5, delay: index * 0.05 }}
                                                 viewport={{ once: true }}
-                                                className="px-4 py-2 bg-white text-black rounded-full text-sm font-medium hover:bg-gray-800 transition-colors duration-300"
+                                                className="px-4 py-2 bg-white text-black rounded-full text-sm font-medium  transition-colors duration-300"
                                             >
                                                 {tech}
                                             </motion.div>
@@ -763,16 +753,16 @@ const ProjectDetails = () => {
                     </div>
 
                     {project.imagesSection && (
-                        <div ref={sectionRef} className="flex  lg:gap-8  gap-3  lg:px-8 px-3 mt-24">
+                        <div ref={sectionRef} className="flex lg:gap-8 gap-3 lg:px-8 px-3 mt-24">
                             {project.imagesSection.map((mediaSrc, index) => {
                                 // Get the actual source path (handle both string and object with .src)
                                 const srcPath = typeof mediaSrc === 'string' ? mediaSrc : (mediaSrc?.src || mediaSrc);
-                                
+
                                 // Check if the media is a video by checking the file extension
-                                const isVideo = typeof srcPath === 'string' && 
-                                    (srcPath.toLowerCase().endsWith('.mp4') || 
-                                     srcPath.toLowerCase().endsWith('.webm') || 
-                                     srcPath.toLowerCase().endsWith('.ogg'));
+                                const isVideo = typeof srcPath === 'string' &&
+                                    (srcPath.toLowerCase().endsWith('.mp4') ||
+                                        srcPath.toLowerCase().endsWith('.webm') ||
+                                        srcPath.toLowerCase().endsWith('.ogg'));
 
                                 return (
                                     <motion.div
@@ -822,10 +812,19 @@ const ProjectDetails = () => {
                                     className="lg:sticky lg:top-32"
                                 >
                                     <h2 className="font-cabinetGrotesk text-3xl md:text-4xl lg:text-5xl font-bold leading-tight">
-                                        My Role
+                                        <WordAnimation 
+                                            text="My Role"
+                                            stagger={0.1}
+                                            start="top 85%"
+                                        />
                                     </h2>
-                                    <p className="text-base md:text-lg text-gray-700 mt-3 leading-relaxed">
-                                        My contributions and responsibilities in this project
+                                    <p className="text-base md:text-lg text-gray-300 mt-3 leading-relaxed role-subtitle">
+                                        <WordAnimation 
+                                            text="My contributions and responsibilities in this project"
+                                            stagger={0.02}
+                                            start="top 80%"
+                                            tag="span"
+                                        />
                                     </p>
                                 </motion.div>
 
@@ -841,7 +840,12 @@ const ProjectDetails = () => {
                                     {project.role && (
                                         <div className="space-y-4">
                                             <p className="font-cabinetGrotesk text-lg leading-relaxed">
-                                                {project.role}
+                                                <WordAnimation 
+                                                    text={project.role}
+                                                    stagger={0.01}
+                                                    start="top 85%"
+                                                    tag="span"
+                                                />
                                             </p>
                                         </div>
                                     )}
@@ -852,23 +856,23 @@ const ProjectDetails = () => {
                                             <h3 className="font-cabinetGrotesk text-xl font-semibold">Key Responsibilities</h3>
                                             <div className="space-y-3">
                                                 {project.keyResponsibilities.map((responsibility, index) => (
-                                                    <p key={index} className="font-cabinetGrotesk text-base leading-relaxed">
+                                                    <div key={index} className="font-cabinetGrotesk text-base leading-relaxed">
                                                         • {responsibility}
-                                                    </p>
+                                                    </div>
                                                 ))}
                                             </div>
                                         </div>
                                     )}
 
                                     {/* Additional Role Information */}
-                                    {project.impact && project.impact.length > 0 && (
+                                    {Array.isArray(project.impact) && project.impact.length > 0 && (
                                         <div className="space-y-4">
                                             <h3 className="font-cabinetGrotesk text-xl font-semibold">Project Impact</h3>
                                             <div className="space-y-1">
                                                 {project.impact.map((impactItem, index) => (
-                                                    <p key={index} className="font-cabinetGrotesk text-base leading-relaxed">
+                                                    <div key={index} className="font-cabinetGrotesk text-base leading-relaxed">
                                                         • {impactItem}
-                                                    </p>
+                                                    </div>
                                                 ))}
                                             </div>
                                         </div>
@@ -888,68 +892,17 @@ const ProjectDetails = () => {
                                 curveAmount={300}
                                 direction="left"
                                 interactive={true}
-                                className="curved-text-white"
+                                className="curved-text-white text-[4rem]"
                             />
                         </div>
 
-                        {/* View Toggle Buttons */}
-                        <div className="flex justify-end gap-3 mb-10 px-[1rem] lg:px-[2rem]">
-                            <button
-                                onClick={() => setViewMode('grid')}
-                                className={`p-3 rounded-full font-semibold transition-all duration-300 ${viewMode === 'grid'
-                                    ? 'bg-white text-black'
-                                    : 'bg-white/10 text-white hover:bg-white/20'
-                                    }`}
-                                title="Grid View"
-                            >
-                                <svg
-                                    xmlns="http://www.w3.org/2000/svg"
-                                    width="24"
-                                    height="24"
-                                    viewBox="0 0 24 24"
-                                    fill="none"
-                                    stroke="currentColor"
-                                    strokeWidth="2"
-                                    strokeLinecap="round"
-                                    strokeLinejoin="round"
-                                >
-                                    <rect x="3" y="3" width="7" height="7"></rect>
-                                    <rect x="14" y="3" width="7" height="7"></rect>
-                                    <rect x="14" y="14" width="7" height="7"></rect>
-                                    <rect x="3" y="14" width="7" height="7"></rect>
-                                </svg>
-                            </button>
-                            <button
-                                onClick={() => setViewMode('flowing')}
-                                className={`p-3 rounded-full font-semibold transition-all duration-300 ${viewMode === 'flowing'
-                                    ? 'bg-white text-black'
-                                    : 'bg-white/10 text-white hover:bg-white/20'
-                                    }`}
-                                title="Flowing View"
-                            >
-                                <svg
-                                    xmlns="http://www.w3.org/2000/svg"
-                                    width="24"
-                                    height="24"
-                                    viewBox="0 0 24 24"
-                                    fill="none"
-                                    stroke="currentColor"
-                                    strokeWidth="2"
-                                    strokeLinecap="round"
-                                    strokeLinejoin="round"
-                                >
-                                    <line x1="3" y1="6" x2="21" y2="6"></line>
-                                    <line x1="3" y1="12" x2="21" y2="12"></line>
-                                    <line x1="3" y1="18" x2="21" y2="18"></line>
-                                </svg>
-                            </button>
-                        </div>
-
+                   
                         {/* Content Area - Conditional Rendering */}
-                        {viewMode === 'flowing' ? (
-                            <div className="max-w-8xl mx-auto px-[1rem] lg:px-[2rem]">
-                                <div style={{ height: '600px', position: 'relative' }}>
-                                    <FlowingMenu items={worksObj
+                        <div className="max-w-8xl mx-auto pb-[10rem] pt-14 px-[1rem] lg:px-[2rem]">
+                            {/* Desktop - FlowingMenu */}
+                            <div className="hidden md:block">
+                                <div style={{ height: '400px', position: 'relative' }}>
+                                    <FlowingMenu height={100} items={worksObj
                                         .filter((_, index) => index !== project.index)
                                         .slice(0, 6)
                                         .map(item => ({
@@ -959,31 +912,14 @@ const ProjectDetails = () => {
                                         }))}
                                     />
                                 </div>
-                                {/* View All Projects Button */}
-                                <motion.div
-                                    initial={{ opacity: 0, y: 30 }}
-                                    whileInView={{ opacity: 1, y: 0 }}
-                                    transition={{ duration: 0.6, delay: 0.3 }}
-                                    viewport={{ once: true }}
-                                    className="text-center mt-12"
-                                >
-                                    <Link href="/works">
-                                        <motion.button
-                                            whileHover={{ scale: 1.05 }}
-                                            whileTap={{ scale: 0.95 }}
-                                            className="px-8 py-4 text-sec rounded-full font-medium transition-all duration-300 border border-sec hover:border-sec/80"
-                                        >
-                                            View All Projects
-                                        </motion.button>
-                                    </Link>
-                                </motion.div>
                             </div>
-                        ) : (
-                            <div className="max-w-8xl mx-auto px-[1rem] lg:px-[2rem]">
-                                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+
+                            {/* Mobile - ProjectCard Grid */}
+                            <div className="block md:hidden">
+                                <div className="grid grid-cols-1 gap-8">
                                     {worksObj
-                                        .filter((_, index) => index !== project.index) // Exclude current project
-                                        .slice(0, 6) // Show only 6 other projects
+                                        .filter((_, index) => index !== project.index)
+                                        .slice(0, 6)
                                         .map((otherProject, index) => (
                                             <motion.div
                                                 key={index}
@@ -991,65 +927,28 @@ const ProjectDetails = () => {
                                                 whileInView={{ opacity: 1, y: 0 }}
                                                 transition={{ duration: 0.6, delay: index * 0.1 }}
                                                 viewport={{ once: true }}
-                                                whileHover={{ y: -10 }}
-                                                className="group cursor-pointer"
                                             >
-                                                <Link href={`/project/${slugify(otherProject.title)}`}>
-                                                    <div className="bg-white/10 rounded-2xl overflow-hidden hover:bg-white/20 transition-all duration-300">
-                                                        {/* Project Image */}
-                                                        <div className="aspect-[4/3] overflow-hidden">
-                                                            <img
-                                                                src={otherProject.img?.src || otherProject.img}
-                                                                alt={otherProject.title}
-                                                                className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
-                                                            />
-                                                        </div>
-
-                                                        {/* Project Info */}
-                                                        <div className="p-6">
-                                                            <h3 className="text-xl font-bold mb-2 group-hover:text-white/80 transition-colors">
-                                                                {otherProject.title}
-                                                            </h3>
-                                                            <p className="text-white/70 text-sm mb-3">
-                                                                {otherProject.time}
-                                                            </p>
-                                                            <div className="flex items-center gap-2 text-white/60 group-hover:text-white/80 transition-colors">
-                                                                <span className="text-sm">View Project</span>
-                                                                <motion.div
-                                                                    className="w-4 h-4"
-                                                                    whileHover={{ x: 3 }}
-                                                                    transition={{ duration: 0.2 }}
-                                                                >
-                                                                    <ArrowIcon />
-                                                                </motion.div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </Link>
+                                                <ProjectCard 
+                                                    project={otherProject}
+                                                    index={index}
+                                                />
                                             </motion.div>
                                         ))}
                                 </div>
-
-                                {/* View All Projects Button */}
-                                <motion.div
-                                    initial={{ opacity: 0, y: 30 }}
-                                    whileInView={{ opacity: 1, y: 0 }}
-                                    transition={{ duration: 0.6, delay: 0.3 }}
-                                    viewport={{ once: true }}
-                                    className="text-center mt-12"
-                                >
-                                    <Link href="/works">
-                                        <motion.button
-                                            whileHover={{ scale: 1.05 }}
-                                            whileTap={{ scale: 0.95 }}
-                                            className="px-8 py-4 bg-white/10 hover:bg-white/20 text-white rounded-full font-medium transition-all duration-300 border border-white/20 hover:border-white/40"
-                                        >
-                                            View All Projects
-                                        </motion.button>
-                                    </Link>
-                                </motion.div>
                             </div>
-                        )}
+
+                            {/* View All Projects Button */}
+                            <motion.div
+                                initial={{ opacity: 0, y: 30 }}
+                                whileInView={{ opacity: 1, y: 0 }}
+                                transition={{ duration: 0.6, delay: 0.3 }}
+                                viewport={{ once: true }}
+                                className="text-center mt-12"
+                            >
+                         
+                            </motion.div>
+                        </div>
+                   
                     </div>
                 </div>
             </div>
@@ -1062,3 +961,31 @@ const ProjectDetails = () => {
 };
 
 export default ProjectDetails;
+
+// Static generation for Next.js export
+export async function getStaticPaths() {
+    const paths = worksObj.map((p, index) => {
+        const slug = p.slug || slugify(p.title);
+        return { params: { id: slug } };
+    });
+    return { paths, fallback: false };
+}
+
+export async function getStaticProps({ params }) {
+    const slugParam = Array.isArray(params.id) ? params.id[0] : params.id;
+    let projectIndex = worksObj.findIndex((p) => p.slug === slugParam);
+    if (projectIndex === -1) {
+        projectIndex = worksObj.findIndex((p) => slugify(p.title) === slugParam);
+    }
+    if (projectIndex === -1 && /^\d+$/.test(slugParam)) {
+        projectIndex = parseInt(slugParam, 10);
+    }
+    if (projectIndex < 0 || projectIndex >= worksObj.length) {
+        return { notFound: true };
+    }
+    return {
+        props: {
+            initialProjectIndex: projectIndex,
+        },
+    };
+}

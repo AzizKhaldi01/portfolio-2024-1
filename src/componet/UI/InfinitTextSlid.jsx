@@ -2,8 +2,18 @@ import BigStar from "@/assest/Icons/bigStar";
 import { gsap } from "gsap";
 import ScrollTrigger from "gsap/dist/ScrollTrigger";
 import React, { useEffect, useRef } from "react";
+import greenFlower from "@/assest/Images/green-flower.avif";
+import Image from "next/image";
 
-function InfinitTextSlid({ trigger, style, color, delay = 0 }) {
+
+
+const Flower = () => {
+  return (
+    <Image src={greenFlower} alt="green flower" className="h-16 w-16 lg:h-[8rem] lg:w-[8rem] " />
+  );
+};
+
+function InfinitTextSlid({ trigger, style, color, delay = 0, className = "", isFlower = false }) {
   const marqueeRef = useRef(null);
 
   useEffect(() => {
@@ -32,7 +42,6 @@ function InfinitTextSlid({ trigger, style, color, delay = 0 }) {
       }
     );
 
-    // ✅ Infinite horizontal scroll effect with consistent speed
     const baseSpeed = 20;
     let currentDirection = -1;
 
@@ -86,7 +95,7 @@ function InfinitTextSlid({ trigger, style, color, delay = 0 }) {
 
   return (
     <div
-      className={`item relative w-full overflow-hidden ${style} md:text-[7rem] text-[3rem] h-full lg:py-28 py-20`}
+      className={`item font-semibold relative w-full overflow-hidden ${style} md:text-[8rem] text-[3rem] h-full lg:py-28 py-20`}
     >
       <div className="absolute top-[50%] right-[50%] transform translate-x-[50%] translate-y-[-50%] overflow-hidden w-fit">
         <div
@@ -94,23 +103,28 @@ function InfinitTextSlid({ trigger, style, color, delay = 0 }) {
           style={{
             clipPath: "polygon(0 0%, 100% 0%, 100% 100%, 0% 100%)",
           }}
-          className=" infinit-text whitespace-nowrap flex overflow-hidden items-center font-normal"
+          className=" infinit-text whitespace-nowrap flex overflow-hidden items-center "
         >
           <div className="flex items-center gap-10">
-            <BigStar color={color} className="h-10 w-10 lg:h-20 lg:w-20" />
+              {isFlower && <Flower />}
+              {!isFlower && <BigStar color={color} className="h-16 w-16 lg:h-20 lg:w-20" />}
             FULL-STACK DEVELOPER
-            <BigStar color={color} className="h-10 w-10 lg:h-20 lg:w-20" />
+            <BigStar color={color} className="h-16 w-16 lg:h-20 lg:w-20" />
             UI & UX DESIGNER.
           </div>
           <div className="flex items-center gap-10 whitespace-nowrap">
-            <BigStar color={color} className="h-10 w-10 lg:h-20 lg:w-20" />
+            {isFlower && <Flower />}
+            {!isFlower && <BigStar color={color} className="h-16 w-16 lg:h-20 lg:w-20" />}
             FULL-STACK DEVELOPER
-            <BigStar color={color} className="h-10 w-10 lg:h-20 lg:w-20" />
+            <BigStar color={color} className="h-16 w-16 lg:h-20 lg:w-20" />
             UI & UX DESIGNER.
+            {isFlower && <Flower />}
+            {!isFlower && <BigStar color={color} className="h-16 w-16 lg:h-20 lg:w-20" />}
           </div>
           <div className="flex items-center gap-10">
             FULL-STACK DEVELOPER UI & UX DESIGNER.
-            <BigStar className="h-10 w-10 lg:h-20 lg:w-20" color={color} />
+            {isFlower && <Flower />}
+            {!isFlower && <BigStar className="h-16 w-16 lg:h-28 lg:w-28" color={color} />}
           </div>
         </div>
       </div>

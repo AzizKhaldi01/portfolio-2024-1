@@ -5,14 +5,14 @@ import Hero1 from "../sections/Hero1";
 import AboutMe from "../sections/AboutMe";
 import { useEffect } from "react";
 import Works from "../sections/Works";
-import FAQ from "../sections/FAQ.jsx";
+// import FAQ from "../sections/FAQ.jsx";
 import SlidingBars from "../componet/Home/SlidingBars";
 import Curve from "@/componet/UI/NavCurve";
 import Footer from "../componet/Footer/Footer";
 import SEO from "@/componet/SEO/Seo";
-import me from "../assest/Images/about/ana.jpeg";
+import me from "../assest/Images/about/aziz-about-me.jpg";
 import ExperienceSection from "../sections/ExperienceSection";
-import Testimonials from "@/sections/Testimonials";
+// import Testimonials from "@/sections/Testimonials";
 
 const Home = () => {
   useEffect(() => {
@@ -24,10 +24,10 @@ const Home = () => {
   return (
     <Curve>
       <SEO
-        title="Aziz Khaldi | Frontend Developer Portfolio"
-        description="Explore Aziz Khaldi's portfolio showcasing innovative frontend development projects, UI/UX designs, and creative web solutions."
+        title="Aziz Khaldi | Software Engineer Portfolio"
+        description="Explore Aziz Khaldi's portfolio showcasing innovative software engineering projects, UI/UX designs, and creative web solutions."
         image={me.src}
-        url="https://azizkhaldiportfolio.vercel.app/"
+        url="https://azizkhaldi.com/"
       />
       <div className="home cursor-default bg-main relative flex flex-col overflow-y-hidden h-full">
         {/* <CursorMask /> */}
@@ -36,7 +36,7 @@ const Home = () => {
         <AboutMe />
         <Works />
         <ExperienceSection />
-        <Testimonials />
+        {/* <Testimonials /> */}
         <SlidingBars />
         {/* <FAQ /> */}
         <Footer />

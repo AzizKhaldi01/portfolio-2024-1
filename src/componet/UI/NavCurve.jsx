@@ -6,6 +6,7 @@ import styles from "./curve.module.css";
 import { useRouter } from "next/router";
 import { useMediaQuery } from "react-responsive";
 import { AppContext } from "@/context/AppContext";
+import { worksObj } from "@/assest/data/WorkObj";
 
 const routes = {
   "/": "Home",
@@ -32,6 +33,21 @@ export default function Curve({ children, backgroundColor }) {
   const { firstLoad } = useContext(AppContext);
 
   const router = useRouter();
+  
+  // Get display text for current route
+  const getDisplayText = () => {
+    if (firstLoad && router.pathname === "/") {
+      return "Hello!";
+    }
+    
+    // Check if we're on a project page
+    if (router.pathname === "/project/[id]" && router.query.id) {
+      const project = worksObj.find(p => p.slug === router.query.id);
+      return project ? project.title : "Project";
+    }
+    
+    return routes[router.pathname] || "Page";
+  };
 
   // Get the current route
   useEffect(() => {
@@ -61,19 +77,21 @@ export default function Curve({ children, backgroundColor }) {
         className={`    ${styles.background}   h-[100vh] w-full fixed top-0  z-50 right-0 bg-[#111111]`}
       />
 
-      <motion.p
+      <motion.div
         style={{
           clipPath: "polygon(0 0, 100% 0, 100% 100%, 0% 100%)",
+          position: 'fixed',
+          top: '50%',
+          left: '50%',
+          zIndex: 100
         }}
         {...anim(text)}
         className={
-          " fixed top-[40%]  font-righteous translate-x-[50%] translate-y-[40%] right-[50%] z-[100] text-6xl text-white "
+          "lg:text-6xl text-4xl text-white font-righteous text-center"
         }
       >
-        {firstLoad && router.pathname === "/"
-          ? "Hello!"
-          : routes[router.pathname]}
-      </motion.p>
+        {getDisplayText()}
+      </motion.div>
       {dimensions.width != null && <SVG {...dimensions} />}
       {children}
     </div>

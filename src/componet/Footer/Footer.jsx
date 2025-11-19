@@ -18,7 +18,6 @@ gsap.registerPlugin(ScrollTrigger);
 
 function Footer() {
   const nameRef = useRef(null);
-  const textRefs = useRef([]);
   const localTime = useLocalTime();
 
   const Links = [
@@ -34,9 +33,13 @@ function Footer() {
           link: "/works",
         },
         {
-          text: "Experience",
-          link: "/expereince",
+          text: "About",
+          link: "/about-me",
         },
+        // {
+        //   text: "Experience",
+        //   link: "/expereince",
+        // },
         {
           text: "Contact",
           link: "/contact",
@@ -136,20 +139,27 @@ function Footer() {
 
 
     const letters = nameRef.current.querySelectorAll(".char");
-    gsap.fromTo(
-      letters,
-      { y: 150 },
-      {
-        y:90,
-        duration: 1.2,
-        stagger: 0.1,
-        scrollTrigger: {
-          trigger: nameRef.current,
-          start: "top 80%",  // start animating when element enters viewport
-          end: "bottom 60%", // finish before leaving
-        },
+    
+    // Set initial state
+    gsap.set(letters, {
+      yPercent: 100,
+    });
+
+    // Animate each character coming up
+    gsap.to(letters, {
+      yPercent: 0,
+      duration: 1,
+      ease: "expo.out",
+      stagger: {
+        amount: 0.1, // Total time for all staggers
+        from: "start"
+      },
+      scrollTrigger: {
+        trigger: nameRef.current,
+        start: "top 60%",
+        toggleActions: "play none none reverse"
       }
-    );
+    });
 
 
     // Footer text animation
@@ -255,14 +265,12 @@ function Footer() {
           {/* <div className=" h-full w-full absolute top-0 right-0">
             <ShuffleModals />
           </div> */}
-
-
           <div className="lg:flex-row lg:w-fit w-full  lg:px-0 px-[1rem] md:items-start items-center flex-col flex gap-5 pt-10">
             <div className=" w-full">
               <ButtonEffect
                 strength={3.5}
                 Style={
-                  "bg-sec lg:w-fit  w-full border-white hover:border-0 border-[1px] text-white"
+                  "bg-sec lg:w-fit w-full hover:text-sec border-white hover:border-0 border-[1px] text-white"
                 }
               >
                 <a
@@ -293,9 +301,9 @@ function Footer() {
         <div className="flex  flex-col items-center justify-center w-full relative">
 
           {/* Spline Robot */}
-          <div className=" hidden lg:block  absolute -top-[18rem] scale-90 translate-x-1/2 right-1/2 lg:w-[450px] lg:h-[450px] w-[300px] h-[300px] rounded-lg">
+          <div className=" hidden lg:block  absolute -top-[15em] scale-90 translate-x-1/2 right-1/2 lg:w-[450px] lg:h-[450px] w-[300px] h-[300px] rounded-lg">
             <Spline
-              scene="/robot.splinecode"
+              scene="/scene (1).splinecode"
               style={{ width: '100%', height: '100%' }}
             />
           </div>
@@ -304,7 +312,7 @@ function Footer() {
               <h1 ref={nameRef} className="aziz-text font-righteous ">AZIZ</h1>
             </div> */}
 
-            <h1 ref={nameRef} className="aziz-text font-righteous flex">
+            <h1 ref={nameRef} className="aziz-text font-righteous -mb-[5rem] flex overflow-hidden">
               {text.split("").map((char, i) => (
                 <span key={i} className="char inline-block">
                   {char}

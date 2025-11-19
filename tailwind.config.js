@@ -7,6 +7,10 @@ module.exports = {
   ],
   theme: {
       extend: {
+        screens: {
+          '3xl': '1620px',
+          '4xl': '1920px',
+        },
         animation: {
           'spin-slow': 'spin 10s linear infinite', // Change the duration as needed
         },
@@ -25,7 +29,7 @@ module.exports = {
       colors: {
         main: '#e7e7e7',
         sec: '#1E1E1E',
-        thr: '#f67216',
+        thr: '#D4F534',
       },
     },
   },

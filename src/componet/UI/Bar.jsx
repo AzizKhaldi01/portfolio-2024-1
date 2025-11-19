@@ -76,19 +76,19 @@ function Bar({ derection, initial, deg }) {
       <div ref={marqueeRef} className="  relative  flex gap-6  items-start ">
         <div className="flex  gap-6 flex-row      mr-14 absolute w-full  whitespace-nowrap right-[100%] top-0">
           {marqueeItems.map((item, index) => (
-            <Item index={index} item={item} />
+            <Item key={`left-${index}`} index={index} item={item} />
           ))}
         </div>
 
         <div className="flex  w-full      gap-4 flex-row  whitespace-nowrap    ">
           {marqueeItems.map((item, index) => (
-            <Item index={index} item={item} />
+            <Item key={`center-${index}`} index={index} item={item} />
           ))}
         </div>
 
         <div className="flex  gap-6 flex-row    ml-5 absolute w-full  whitespace-nowrap left-[100%] top-0">
           {marqueeItems.map((item, index) => (
-            <Item index={index} item={item} />
+            <Item key={`right-${index}`} index={index} item={item} />
           ))}
         </div>
       </div>
@@ -101,7 +101,6 @@ export default Bar;
 function Item({ item, index }) {
   return (
     <div
-      key={index}
       className="flex items-center  lg:gap-4 gap-2 flex-nowrap flex-shrink-0 w-fit justify-center  "
     >
       {item}

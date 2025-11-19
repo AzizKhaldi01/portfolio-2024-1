@@ -37,7 +37,7 @@ function ButtonEffect({ children, Style, type, disabled, strength }) {
           duration: 0.5,
           ease: [0.22, 1, 0.36, 1],
         }}
-        className="  text-white  flex items-center rounded-full justify-center absolute  bg-thr inset-0"
+        className="  text-sec  flex items-center rounded-full justify-center absolute  bg-thr inset-0"
       >
         <MagneticWrapper strength={strength}>
           <div>{children}</div>

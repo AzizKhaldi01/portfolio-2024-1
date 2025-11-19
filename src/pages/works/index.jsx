@@ -10,6 +10,9 @@ import Navbar from "../../componet/Navbar";
 import ScrollReveal from "../../componet/gsap/ScrollReveal";
 import Link from "next/link";
 import FlowingMenu from "../../componet/UI/FlowingMenu";
+import Projects from "@/componet/Projects";
+import WordAnimation from "@/components/UI/WordAnimation";
+import ProjectCard from "@/componet/UI/ProjectCard";
 
 function Page() {
   const worksRef = useRef(null);
@@ -51,9 +54,9 @@ function Page() {
       { y: 150 },
       {
         y: 0,
-        delay: 0.7,
-        duration: 0.4,
-        stagger: 0.05,
+        delay: 0.6,
+        duration: 0.6,
+        stagger: 0.06,
         ease: "power1.out",
       }
     );
@@ -68,42 +71,24 @@ function Page() {
         <Navbar />
         {/* Title Section */}
         <div className="pt-12 pb-7 px-[1rem] lg:px-[2rem]">
-          <ScrollReveal
-            baseOpacity={0.1}
-            delay={0.5}
-            enableBlur={true}
-            baseRotation={5}
-            duration={1}
-            blurStrength={8}
-            containerClassName="overflow-hidden"
-            textClassName="works-title text-5xl md:text-6xl lg:text-8xl font-cabinetGrotesk leading-tight text-black "
-          >
-            My Work
-          </ScrollReveal>
-          <div className="text-lg md:text-xl text-gray-600 leading-relaxed max-w-3xl font-cabinetGrotesk">
-            <p className="mb-1">
-              Discover my latest projects—where design, technology, and creativity come together to craft engaging digital experiences. Below is a collection of my favourites. 
-            </p>
+          <WordAnimation
+            className="works-title text-5xl md:text-6xl lg:text-8xl font-cabinetGrotesk leading-tight  text-black"
+            stagger={0.05}
+            once={true}
+            delay={1.2}
+            text="My Work"
+          />
+          <div className=" text-lg md:text-xl leading-relaxed max-w-3xl font-cabinetGrotesk">
+            <WordAnimation
+              delay={1.2}
+              once={true}
+              stagger={0.02}
+              text="Discover my latest projects—where design, technology, and creativity come together to craft engaging digital experiences. Below is a collection of my favourites."
+            />
+
           </div>
 
         </div>
-
-        {/* Filter Buttons */}
-        {/* <div className="flex flex-wrap gap-3 px-[1rem] lg:px-[2rem]">
-          {['all', 'web', 'native app', 'prototyping', 'saas'].map((filter) => (
-            <button
-              key={filter}
-              onClick={() => setActiveFilter(filter)}
-              className={`px-6 py-3 rounded-full font-medium transition-all duration-300 ${
-                activeFilter === filter
-                  ? 'bg-green-200 text-black'
-                  : 'bg-transparent text-black border-2 border-dashed border-gray-400 hover:border-gray-600'
-              }`}
-            >
-              {filter}
-            </button>
-          ))}
-        </div> */}
 
         {/* View Toggle Buttons */}
         <div className="flex justify-end gap-3 pb-10 px-[1rem] lg:px-[2rem]">
@@ -168,108 +153,16 @@ function Page() {
           </div>
         ) : (
           <div className="pt-10 w-full lg:px-[2rem] px-[1rem]">
-            {/* Filtered Projects */}
-            {(() => {
-              const filteredWorks = activeFilter === 'all'
-                ? worksObj
-                : worksObj.filter(item => item.category === activeFilter);
 
-              // Show first 3 projects prominently
-              const featuredWorks = filteredWorks.slice(0, 3);
-              const remainingWorks = filteredWorks.slice(3);
-
-              return (
-                <>
-                  {/* Featured Three Cards Layout */}
-                  {featuredWorks.length > 0 && (
-                    <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-12">
-                      {featuredWorks.map((item, index) => (
-                        <motion.div
-                          key={index}
-                          initial={{ opacity: 0, y: 100 }}
-                          whileInView={{ opacity: 1, y: 0 }}
-                          transition={{ duration: 0.8 }}
-                          viewport={{ once: true }}
-                          className="group"
-                        >
-                          <Link
-                            href={`/project/${item.slug || slugify(item.title)}`}
-                            className="block relative overflow-hidden rounded-2xl aspect-[3/4] mb-4 shadow-lg"
-                            onMouseEnter={() => setHoveredProject(index)}
-                            onMouseLeave={() => setHoveredProject(null)}
-                          >
-                            {/* Category Tag */}
-                            <div className="absolute top-4 left-4 z-10">
-                              <span className="bg-gray-800 text-white px-3 py-1 rounded-full text-sm font-medium capitalize">
-                                {item.category}
-                              </span>
-                            </div>
-
-                            <img
-                              src={item.img?.src || item.img}
-                              alt={item.title}
-                              className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
-                            />
-                          </Link>
-                          <div className="text-left px-2">
-                            <h3 className="text-2xl font-cabinetGrotesk font-bold text-black mb-2 group-hover:text-gray-600 transition-colors leading-tight">
-                              {item.title}
-                            </h3>
-                            <p className="text-gray-600 font-cabinetGrotesk text-sm leading-relaxed">
-                              {item.description || `${item.time} • Creative Project`}
-                            </p>
-                          </div>
-                        </motion.div>
-                      ))}
-                    </div>
-                  )}
-
-                  {/* Additional Projects Grid */}
-                  {remainingWorks.length > 0 && (
-                    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                      {remainingWorks.map((item, index) => (
-                        <motion.div
-                          key={index + 3}
-                          initial={{ opacity: 0, y: 100 }}
-                          whileInView={{ opacity: 1, y: 0 }}
-                          transition={{ duration: 0.8, delay: index * 0.1 }}
-                          viewport={{ once: true }}
-                          className="group"
-                        >
-                          <Link
-                            href={item.Link || "#"}
-                            className="block relative overflow-hidden rounded-2xl aspect-[3/4] mb-4 shadow-lg"
-                            onMouseEnter={() => setHoveredProject(index + 3)}
-                            onMouseLeave={() => setHoveredProject(null)}
-                          >
-                            <img
-                              src={item.img?.src || item.img}
-                              alt={item.title}
-                              className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
-                            />
-                          </Link>
-                          <div className="text-left px-2">
-                            <h3 className="text-xl font-cabinetGrotesk font-bold text-black mb-2 group-hover:text-gray-600 transition-colors leading-tight">
-                              {item.title}
-                            </h3>
-                            <p className="text-gray-600 font-cabinetGrotesk text-sm leading-relaxed">
-                              {item.description || `${item.time} • Creative Project`}
-                            </p>
-                          </div>
-                        </motion.div>
-                      ))}
-                    </div>
-                  )}
-
-                  {/* No results message */}
-                  {filteredWorks.length === 0 && (
-                    <div className="text-center py-20">
-                      <p className="text-gray-500 text-lg">No projects found for this category.</p>
-                    </div>
-                  )}
-                </>
-              );
-            })()}
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+              {worksObj.map((project, index) => (
+                <ProjectCard
+                  key={index}
+                  project={project}
+                  index={index}
+                />
+              ))}
+            </div>
           </div>
         )}
       </div>

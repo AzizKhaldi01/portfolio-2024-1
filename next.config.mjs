@@ -2,6 +2,12 @@
 const nextConfig = {
   reactStrictMode: true,
   transpilePackages: ['mui-tel-input'],
+  output: 'export',
+  trailingSlash: true,
+
+  images: {
+    unoptimized: true,
+  },
 
   webpack: (config) => {
     config.module.rules.push({

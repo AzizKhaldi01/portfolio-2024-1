@@ -6,7 +6,7 @@ import Magnetic from "../componet/gsap/Magnetic";
 
 function Socials() {
   return (
-    <div className="flex item flex-col gap-6">
+    <div className="flex item z-50 w-full flex-col gap-6 lg:gap-8">
       <Magnetic>
         <a
           href="https://www.linkedin.com/in/aziz-khaldi-b28207261/"
@@ -14,8 +14,10 @@ function Socials() {
           rel="noopener noreferrer"
         >
           <FontAwesomeIcon
+          height={26}
+          width={26}
             icon={faLinkedin}
-            className="duration-100 hover:text-thr lg:scale-[1.7] scale-[1.6]"
+            className="duration-100 hover:text-sec/70 text-sec lg:text-2xl text-xl transition-colors"
           />
         </a>
       </Magnetic>
@@ -26,8 +28,10 @@ function Socials() {
           rel="noopener noreferrer"
         >
           <FontAwesomeIcon
+          height={26}
+          width={26}
             icon={faWhatsapp}
-            className="duration-100 hover:text-thr lg:scale-[1.7] scale-[1.6]"
+            className="duration-100 hover:text-sec/70 text-sec lg:text-2xl text-xl transition-colors"
           />
         </a>
       </Magnetic>
@@ -35,7 +39,7 @@ function Socials() {
         <a href="mailto:aziz.khaldi100@gmail.com">
           <FontAwesomeIcon
             icon={faEnvelope}
-            className="duration-100 hover:text-thr lg:scale-[1.7] scale-[1.5]"
+            className="duration-100 hover:text-thr text-sec lg:text-2xl text-xl transition-colors"
           />
         </a>
       </Magnetic> */}
@@ -47,7 +51,9 @@ function Socials() {
         >
           <FontAwesomeIcon
             icon={faGithub}
-            className="duration-100 hover:text-thr lg:scale-[1.7] scale-[1.6]"
+            height={26}
+          width={26}
+            className="duration-100 hover:text-sec/70 text-sec lg:text-2xl text-xl transition-colors"
           />
         </a>
       </Magnetic>

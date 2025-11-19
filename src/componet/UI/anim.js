@@ -1,12 +1,14 @@
 export const text = {
   initial: {
     opacity: 1,
-    y: 0,
+    x: "-50%",
+    y: "-50%",
     scale: 1,
   },
   enter: {
     opacity: 0,
-    y: -50,
+    x: "-50%",
+    y: "calc(-50% - 50px)",
     scale: 0.9,
     transition: { 
       duration: 0.5, 
@@ -16,7 +18,8 @@ export const text = {
   },
   exit: {
     opacity: 1,
-    y: 0,
+    x: "-50%",
+    y: "-50%",
     scale: 1,
     transition: { 
       duration: 0.3, 

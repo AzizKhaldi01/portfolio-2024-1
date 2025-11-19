@@ -8,7 +8,7 @@ const testimonials = [
     role: "Owner of Luna's Inc",
     company: "Luna's Inc",
     quote: "Quality work delivered consistently. The team took our wellness brand and elevated it to new heights with their thoughtful designs and strategic branding. They've helped us create a cohesive and compelling brand identity. What sets them apart is their passion for storytelling through design. They work swiftly and demonstrate professionalism throughout.",
-    avatar: "/api/placeholder/60/60"
+    avatar: "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='60' height='60'%3E%3Crect width='60' height='60' fill='%234F46E5'/%3E%3Ctext x='50%25' y='50%25' dominant-baseline='middle' text-anchor='middle' font-family='sans-serif' font-size='24' fill='white'%3EMR%3C/text%3E%3C/svg%3E"
   },
   {
     id: 2,
@@ -16,7 +16,7 @@ const testimonials = [
     role: "CEO of Glow Co.",
     company: "Glow Co",
     quote: "Quality Geek LLC has delivered a concept prototype and implemented QA on time, earning positive remarks from the client. The team can quickly understand the client's unique and complex product and offer high-quality solutions. They work swiftly and demonstrate professionalism throughout.",
-    avatar: "/api/placeholder/60/60"
+    avatar: "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='60' height='60'%3E%3Crect width='60' height='60' fill='%2310B981'/%3E%3Ctext x='50%25' y='50%25' dominant-baseline='middle' text-anchor='middle' font-family='sans-serif' font-size='24' fill='white'%3EJG%3C/text%3E%3C/svg%3E"
   },
   {
     id: 3,
@@ -24,7 +24,7 @@ const testimonials = [
     role: "Founder ZenTech Wellness",
     company: "ZenTech",
     quote: "As a fellow creative professional, I have high standards when it comes to design. The team not only met but exceeded those standards. Their approach to our website redesign was nothing short of brilliant and also optimized it for a seamless user experience. They work swiftly and demonstrate professionalism throughout.",
-    avatar: "/api/placeholder/60/60"
+    avatar: "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='60' height='60'%3E%3Crect width='60' height='60' fill='%23F59E0B'/%3E%3Ctext x='50%25' y='50%25' dominant-baseline='middle' text-anchor='middle' font-family='sans-serif' font-size='24' fill='white'%3ETG%3C/text%3E%3C/svg%3E"
   },
   {
     id: 4,
@@ -32,7 +32,7 @@ const testimonials = [
     role: "CEO of Animance",
     company: "Animance",
     quote: "In the fast-paced world of tech, it's crucial to have a creative partner who can keep up with our innovative ideas. The team helped transform our digital presence with stunning visuals and intuitive design. They work swiftly and demonstrate professionalism throughout.",
-    avatar: "/api/placeholder/60/60"
+    avatar: "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='60' height='60'%3E%3Crect width='60' height='60' fill='%23EF4444'/%3E%3Ctext x='50%25' y='50%25' dominant-baseline='middle' text-anchor='middle' font-family='sans-serif' font-size='24' fill='white'%3ESM%3C/text%3E%3C/svg%3E"
   },
   {
     id: 5,
@@ -40,7 +40,7 @@ const testimonials = [
     role: "Senior Freelancer",
     company: "Freelance",
     quote: "Working with this team has been an absolute pleasure. Their attention to detail and commitment to excellence is unmatched in the industry. Highly recommended for anyone looking for top-tier creative work. They work swiftly and demonstrate professionalism throughout.",
-    avatar: "/api/placeholder/60/60"
+    avatar: "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='60' height='60'%3E%3Crect width='60' height='60' fill='%238B5CF6'/%3E%3Ctext x='50%25' y='50%25' dominant-baseline='middle' text-anchor='middle' font-family='sans-serif' font-size='24' fill='white'%3EBK%3C/text%3E%3C/svg%3E"
   }
 ];
 
@@ -65,11 +65,8 @@ function Testimonials() {
           {/* Left Side - Review Label */}
           <div className="lg:col-span-3">
             <div className="space-y-2">
-              <p className="text-gray-400 text-xs font-medium tracking-wider uppercase">
-                REVIEW /
-              </p>
               <h2 className="text-2xl md:text-3xl lg:text-4xl font-bold text-sec">
-                Clutch
+                Reviews
               </h2>
             </div>
           </div>

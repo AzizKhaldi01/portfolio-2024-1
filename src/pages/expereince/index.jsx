@@ -338,9 +338,28 @@ function Page() {
     });
   }, []);
 
+
+  useEffect(() => {
+    gsap.registerPlugin(ScrollTrigger);
+    gsap.fromTo(
+      ".item",
+      { y: 150 },
+      {
+        y: 0,
+        delay: 0.7,
+        duration: 0.6,
+        stagger: 0.05,
+        ease: "power1.out",
+      }
+    );
+
+ 
+  }, []);
+
+
   return (
     <Curve>
-      <div className="cursor-default page relative   min-h-screen" style={{ minHeight: '100vh' }}>
+      <div className="cursor-default page item relative   min-h-screen" style={{ minHeight: '100vh' }}>
         <Navbar />
         {/* Animated SVG Path */}
         <svg
@@ -354,10 +373,10 @@ function Page() {
           <defs>
             {/* Orange gradient */}
             <linearGradient id="experienceLineGradient" x1="0%" y1="0%" x2="0%" y2="100%">
-              <stop offset="0%" stopColor="#F97316" stopOpacity="1" />
-              <stop offset="33%" stopColor="#EA580C" stopOpacity="1" />
-              <stop offset="66%" stopColor="#DC2626" stopOpacity="1" />
-              <stop offset="100%" stopColor="#B91C1C" stopOpacity="1" />
+              <stop offset="0%" stopColor="#F97316" stopOpacity="0.5" opacity="0.1" />
+              <stop offset="33%" stopColor="#EA580C" stopOpacity="0.5" opacity="0.15" />
+              <stop offset="66%" stopColor="#DC2626" stopOpacity="0.5" opacity="0.2" />
+              <stop offset="100%" stopColor="#B91C1C" stopOpacity="0.5" opacity="0.25" />
             </linearGradient>
 
             {/* Enhanced glow filter */}
@@ -406,41 +425,28 @@ function Page() {
 
 
         {/* Hero Section */}
-        <div className="pt-32 pb-20 px-[1rem] lg:px-[5rem]">
-          <div className="pt-12 pb-7 ">
-            <ScrollReveal
-              baseOpacity={0.1}
-              delay={1}
-              enableBlur={true}
-              baseRotation={5}
-              duration={1}
-              blurStrength={8}
-              containerClassName="overflow-hidden"
-              textClassName="works-title text-5xl md:text-6xl lg:text-8xl font-cabinetGrotesk leading-tight  text-black"
-            >
-              Experience
-            </ScrollReveal>
-            <div className="text-lg md:text-2xl text-gray-600 leading-relaxed  font-cabinetGrotesk max-w-3xl">
-              <p className="mb-1">
-                Explore my journey and the technologies that define my craft.
-              </p>
-            </div>
-          </div>
-          {/* <ScrollReveal
-              baseOpacity={0.1}
-              enableBlur={true}
-              baseRotation={5}
-              blurStrength={8}
-              containerClassName="overflow-hidden"
-              textClassName="experience-title font-righteous text-6xl md:text-7xl lg:text-8xl xl:text-9xl font-bold leading-tight text-black"
-            >
-            Experience
-          </ScrollReveal> */}
-          <div className="mt-4 overflow-hidden">
-            <p className="text-lg md:text-xl text-gray-600 max-w-3xl">
-              E.01 - E.0{paragraphData.length}
+        <div className=" ">
+          <div className="pt-12 pb-7 px-[1rem] lg:px-[2rem]">
+          <ScrollReveal
+            baseOpacity={0.1}
+            delay={0.5}
+            enableBlur={true}
+            baseRotation={5}
+            duration={1}
+            blurStrength={8}
+            containerClassName="overflow-hidden"
+            textClassName=" item works-title text-5xl md:text-6xl lg:text-8xl font-cabinetGrotesk leading-tight text-black "
+          >
+           Experience
+          </ScrollReveal>
+          <div className=" item text-lg md:text-xl text-gray-600 leading-relaxed max-w-3xl font-cabinetGrotesk">
+            <p className="mb-1">
+            Explore my journey and the technologies that define my craft.
             </p>
           </div>
+
+        </div>
+      
         </div>
 
         {/* Experience Cards */}
@@ -451,47 +457,41 @@ function Page() {
           {paragraphData.map((company, index) => (
             <div
               key={index}
-              className=" font-cabinetGrotesk  relative min-h-screen flex items-center justify-center  py-20"
+              className=" font-cabinetGrotesk item relative min-h-screen flex items-center justify-center  lg:py-20 py-10"
             >
-              <div className="w-full px-[1rem] lg:px-[5rem]"
+              <div className="w-full px-[1rem] lg:px-[1rem]"
               >
                 {/* Company Header */}
-                <div className="p-8 lg:p-12 border-b  border-white">
-                  <div className="flex flex-col lg:flex-row lg:items-center lg:justify-between gap-6">
-                    <div className="flex items-center gap-6">
-                      <div className="section-number text-6xl lg:text-8xl font-bold   ">
-                        E.0{index + 1}
-                      </div>
+                <div className="py-6 px-1 lg:px-6 border-b  border-white">
+                  <div className="flex flex-row lg:items-center  lg:justify-between gap-6">
+                    <div className="flex items-center text-nowrap gap-6">
                       <div>
                         <h2
                           className="company-name font-righteous text-4xl lg:text-6xl font-bold mb-2 text-black"
                         >
                           {company.companyName}
                         </h2>
-                        <p className="company-role text-gray-500 text-sm lg:text-base uppercase tracking-wider">
+                        <p className="company-role text-gray-700 text-sm lg:text-base uppercase tracking-wider">
                           {company.role}
                         </p>
-                        <p className="company-date text-gray-400 text-xs lg:text-sm mt-1">
+                        <p className="company-date text-gray-600 text-xs lg:text-sm mt-1">
                           {company.date}
                         </p>
                       </div>
                     </div>
 
-                    {/* Company Logo */}
-                    <div
-                      className="w-20 h-20 lg:w-28 lg:h-28 rounded-full flex items-center justify-center bg-white shadow-lg border-4 border-gray-300"
-                    >
+                  <div className="flex items-center  w-full justify-end">
                       <img
                         src={company.logo}
                         alt={company.companyName}
-                        className="w-12 h-12 lg:w-16 lg:h-16 object-contain"
+                        className="w-20 h-20 lg:w-28 lg:h-28  rounded-full "
                       />
-                    </div>
+                  </div>
                   </div>
                 </div>
 
                 {/* Company Description */}
-                <div className="p-8 lg:p-12">
+                <div className="py-6 px-1 lg:px-6">
                   <div className="mb-8">
                     <p className="company-desc text-lg lg:text-xl text-gray-700 leading-relaxed">
                       {company.desc}
@@ -508,7 +508,7 @@ function Page() {
                       {company.roles.map((role, roleIndex) => (
                         <div
                           key={roleIndex}
-                          className="role-card flex items-start gap-3 p-4 bg-gray-50 rounded-xl hover:bg-gray-100 transition-colors duration-300"
+                          className="role-card flex items-start gap-3 p-4 bg-gray-50/20 rounded-xl  transition-colors duration-300"
                         >
                           <div
                             className="w-2 h-2 rounded-full mt-2 flex-shrink-0 bg-black"
